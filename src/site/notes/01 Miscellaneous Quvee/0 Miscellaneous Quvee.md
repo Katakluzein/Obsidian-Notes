@@ -18,7 +18,7 @@
 ## 引力理论$\circ$[[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/14 宇宙学\|宇宙学]]$\circ$天文学
 - [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/11 微分几何\|微分几何]]
 - [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/12 广义相对论\|广义相对论]]
-- [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/14 宇宙学\|14 宇宙学]]
+- [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/14 宇宙学\|宇宙学]]
 
 ## 复杂系统$\circ$统计物理$\circ$神经网络
 - [[1 Stories of Bizzo's Life/4 复杂系统 统计物理 神经网络/16 经典统计力学\|经典统计力学]]
@@ -43,7 +43,6 @@
 - [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]
 - [[projectContinuousNoiseDiscreteCorrection\|连续噪声、离散纠错模型]]
 - [[projectIndefiniteCausalOrderQuantumMetrology\|不定因果与精密测量]]
-  - (附) project PDF: [[projectICOmetrology.pdf\|projectICOmetrology.pdf]]
 - [[projectTimeLeapMachine\|时间跳跃机器]]
 
 ## pdf
