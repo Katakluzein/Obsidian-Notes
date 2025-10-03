@@ -40,7 +40,7 @@
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/34 量子参考系\|量子参考系]]
 
 pdf版：
-通过网盘分享的文件：MiscellaneousBizzoFixed.pdf
+通过网盘分享的文件：[[MiscellaneousBizzoFixed.pdf]]
 链接: https://pan.baidu.com/s/1CnjEdZF74Yx2VruhyGEvUA?pwd=tm6a 提取码: tm6a 
 ## 项目
 - [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]
@@ -48,8 +48,3 @@ pdf版：
 - [[projectIndefiniteCausalOrderQuantumMetrology\|不定因果与精密测量]]
 - [[projectTimeLeapMachine\|时间跳跃机器]]
 
-## pdf
-[[MiscellaneousBizzoFixed.pdf]]
-
-## 说明
-- 平时笔记写在[[资源/obsidian\|Obsidian]]，当出现重要的内容的时候就整理并转写为[[写作和英语学习/Latex\|latex]]。
