@@ -39,7 +39,7 @@
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/33 量子因果结构\|量子因果结构]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/34 量子参考系\|量子参考系]]
 
-上述内容的pdf版：
+pdf版：
 通过网盘分享的文件：MiscellaneousBizzoFixed.pdf
 链接: https://pan.baidu.com/s/1CnjEdZF74Yx2VruhyGEvUA?pwd=tm6a 提取码: tm6a 
 ## 项目
