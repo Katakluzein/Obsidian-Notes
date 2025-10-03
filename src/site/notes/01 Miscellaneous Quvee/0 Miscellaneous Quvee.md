@@ -15,10 +15,11 @@
 ## 凝聚态物理学
 - [[1 Stories of Bizzo's Life/2 凝聚态物理学/10 拓扑物理学\|固体物理学]]
 
-## 引力理论$\circ$[[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/14 宇宙学\|宇宙学]]$\circ$天文学
+## 引力理论$\circ$宇宙学$\circ$天文学
 - [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/11 微分几何\|微分几何]]
 - [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/12 广义相对论\|广义相对论]]
 - [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/14 宇宙学\|宇宙学]]
+- [[1 Stories of Bizzo's Life/3 引力理论 宇宙学 天文学/15 天文学\|天文]]
 
 ## 复杂系统$\circ$统计物理$\circ$神经网络
 - [[1 Stories of Bizzo's Life/4 复杂系统 统计物理 神经网络/16 经典统计力学\|经典统计力学]]
