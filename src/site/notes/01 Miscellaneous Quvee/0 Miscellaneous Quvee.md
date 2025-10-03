@@ -37,7 +37,7 @@
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/31 开放量子系统\|量子开放系统]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/32 量子测量\|量子测量]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/33 量子因果结构\|量子因果结构]]
-- [[34 量子参考系\|量子参考系]]
+- [[1 Stories of Bizzo's Life/5 量子科学和量子技术/34 量子参考系\|量子参考系]]
 
 ## 项目
 - [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]
