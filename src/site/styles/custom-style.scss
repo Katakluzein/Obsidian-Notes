@@ -4,34 +4,56 @@ body {
       IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
     ***/
 
-    /* 正文 /内容字体调小 */
-    .cm-s-obsidian, .cm-s-obsidian * {
-      font-size: 0.85rem !important;
-    }
 
-    /* 段落 /普通文字 */
-    p, .content, .markdown-body {
-      font-size: 0.9rem !important;
-    }
+  /* 各级标题字体大小与颜色设定 */
+  h1 {
+    font-size: 2.5rem !important;
+    color: hsl(210, 30%, 35%) !important;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  h2 {
+    font-size: 2rem !important;
+    color: hsl(180, 25%, 40%) !important;
+    margin-top: 1.4em;
+    margin-bottom: 0.5em;
+  }
+  h3 {
+    font-size: 1.75rem !important;
+    color: hsl(150, 20%, 45%) !important;
+    margin-top: 1.3em;
+    margin-bottom: 0.5em;
+  }
+  h4 {
+    font-size: 1.5rem !important;
+    color: hsl(120, 18%, 50%) !important;
+    margin-top: 1.2em;
+    margin-bottom: 0.4em;
+  }
+  h5 {
+    font-size: 1.25rem !important;
+    color: hsl(90, 15%, 55%) !important;
+    margin-top: 1.1em;
+    margin-bottom: 0.4em;
+  }
+  h6 {
+    font-size: 1rem !important;
+    color: hsl(60, 12%, 60%) !important;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+  }
 
-    /* 标题字体也调小 */
-    h1 {
-      font-size: 2rem !important;
-    }
-    h2 {
-      font-size: 1.7rem !important;
-    }
-    h3 {
-      font-size: 1.4rem !important;
-    }
+  /* 可选：调整标题与正文的行高 /间距 */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
 
-    /* 可选：行高、边距、其他元素字体 */
-    body {
-      line-height: 1.5;
-    }
-    a, span, li, blockquote {
-      font-size: 0.9rem !important;
-    }
+  /* 如果标题可能在某些容器里被覆盖，确保权重足够 */
+  .content h1, .content h2, .content h3,
+  .content h4, .content h5, .content h6 {
+    /* 也可以重复设定以确保覆盖 */
+    font-family: inherit; /* 或你站点的标题字体 */
+  }
 
   /* 下面是新增宽度调整部分 */
 
