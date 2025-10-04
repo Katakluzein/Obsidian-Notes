@@ -1,5 +1,37 @@
 body {
-  /*** 你现有的 custom 样式保留 ***/
+      /***
+      ADD YOUR CUSTOM STYLING HERE. (INSIDE THE body {...} section.)
+      IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
+    ***/
+
+    /* 正文 /内容字体调小 */
+    .cm-s-obsidian, .cm-s-obsidian * {
+      font-size: 0.85rem !important;
+    }
+
+    /* 段落 /普通文字 */
+    p, .content, .markdown-body {
+      font-size: 0.9rem !important;
+    }
+
+    /* 标题字体也调小 */
+    h1 {
+      font-size: 2rem !important;
+    }
+    h2 {
+      font-size: 1.7rem !important;
+    }
+    h3 {
+      font-size: 1.4rem !important;
+    }
+
+    /* 可选：行高、边距、其他元素字体 */
+    body {
+      line-height: 1.5;
+    }
+    a, span, li, blockquote {
+      font-size: 0.9rem !important;
+    }
 
   /* 下面是新增宽度调整部分 */
 
