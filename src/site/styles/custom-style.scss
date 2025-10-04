@@ -5,8 +5,8 @@ body {
 
   /* 调整内容容器最大宽度（让它更宽一些） */
   .content, .markdown-body, .cm-s-obsidian {
-    max-width: 1000px !important;  /* 或者你希望的像素宽度，比如 1200px */
-    width: 100% !important;
+    max-width: 900px !important;  /* 或者你希望的像素宽度，比如 1200px */
+    width: 90% !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
