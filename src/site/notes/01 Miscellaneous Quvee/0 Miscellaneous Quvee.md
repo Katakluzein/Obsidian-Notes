@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/01 Miscellaneous Quvee/0 Miscellaneous Quvee/","tags":["资源","gardenEntry"]}
 ---
 
+早上好，欢迎来到我的公开学习、研究笔记。
 ## 数学基础
 - [[1 Stories of Bizzo's Life/1 数学基础/1 群论和群表示论\|群论和群表示论]]
 - [[1 Stories of Bizzo's Life/1 数学基础/2 环论\|环、模、域、伽罗瓦理论]]
