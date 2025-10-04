@@ -35,7 +35,7 @@
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/27 量子算法\|量子计算$\circ$量子算法]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/28 量子信息\|量子信息]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/29 量子纠错\|量子纠错]]
-- [[1 Stories of Bizzo's Life/5 量子科学和量子技术/30 量子控制论\|量子控制论 Quantum Control Theory]]
+- [[1 Stories of Bizzo's Life/5 量子科学和量子技术/30 量子控制论\|量子控制论]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/31 开放量子系统\|量子开放系统]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/32 量子测量\|量子测量]]
 - [[1 Stories of Bizzo's Life/5 量子科学和量子技术/33 量子因果结构\|量子因果结构]]
