@@ -55,6 +55,14 @@ body {
     font-family: inherit; /* 或你站点的标题字体 */
   }
 
+    /* 减小字体的样式（如果你之前加了） */
+    .cm-s-obsidian, .cm-s-obsidian * {
+      font-size: 0.9rem !important;
+    }
+    p, .content, .markdown-body {
+      font-size: 0.9rem !important;
+    }
+      
   /* 下面是新增宽度调整部分 */
 
   /* 调整内容容器最大宽度（让它更宽一些） */
