@@ -43,7 +43,8 @@
 
 pdf版：
 通过网盘分享的文件：[[MiscellaneousBizzoFixed.pdf]]
-链接: https://pan.baidu.com/s/1CnjEdZF74Yx2VruhyGEvUA?pwd=tm6a 提取码: tm6a 
+链接: https://pan.baidu.com/s/1ZvczdG0SMUZ9sFoIBc3Z_g?pwd=inxc 提取码: inxc 
+--来自百度网盘超级会员v6的分享
 ## 项目
 - [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]
 - [[projectContinuousNoiseDiscreteCorrection\|连续噪声、离散纠错模型]]
