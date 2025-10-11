@@ -46,9 +46,13 @@ pdf版：
 链接: https://pan.baidu.com/s/1ZvczdG0SMUZ9sFoIBc3Z_g?pwd=inxc 提取码: inxc 
 --来自百度网盘超级会员v6的分享
 ## 项目
+- [[0 fleeting/未解问题与新项目/新项目\|新项目]]
+- [[拓扑量子纠错项目\|拓扑量子纠错项目]]
 - [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]
 - [[projectContinuousNoiseDiscreteCorrection\|连续噪声、离散纠错模型]]
 - [[projectIndefiniteCausalOrderQuantumMetrology\|不定因果与精密测量]]
 - [[projectTimeLeapMachine\|时间跳跃机器]]
+- [[2 项目笔记/量子模拟项目/量子模拟项目\|量子模拟项目]]
+- [[2 项目笔记/不定因果/不定因果×量子纠错\|不定因果×量子纠错]]
 
 邮箱：1712141594@qq.com
