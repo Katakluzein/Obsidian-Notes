@@ -17,7 +17,7 @@
 12. [[Cluster Expansion\|Cluster Expansion]]
 13. [[Dimer Problems\|Dimer Problems]]
 14. [[Bose–Einstein Condensates\|Bose–Einstein Condensates]]
-15. [[Introductory Article  Equilibrium Statistical Mechanics\|Introductory Article  Equilibrium Statistical Mechanics]]
+15. [[Introductory Article Equilibrium Statistical Mechanics\|Introductory Article Equilibrium Statistical Mechanics]]
 16. [[Fermionic Systems\|Fermionic Systems]]
 17. [[Finitely Correlated States\|Finitely Correlated States]]
 18. [[Reflection Positivity and Phase Transitions\|Reflection Positivity and Phase Transitions]]
