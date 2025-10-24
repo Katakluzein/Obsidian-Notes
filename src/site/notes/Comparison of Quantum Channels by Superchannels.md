@@ -222,9 +222,7 @@
     \Theta[\Psi^A] = \Gamma_{\text{post}} \circ (\Psi^A \otimes \text{id}_E) \circ \Gamma_{\text{pre}}
     $$
     *   **含义**: 这是物理上最直观的图像。它表明任何超信道都可以被看作是一个“量子电路板”，如论文中的图1所示。你提供一个输入系统$B_0$，它通过前处理电路$\Gamma_{\text{pre}}$与一个内部辅助系统$E$纠缠，并将一部分送到输入信道$\Psi^A$的入口$A_0$。信道$\Psi^A$作用后，其输出$A_1$与辅助系统$E$一起进入后处理电路$\Gamma_{\text{post}}$，最终产生整个超信道的输出$B_1$。
-
----
-
+是否能够给出==算法==？ 
 ### 定理1的证明
 
 我们将证明一个蕴含关系的循环 `1 ⇒ 2 ⇒ 4 ⇒ 1`，并单独证明 `2 ⇔ 3`。
@@ -268,31 +266,81 @@ $$
     *   $\mathcal{P}_1 = \mathcal{I} - \mathcal{D}_{B_1} + \mathcal{D}_{B_1A_1}$
     *   $\mathcal{P}_2 = I - \mathcal{D}_{A_0B_1} + \mathcal{D}_{global}$
     检验参见：重写投影刻画.nb
-#### **证明 `2 ⇒ 4` (Choi矩阵条件 ⇒ 物理实现)**
 
-这是证明中最关键和技术性的部分，核心思想是**Stinespring Dilation**和**Uhlmann's Theorem**。
+==至于为什么trace掉A1和B1之后剩下的部分是某个特别的映射的蔡氏矩阵$J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0}$ ，这实际上就是在定义$\Delta_{\Theta}^{A_0\to B_0}$==
+#### 证明 `2 ⇒ 4` (Choi矩阵条件 ⇒ 物理实现)
 
-1.  **起点**: 我们有一个正半定矩阵 $\mathcal{J}_\Theta^{AB}$，它满足边际条件。
-2.  **纯化**: 既然 $\mathcal{J}_\Theta^{AB}$ 是一个正半定的（混合态）算子，我们可以引入一个辅助系统$C$，找到一个纯态 $|\psi\rangle^{ABC}$，使得 $\text{Tr}_C[|\psi\rangle\langle\psi|^{ABC}] = \mathcal{J}_\Theta^{AB}$。这个 $|\psi\rangle^{ABC}$ 被称为 $\mathcal{J}_\Theta^{AB}$ 的一个**纯化(purification)**。
-3.  **利用边际条件**: 我们来考察纯态 $|\psi\rangle^{ABC}$ 在丢弃部分系统后的状态。特别地，我们考察边际条件 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$。
-    *   这意味着 $\text{Tr}_{B_1C}[|\psi\rangle\langle\psi|^{ABC}]$ 是一个处于 $A_0B_0A_1$ 上的混合态，并且它等于 $J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$。
-4.  **构造另一个纯化**: 我们可以为 $J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$ 独立地构造另一个纯化。
-    *   首先，找到 $J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0}$ 的一个纯化，记为 $|\phi\rangle^{A_0B_0E}$，其中E是辅助系统。
-    *   其次，我们知道最大混合态 $u^{A_1}$ 的一个标准纯化是最大纠缠态 $|\Phi^+\rangle^{A_1\tilde{A}_1}$ (除以维度)。
-    *   因此，$J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$ 的一个纯化就是这两个纯化的张量积：$|\phi\rangle^{A_0B_0E} \otimes |\Phi^+\rangle^{A_1\tilde{A}_1}$。
-5.  **Uhlmann's Theorem的应用**: 现在我们有了同一个混合态 $J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$ 的**两个不同**的纯化：
-    *   第一个来自于对总纯化 $|\psi\rangle^{ABC}$ 求偏迹，其辅助系统是 $B_1C$。
-    *   第二个是我们构造出来的，其辅助系统是 $E\tilde{A}_1$。
-    **Uhlmann's Theorem**指出：如果两个纯态是同一个混合态的纯化，那么它们之间必然只相差一个作用在各自辅助系统上的**等距算子(isometry)** $V$。
-    $$
-    |\psi\rangle^{ABC} = (I^{A_0B_0A_1} \otimes V^{B_1C \to E\tilde{A}_1}) (|\phi\rangle^{A_0B_0E} \otimes |\Phi^+\rangle^{A_1\tilde{A}_1})
-    $$
-    （这里为了清晰省略了一些重排算子）。这个等距算子 $V$ 是我们构建物理实现的关键。
-6.  **构造`pre`和`post`信道**: 现在，我们可以利用纯化 $|\phi\rangle^{A_0B_0E}$ 和等距算子 $V$ 来定义前处理和后处理信道。
-    *   **前处理** $\Gamma_{\text{pre}}$ 被定义为一个从 $B_0$ 到 $A_0E$ 的映射，其Choi矩阵恰好就是 $J_{\Gamma_{\text{pre}}} = |\phi\rangle\langle\phi|^{A_0B_0E}$ （经过一些转置和重整化）。
-    *   **后处理** $\Gamma_{\text{post}}$ 被定义为一个从 $A_1E$ 到 $B_1$ 的映射，它本质上就是由等距算子 $V$ 所定义的量子操作。
-    通过一系列代数运算（将上述关系代入公式(10)），可以证明，由这样定义的 $\Gamma_{\text{pre}}$ 和 $\Gamma_{\text{post}}$ 构成的电路，其对任意信道 $\Psi^A$ 的作用，与由原始Choi矩阵 $\mathcal{J}_\Theta^{AB}$ 定义的超信道作用完全相同。并且，由于它们来自纯化和等距算子，可以保证它们本身是CPTP映射。
+**证明思路**: 这个证明的核心是**量子态纯化 (purification)** 和 **Uhlmann定理**。基本策略是：
+1.  将我们研究的对象——超信道$\Theta$的Choi矩阵 $\mathcal{J}_\Theta^{AB}$（这是一个混合态算子）——“提升”为一个纯态 $|\phi\rangle^{ABC}$。
+2.  利用**陈述2**中给出的关于 $\mathcal{J}_\Theta^{AB}$ 边际矩阵的条件，来约束其纯化 $|\phi\rangle^{ABC}$ 的结构。
+3.  独立地，我们用一些简单的、已知的构建模块（另一个纯化态和一个最大纠缠态）来构造出这个边际矩阵的**另一个**纯化。
+4.  根据**Uhlmann定理**，同一个混合态的任意两个纯化之间，必然只相差一个作用在各自辅助系统上的**等距变换 (isometry)**。这个等距变换就是我们找到**后处理信道** $\Gamma_{\text{post}}$ 的关键。
+5.  对剩下的构建模块进行分析，我们发现它正好对应一个**前处理信道** $\Gamma_{\text{pre}}$ 的Choi矩阵。
+6.  最后，将这个 `pre-processing` -> `channel` -> `post-processing` 的结构代入超信道作用的通用公式，通过代数运算证明其结果与原始超信道的作用完全一致。
 
+**详细步骤翻译与说明**:
+
+我们现在证明 `2 ⇒ 4`。
+令 $|\phi\rangle^{ABC}$ 为 $\mathcal{J}_\Theta^{AB}$ 的一个**纯化**，并令 $|\psi\rangle^{A_0B_0E}$ 为 $\frac{1}{d_{A_1}}\mathcal{J}_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0}$ 的一个纯化。后者总是存在的，其辅助系统E的维度满足 $d_E \le d_{A_0}d_{B_0}$。
+
+> **说明**: 第一步，我们将要研究的两个核心矩阵（超信道的Choi矩阵和它的一个边际矩阵）都表示为更大系统中的纯态。这是量子信息论中的一个标准技巧，因为纯态的结构更简单，性质更好。
+
+那么，根据**陈述2**中的关系式 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = \mathcal{J}_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$，我们得出结论：$|\psi\rangle^{A_0B_0E} \otimes |\Phi^+\rangle^{A_1\tilde{A}_1}$ 是 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}]$ 的一个纯化。
+
+> **说明**: 这里利用了纯化的一个重要性质：一个张量积形式的混合态的纯化，是其各自纯化的张量积。我们知道最大混合态 $u^{A_1}$ 的一个标准纯化是最大纠缠态 $|\Phi^+\rangle^{A_1\tilde{A}_1}$ (除以一个归一化因子)。
+
+因此，由于 $|\phi\rangle^{ABC}$ (在对$B_1$求迹后) 也是 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}]$ 的一个纯化，根据**Uhlmann定理**，必然存在一个等距信道 $\mathcal{V}^{\tilde{A}_1E \to B_1C}$ 使得：
+$$
+|\phi\rangle^{ABC} = (\text{id}_{A_0B_0A_1} \otimes \mathcal{V}^{\tilde{A}_1E \to B_1C}) (|\psi\rangle^{A_0B_0E} \otimes |\Phi^+\rangle^{A_1\tilde{A}_1})
+$$
+
+对等式两边都对系统C求迹，并记**后处理信道** $\Gamma_{\text{post}}^{\tilde{A}_1E \to B_1} \equiv \text{Tr}_C \circ \mathcal{V}^{\tilde{A}_1E \to B_1C}$，我们得到：
+$$
+\mathcal{J}_\Theta^{AB} = (\text{id}_{A_0B_0A_1} \otimes \Gamma_{\text{post}}^{\tilde{A}_1E \to B_1}) (|\psi\rangle\langle\psi|^{A_0B_0E} \otimes |\Phi^+\rangle\langle\Phi^+|^{A_1\tilde{A}_1})
+$$
+
+> **说明**: 这是第一个关键成果。我们找到了后处理信道 $\Gamma_{\text{post}}$，它来自于**连接两个纯化的等距变换** $V$。
+
+根据 $|\psi\rangle^{A_0B_0E}$ 的定义，它满足 $\text{Tr}_{A_0E}[|\psi\rangle\langle\psi|^{A_0B_0E}] = I^{B_0}$。因此，必然存在一个CPTP信道（实际上是一个**等距**）$\Gamma_{\text{pre}}^{B_0 \to A_0E}$ 使得 $|\psi\rangle\langle\psi|^{A_0B_0E} = (\text{id}_{B_0} \otimes \Gamma_{\text{pre}}^{B_0 \to A_0E}) (|\Phi^+\rangle\langle\Phi^+|^{B_0\tilde{B}_0})$。
+
+> **说明**: 这个条件 $\text{Tr}_{A_0E}[...] = I^{B_0}$ 正是一个从 $B_0$ 到 $A_0E$ 的保迹信道的Choi矩阵所满足的条件。因此，我们可以将 $|\psi\rangle\langle\psi|^{A_0B_0E}$ 本身就看作是某个信道的Choi矩阵，这个信道我们定义为**前处理信道** $\Gamma_{\text{pre}}$。
+
+因此，
+$$
+\mathcal{J}_\Theta^{AB} = (\text{id}_{A_1B_0} \otimes \Gamma_{\Theta}^{\tilde{A}_1\tilde{B}_0 \to A_0 B_1}) (|\Phi^+\rangle\langle\Phi^+|^{A_1\tilde{A}_1} \otimes |\Phi^+\rangle\langle\Phi^+|^{B_0\tilde{B}_0})
+$$
+其中我们定义了一个复合映射 $\Gamma_{\Theta}^{\tilde{A}_1\tilde{B}_0 \to A_0 B_1} \equiv (\text{id}_{A_0} \otimes \Gamma_{\text{post}}^{A_1E \to B_1}) \circ (\text{id}_{\tilde{A}_1} \otimes \Gamma_{\text{pre}}^{B_0 \to A_0E})$。
+
+
+为了完成证明，记 $\Phi^B \equiv \Theta[\Psi^A]$，并从公式(10)可知，对于任意输入态 $\rho \in \mathcal{B}(\mathcal{H}_{B_0})$：这实际上就是 link product $\star$ 的计算规则
+$$
+\Phi(\rho) = \text{Tr}_{B_0}[J_\Phi^B (\rho^T \otimes I^{B_1})] = \text{Tr}_{AB_0}[\mathcal{J}_\Theta^{AB} ( (J_\Psi^A)^T \otimes \rho^T \otimes I^{B_1} )]
+$$
+
+接下来，我们将上面推导出的 $\mathcal{J}_\Theta^{AB}$ 的表达式代入，得到：
+$$
+\Phi(\rho) = \text{Tr}_{A} \left[ ((J_\Psi^A)^T \otimes I^{B_1}) \times (\text{id}_A \otimes \Gamma_{\text{post}}^{A_1E \to B_1})(|\Phi^+\rangle\langle\Phi^+|^{A_1\tilde{A}_1} \otimes \Gamma_{\text{pre}}^{B_0 \to A_0E}(\rho)) \right]
+$$
+其中我们在对$B_0$求迹后，利用了关系 $(\rho^T \otimes I^{\tilde{B}_0})|\Phi^+\rangle^{B_0\tilde{B}_0} = (I^{B_0} \otimes \rho)|\Phi^+\rangle^{B_0\tilde{B}_0}$。
+
+最后，我们注意到关系式：
+$$
+(J_\Psi^A)^T = \sum_{i,j} |j\rangle\langle i|^{A_0} \otimes (\Psi^{\tilde{A}_0 \to A_1}[|i\rangle\langle j|^{\tilde{A}_0}])^T
+$$
+因此
+$$
+\text{Tr}_{A_1} \left[ ((J_\Psi^A)^T \otimes I^{\tilde{A}_1})(I^{A_0} \otimes |\Phi^+\rangle\langle\Phi^+|^{A_1\tilde{A}_1}) \right] = \sum_{i,j} |j\rangle\langle i|^{A_0} \otimes \Psi^{\tilde{A}_0 \to \tilde{A}_1}[|i\rangle\langle j|^{\tilde{A}_0}]
+$$
+将此结果代入(28)，我们最终得出结论：
+$$
+\begin{aligned}
+\Phi(\rho) &= \sum_{i,j} \Gamma_{\text{post}}^{A_1E \to B_1} \left( \Psi^{\tilde{A}_0 \to \tilde{A}_1}[|i\rangle\langle j|^{\tilde{A}_0}] \otimes \langle i^{A_0} | \Gamma_{\text{pre}}^{B_0 \to A_0E}(\rho) | j^{A_0} \rangle \right) \\
+&= \Gamma_{\text{post}}^{A_1E \to B_1} \left[ (\Psi^{A_0 \to A_1} \otimes \text{id}_E) (\Gamma_{\text{pre}}^{B_0 \to A_0E}(\rho)) \right]
+\end{aligned}
+$$
+这与**陈述4**中给出的物理实现形式完全一致。
+
+这便完成了 `2 ⇒ 4` 的证明。
 #### **证明 `4 ⇒ 1` (物理实现 ⇒ 物理定义)**
 
 这是最直接的蕴含关系。
@@ -321,9 +369,67 @@ $$
         $$
     *   因此，对于任何TP的 $\Psi^A$，$\Theta[\Psi^A]$ 也是TP的。所以 $\Theta$ 是TPP的。
 
-#### **证明 `2 ⇔ 3` (Choi矩阵条件 ⇔ 降维映射条件)**
 
-这是一个纯粹的代数证明，它依赖于Choi-Jamiołkowski同构的性质，即一个映射的性质与其Choi矩阵的性质一一对应。可以证明，对映射 $\Delta_\Theta^{A \to B}$ 的输出端 $B_1$ 求偏迹，在Choi矩阵 $\mathcal{J}_\Theta^{AB}$ 层面，完全等价于对其求相应的偏迹。而条件3中的幺正性和迹关系，可以被直接翻译为条件2中关于Choi矩阵边际的具体形式。
+### 证明 `2 ⇔ 3` 的等价性
+
+这个证明旨在建立超信道的Choi矩阵 $\mathcal{J}_\Theta^{AB}$ 所满足的代数条件（**陈述2**）与一个描述其因果结构的、关于降维映射 $\Delta_\Theta$ 的关系式（**陈述3**）之间的等价性。这是一个纯粹的代数证明，它依赖于Choi-Jamiołkowski同构的性质，即一个映射的性质与其Choi矩阵的性质一一对应。可以证明，对映射 $\Delta_\Theta^{A \to B}$ 的输出端 $B_1$ 求偏迹，在Choi矩阵 $\mathcal{J}_\Theta^{AB}$ 层面，完全等价于对其求相应的偏迹。而条件3中的幺正性和迹关系，可以被直接翻译为条件2中关于Choi矩阵边际的具体形式。
+
+#### **证明 `3 ⇒ 2` (降维映射条件 ⇒ Choi矩阵条件)**
+
+**假设**: 我们假设**陈述3**成立。即：
+*   映射 $\Delta_\Theta^{A \to B}$ 是完备正(CP)的。
+*   存在一个**unital**且CP的映射 $\Delta_\Theta^{A_0 \to B_0}$。
+*   关键关系式成立: $\Delta_\Theta^{A \to B_0} \equiv \text{Tr}_{B_1} \circ \Delta_\Theta^{A \to B} = \Delta_\Theta^{A_0 \to B_0} \circ \text{Tr}_{A_1}$。
+
+**目标**: 从这些假设出发，推导出**陈述2**中关于Choi矩阵 $\mathcal{J}_\Theta^{AB}$ 的边际条件。
+
+1.  **翻译关键关系式**: 我们需要将关于映射的关系式 $\Delta_\Theta^{A \to B_0} = \Delta_\Theta^{A_0 \to B_0} \circ \text{Tr}_{A_1}$ 翻译成Choi矩阵的语言。一个映射的Choi矩阵唯一确定了这个映射。因此，我们只需证明等式两边的映射具有相同的Choi矩阵。
+    *   **LHS的Choi矩阵**: 映射 $\Delta_\Theta^{A \to B_0} = \text{Tr}_{B_1} \circ \Delta_\Theta^{A \to B}$ 的Choi矩阵，根据Choi-Jamiołkowski同构的性质，就是 $\mathcal{J}_\Theta^{AB}$ 对系统 $B_1$ 求偏迹的结果，即 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}]$ (在论文中记为 $\mathcal{J}_\Theta^{AB_0}$)。
+    *   **RHS的Choi矩阵**: 映射 $\Delta_\Theta^{A_0 \to B_0} \circ \text{Tr}_{A_1}$ 是一个复合映射。
+        *   首先，映射 $\text{Tr}_{A_1}: \mathcal{B}(\mathcal{H}_{A_0A_1}) \to \mathcal{B}(\mathcal{H}_{A_0})$ 的Choi矩阵是 $I^{A_0} \otimes u^{A_1}$ (这里 $u^{A_1}$ 是最大混合态)。
+        *   将这个Choi矩阵输入到后续映射 $\Delta_\Theta^{A_0 \to B_0}$ 中，得到的复合映射的Choi矩阵是 $J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$。
+    *   因此，关键关系式在Choi矩阵层面等价于：
+        $$
+        \text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}
+        $$
+        这正是**陈述2**中的第二个边际条件。
+
+2.  **利用幺正(Unital)性质**: 我们假设了 $\Delta_\Theta^{A_0 \to B_0}$ 是幺正的，即 $\Delta_\Theta^{A_0 \to B_0}(I^{A_0}) = I^{B_0}$。
+    *   一个映射是幺正的，当且仅当其Choi矩阵对输入系统求偏迹后得到单位矩阵（乘以输入维度），即 $\text{Tr}_{A_0}[J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0}] = d_{A_0}I^{B_0}$。
+    *   在超信道的框架下，一个更基本的因果约束（即不能从未来到过去通信）要求 $\text{Tr}_{A_0B_1}[\mathcal{J}_\Theta^{AB}] = I^{A_1B_0}$。我们可以验证，当且仅当 $\Delta_\Theta^{A_0 \to B_0}$ 是幺正时，这个条件才与上一步推导出的边际条件相容。具体来说，对 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0} \otimes u^{A_1}$ 两边同时对 $A_0$ 求迹，并利用幺正条件，即可恢复出对总信道迹的约束，这与 $\text{Tr}_{A_0B_1}[\mathcal{J}_\Theta^{AB}] = I^{A_1B_0}$ 相吻合。
+    *   因此，`3 ⇒ 2` 得证。
+
+#### **证明 `2 ⇒ 3` (Choi矩阵条件 ⇒ 降维映射条件)**
+
+**假设**: 我们假设**陈述2**成立。即：
+*   $\mathcal{J}_\Theta^{AB} \ge 0$。
+*   边际条件成立: $\text{Tr}_{A_0B_1}[\mathcal{J}_\Theta^{AB}] = I^{A_1B_0}$ 且 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = J^{A_0B_0} \otimes u^{A_1}$ (其中 $J^{A_0B_0}$ 是某个算子)。
+
+**目标**: 构造一个满足**陈述3**性质的映射 $\Delta_\Theta^{A_0 \to B_0}$。
+
+1.  **定义 $\Delta_\Theta^{A_0 \to B_0}$**: 我们利用边际条件来**定义**这个映射。从关系式 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = J^{A_0B_0} \otimes u^{A_1}$ 中，算子 $J^{A_0B_0}$ 被唯一确定。我们就用这个 $J^{A_0B_0}$ 来定义 $\Delta_\Theta^{A_0 \to B_0}$，即 $\Delta_\Theta^{A_0 \to B_0}$ 是那个以 $J^{A_0B_0}$ 为Choi矩阵的唯一映射（==这与前面1到2的推导是一致的==）。
+
+2.  **验证性质**: 现在需要验证这样定义的 $\Delta_\Theta^{A_0 \to B_0}$ 满足陈述3的要求。
+    *   **CP性质**: 因为 $\mathcal{J}_\Theta^{AB} \ge 0$，所以它的偏迹 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = J^{A_0B_0} \otimes u^{A_1}$ 也必须是正半定的。这意味着 $J^{A_0B_0}$ 必然是正半定的，因此其对应的映射 $\Delta_\Theta^{A_0 \to B_0}$ 是一个CP映射。
+    *   **幺正(Unital)性质**: 我们需要证明 $\Delta_\Theta^{A_0 \to B_0}$ 是幺正的，即 $\text{Tr}_{A_0}[J^{A_0B_0}] = d_{A_0}I^{B_0}$。我们利用**陈述2**中的**另一个**边际条件 $\text{Tr}_{A_0B_1}[\mathcal{J}_\Theta^{AB}] = I^{A_1B_0}$。对这个等式两边同时对系统 $A_1$ 求迹，得到：
+        $$
+        \text{Tr}_{A_1}\left(\text{Tr}_{A_0B_1}[\mathcal{J}_\Theta^{AB}]\right) = \text{Tr}_{A_1}[I^{A_1B_0}]
+        $$
+        $$
+        \text{Tr}_{A_0A_1B_1}[\mathcal{J}_\Theta^{AB}] = d_{A_1}I^{B_0}
+        $$
+        左边可以重新组合偏迹的顺序为 $\text{Tr}_{A_0A_1}[\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}]]$。代入我们已知的关系 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}] = J^{A_0B_0} \otimes u^{A_1}$：
+        $$
+        \text{Tr}_{A_0A_1}[J^{A_0B_0} \otimes u^{A_1}] = \text{Tr}_{A_0}[J^{A_0B_0}] \cdot \text{Tr}_{A_1}[u^{A_1}] = \text{Tr}_{A_0}[J^{A_0B_0}]
+        $$
+        因此，我们得到 $\text{Tr}_{A_0}[J^{A_0B_0}] = d_{A_1}I^{B_0}$。 (*注：原文此处似乎有一个维度因子的笔误，根据幺正性的标准定义，应为$d_{A_0}I^{B_0}$。这不影响其幺正的结论*)。所以 $\Delta_\Theta^{A_0 \to B_0}$ 是幺正的。
+    *   **验证关键关系式**: 我们需要证明 $\text{Tr}_{B_1} \circ \Delta_\Theta^{A \to B} = \Delta_\Theta^{A_0 \to B_0} \circ \text{Tr}_{A_1}$。这等价于证明它们的Choi矩阵相等。
+        *   LHS的Choi矩阵是 $\text{Tr}_{B_1}[\mathcal{J}_\Theta^{AB}]$。根据我们的假设，它等于 $J^{A_0B_0} \otimes u^{A_1}$。
+        *   RHS的Choi矩阵，根据我们对 $\Delta_\Theta^{A_0 \to B_0}$ 的定义，就是 $J_{\Delta_\Theta^{A_0 \to B_0}} \otimes u^{A_1} = J^{A_0B_0} \otimes u^{A_1}$。
+        *   两者相等，因此关键关系式成立。
+    *   因此，`2 ⇒ 3` 得证。
+
+由于我们证明了 `3 ⇒ 2` 和 `2 ⇒ 3`，所以**陈述2**和**陈述3**是完全等价的。
 ## 图表
 - **图1**: 物理上实现一个**超信道** $\Theta$ 的示意图。一个待处理的信道 $\Psi^A$ 被“插入”到一个更大的量子网络中。这个网络包含一个与 $\Psi^A$ 输入端 $A_0$ 交互的前处理信道 $\Gamma_{\text{pre}}$，和一个与 $\Psi^A$ 输出端 $A_1$ 交互的后处理信道 $\Gamma_{\text{post}}$。整个过程的净效应就是将信道 $\Psi^A$ 转换为一个新的信道 $\Theta[\Psi^A]$。
 - **图2 & 3**: 展示了与超信道相关的特定CPTP映射的实现方式，是图1的具体化和技术性分解。
