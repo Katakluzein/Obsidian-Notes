@@ -37,7 +37,7 @@
 - **量子信道 (Quantum Channel)**: 描述量子系统开放演化的数学对象，通常表示为一个完备正（CP）且保迹（TP）的线性映射 $\Phi: \mathcal{B}(\mathcal{H}_A) \to \mathcal{B}(\mathcal{H}_B)$，其中 $\mathcal{B}(\mathcal{H})$ 是希尔伯特空间 $\mathcal{H}$ 上的有界算子空间。它代表了从输入系统A到输出系统B的任何物理上可能的动力学过程。
 - **超信道 (Superchannel)**: 一个对量子信道进行操作的物理过程。数学上，它是一个将CPTP映射集映射到CPTP映射集的线性映射 $\Theta: \mathcal{L}(\mathcal{H}_A \to \mathcal{H}_{A'}) \to \mathcal{L}(\mathcal{H}_B \to \mathcal{H}_{B'})$，并且它本身也满足更高阶的完备正性和保迹性条件。它可以被物理地实现为一个包含前处理和后处理的量子网络（如图1所示）。
 - **量子主序化 (Quantum Majorization)**: 最初为量子态定义的一个预序关系。如果态 $\rho$ 可以通过某个量子信道 $\Phi$ 转换为态 $\sigma$（即 $\sigma = \Phi(\rho)$），则称 $\rho$ 主序化 $\sigma$。本文将这个概念从态推广到信道，如果信道 $\Phi$ 可以通过超信道 $\Theta$ 转换为信道 $\Psi$（即 $\Psi = \Theta(\Phi)$），则称 $\Phi$ 主序化 $\Psi$。
-	- [[量子区分任务\|量子区分任务]] 这篇文章给出了两对量子信道能够建立pre-order的充要条件
+	- [[量子区分和排除任务\|量子区分和排除任务]] 这篇文章给出了两对量子信道能够建立pre-order的充要条件
 - **条件最小熵 (Conditional Min-Entropy)**: 对于一个二体量子态 $\rho_{AB}$，其条件最小熵 $H_{\min}(A|B)_\rho$ 量化了在拥有对系统B的量子信息后，对系统A的不确定性的最小值。它与猜测概率密切相关，是单次（single-shot）量子信息论中的核心熵量。其定义为 $H_{\min}(A|B)_\rho = -\log \min_{\sigma_B} \text{Tr}[\sigma_B]$，约束条件为 $I_A \otimes \sigma_B \ge \rho_{AB}$。
 - **扩展的条件最小熵 (Extended Conditional Min-Entropy)**: 本文的核心技术贡献。作者将条件最小熵的定义从态推广到二体量子信道 $\Omega^{AB}$。其定义（定义4）是一个半正定规划问题，量化了关于信道B的不确定性，条件是拥有对信道A的访问权。这个量被证明是刻画信道间量子主序化的关键。
 
@@ -231,7 +231,7 @@
 
 1.  **正半定性**: $\Theta$ 是CPP的，这意味着它将任何CP映射都映射为CP映射。我们知道一个映射是CP的**当且仅当**它的Choi矩阵是正半定的。$\Lambda_\Theta^{A\tilde{B}} = (I^A \otimes \Theta)[\Upsilon^{A\tilde{A}}]$。由于$\Upsilon^{A\tilde{A}}$是CP的，$\Theta$是CP保持的（从最原始的定义出发），所以$\Lambda_\Theta$是CP的。因此，$\Lambda_\Theta$的Choi矩阵，也就是$\mathcal{J}_\Theta^{AB}$，必须是正半定的。
 
-- 保迹条件我给出了两个证明，其中第一个证明基于超信道的蔡氏矩阵和基底信道的蔡氏矩阵的关系式(8)，只对第一条式子给出了证明；第二个证明是完整而简洁的，利用了[[The Multi-round Process Matrix\|The Multi-round Process Matrix]] 中的投影刻画和相关的定理。
+- 保迹条件我给出了两个证明，其中第一个证明基于超信道的蔡氏矩阵和基底信道的蔡氏矩阵的关系式(8)，只对第一条式子给出了证明；第二个证明是完整而简洁的，利用了[[The Multi-round Process Matrix\|The Multi-round Process Matrix]] 中的[[投影刻画\|投影刻画]]和相关的定理。
 - ![e0a479c0e8908afb048d79224695ac82.jpg|400](/img/user/e0a479c0e8908afb048d79224695ac82.jpg) ![6a979f0f33b1b667df6000250c1ae045.jpg|400](/img/user/6a979f0f33b1b667df6000250c1ae045.jpg)
 - 证明一（部分证明）
 $$
@@ -274,7 +274,7 @@ $$
 1.  将我们研究的对象——超信道$\Theta$的Choi矩阵 $\mathcal{J}_\Theta^{AB}$（这是一个混合态算子）——“提升”为一个纯态 $|\phi\rangle^{ABC}$。
 2.  利用**陈述2**中给出的关于 $\mathcal{J}_\Theta^{AB}$ 边际矩阵的条件，来约束其纯化 $|\phi\rangle^{ABC}$ 的结构。
 3.  独立地，我们用一些简单的、已知的构建模块（另一个纯化态和一个最大纠缠态）来构造出这个边际矩阵的**另一个**纯化。
-4.  根据**Uhlmann定理**，同一个混合态的任意两个纯化之间，必然只相差一个作用在各自辅助系统上的**等距变换 (isometry)**。这个等距变换就是我们找到**后处理信道** $\Gamma_{\text{post}}$ 的关键。
+4.  根据**Uhlmann定理**  [[1 Stories of Bizzo's Life/2 凝聚态物理学/10 拓扑物理学#^dstg7s\|10 拓扑物理学#^dstg7s]]  同一个混合态的任意两个纯化之间，必然只相差一个作用在各自辅助系统上的**等距变换 (isometry)**。这个等距变换就是我们找到**后处理信道** $\Gamma_{\text{post}}$ 的关键。
 5.  对剩下的构建模块进行分析，我们发现它正好对应一个**前处理信道** $\Gamma_{\text{pre}}$ 的Choi矩阵。
 6.  最后，将这个 `pre-processing` -> `channel` -> `post-processing` 的结构代入超信道作用的通用公式，通过代数运算证明其结果与原始超信道的作用完全一致。
 

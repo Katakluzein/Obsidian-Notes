@@ -4,15 +4,15 @@
 
 早上好，欢迎来到我的公开学习、研究笔记。
 ## 数学
-- [[1 Stories of Bizzo's Life/1 数学基础/0 集合论\|集合论]] 
-- [[1 Stories of Bizzo's Life/1 数学基础/1 群论和群表示论\|群论和群表示论]]
-- [[1 Stories of Bizzo's Life/1 数学基础/2 环论\|环、模、域、伽罗瓦理论]]
-- [[1 Stories of Bizzo's Life/1 数学基础/3 线性代数\|线性代数]]
-- [[1 Stories of Bizzo's Life/1 数学基础/4 李氏王国\|李氏王国 Kingdom of Lie]]
-- [[1 Stories of Bizzo's Life/1 数学基础/5 代数拓扑\|代数拓扑]]
-- [[1 Stories of Bizzo's Life/1 数学基础/6 复分析\|复分析]]
-- [[1 Stories of Bizzo's Life/1 数学基础/7 概率论与随机微积分\|概率论$\circ$随机微积分]]
-- [[1 Stories of Bizzo's Life/1 数学基础/8 最优化\|最优化]]
+- [[1 Stories of Bizzo's Life/1 数学/0 集合论\|集合论]] 
+- [[1 Stories of Bizzo's Life/1 数学/1 群论和群表示论\|群论和群表示论]]
+- [[1 Stories of Bizzo's Life/1 数学/2 环论\|环、模、域、伽罗瓦理论]]
+- [[1 Stories of Bizzo's Life/1 数学/3 线性代数\|线性代数]]
+- [[1 Stories of Bizzo's Life/1 数学/4 李氏王国\|李氏王国 Kingdom of Lie]]
+- [[1 Stories of Bizzo's Life/1 数学/5 代数拓扑\|代数拓扑]]
+- [[1 Stories of Bizzo's Life/1 数学/6 复分析\|复分析]]
+- [[1 Stories of Bizzo's Life/1 数学/7 概率论与随机微积分\|概率论$\circ$随机微积分]]
+- [[1 Stories of Bizzo's Life/1 数学/8 最优化\|最优化]]
 
 ## 凝聚态物理学
 - [[1 Stories of Bizzo's Life/2 凝聚态物理学/10 拓扑物理学\|固体物理学]]
