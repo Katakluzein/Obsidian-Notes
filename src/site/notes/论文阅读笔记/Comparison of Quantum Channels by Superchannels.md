@@ -258,13 +258,13 @@ $$
     因此，所有有效的局部操作 $(J_\Psi^A)^T \otimes (\rho^{B_0})^T\otimes \mathbb{I}^{B_1}$ 所在的联合子空间由投影算子 $\mathcal{P}_{local} = \mathcal{P}_{TP} \otimes \mathcal{D}_{B_1}$ 刻画。
 
 2.  **应用正交性原理**:
-    根据过程矩阵理论，一个有效的过程 $\mathcal{J}_\Theta^{AB}$ 必须位于 $\mathcal{P}_{local}$ 所定义子空间的**准正交补空间 (quasiorthogonal complement)** 中。该补空间的投影算子为 $\tilde{\mathcal{P}} = I - \mathcal{P}_{local} + \mathcal{D}_{global}$。  因此，$\mathcal{J}_\Theta^{AB}$ 必须是该投影算子的不动点：
+    根据过程矩阵理论，一个有效的过程 $\mathcal{J}_\Theta^{AB}$ 必须位于 $\mathcal{P}_{local}$ 所定义子空间的**准正交补空间 (quasiorthogonal complement)** 中。该补空间的投影算子为 $$\tilde{\mathcal{P}} = I - \mathcal{P}_{local} + \mathcal{D}$$  因此，$\mathcal{J}_\Theta^{AB}$ 必须是该投影算子的不动点：
     $$
     \tilde{\mathcal{P}}[\mathcal{J}_\Theta^{AB}] = \mathcal{J}_\Theta^{AB}
     $$
     - 经过检验，这个总的投影算符 $\tilde{\mathcal{P}}$ 可以被分解为两个更基本的投影算符的乘积 $\tilde{\mathcal{P}} = \mathcal{P}_1 \mathcal{P}_2$，也就是条件(1)中的两个等式，其中：
     *   $\mathcal{P}_1 = \mathcal{I} - \mathcal{D}_{B_1} + \mathcal{D}_{B_1A_1}$
-    *   $\mathcal{P}_2 = I - \mathcal{D}_{A_0B_1} + \mathcal{D}_{global}$
+    *   $\mathcal{P}_2 = \mathcal{I} - \mathcal{D}_{A_0B_1} + \mathcal{D}$
     检验参见：重写投影刻画.nb
 
 ==至于为什么trace掉A1和B1之后剩下的部分是某个特别的映射的蔡氏矩阵$J_{\Delta_\Theta^{A_0 \to B_0}}^{A_0B_0}$ ，这实际上就是在定义$\Delta_{\Theta}^{A_0\to B_0}$==
