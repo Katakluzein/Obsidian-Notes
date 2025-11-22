@@ -47,7 +47,7 @@
    - **组成**: 包含平稳性条件（梯度为零）、原始可行性、对偶可行性以及**互补松弛条件 (Complementary Slackness)**。
    - **本文用法**: 我们通过构造满足 KKT 条件的对偶变量，严格证明某些策略（如完全混合策略）是全局最优解。
 
-## 符号约定 (Notation)
+## 符号约定
 
 *   **希尔伯特空间**: 对于 $N$ 次信道使用，输入和输出空间分别为 $T_{\text{tot}}^\mathrm{i} = \bigotimes_{k=1}^N T_k^\mathrm{i}$ 和 $T_{\text{tot}}^\mathrm{o} = \bigotimes_{k=1}^N T_k^\mathrm{o}$。
 *   **信道**: 一个由单参数 $g$ 描述的量子信道 $\mathcal{E}_g$。其 Choi 矩阵记为 $\mathsf{E}_g$。
@@ -185,22 +185,29 @@ $$
 2.  **互补松弛条件的利用**：利用 $S^\star$ 的严格正定性（满秩），结合 KKT 的互补松弛条件，我们在数学上推导出对偶变量 $Y$ 必须恒为零。这一关键洞察将复杂的半正定性验证问题简化为等式验证问题。
 3.  **几何约束的代数验证**：证明最终归结为验证构造的对偶变量 $E$ 是否满足 ICO 的因果结构约束（即 $E$ 是否为投影算符 $\mathcal{Q}_{\mathsf{ICO}}$ 的不动点）。利用泡利信道 Choi 矩阵及其导数在偏迹操作下的特殊对称性，我们确认了这一几何条件成立，从而证明了候选解的全局最优性。
 
-👉 详见：[[泡利信道无ICO优势且满足SQL证明详情\|泡利信道无ICO优势且满足SQL证明详情]] 
+详见：[[泡利信道无ICO优势且满足SQL证明详情\|泡利信道无ICO优势且满足SQL证明详情]] 
 ## HL上界可以被非幺正的信道达到
 - z轴旋转+比特翻转噪声(见下一节)满足$\|\beta\|^2=\|\alpha\|$，因此HL可以被达到，因此这种问题的Para最优就是ICO最优。这也符合数值试验的结果。
+
+
 ## 信道的QFI渐进行为与ICO优势汇总
 当前的方法==只有能力证明ICO无优势==，因为我总是在验证解是否满足KKT条件。
 
  在并联策略下能够达到HL，即满足HNKS的信道，例如下面的：
 - ICO有优势
-	- 擦除信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Erasure，有优势 N^2增长
-	 - 广义幅值衰减信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+广义幅值阻尼 已知有优势 - 下面也是GAD信道，画更多的图
+	- 通过数值试验确认了满足条件的信道存在
+		- 参见：[[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 
+			- 接收系综及其导数的QFI计算：存在ICO有优势且满足HL的信道
+				- 根据随机系综判断是否满足HNKS 
+				- 生成一个满足NHKS条件的随机系综
 - ICO无优势
 	 - z轴旋转+比特翻转噪声，可以完全纠正掉，得到最好的QFI，这种情况下应该不可能通过ICO获得更高的QFI，而且这是一种我们的上界得到饱和的例子也即$\|\beta\|^2=\|\alpha\|$ [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
 	 - 绕着z轴和x轴的对角线旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
 
 在并联策略不能达到HL的信道
 - ICO有优势
+	- 广义幅值衰减信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+广义幅值阻尼 已知有优势 - 下面也是GAD信道，画更多的图
+	- 擦除信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Erasure，有优势 N增长
 	- AD复合比特翻转信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Gemini：幅值-比特翻转信道 (Amplitude-Bit-Flip Channel, ABFC)
 - ICO无优势
 	- z轴旋转+退相干 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 旋转+退相干 dephasing  或比特翻转 ，特定情况（sandwich，噪声+旋转+噪声）有优势
@@ -209,7 +216,33 @@ $$
 
 - [[性能算符的N到2N迭代\|性能算符的N到2N迭代]] 
 
+
+### 性能算符的纯化表达式
+
+本节的核心目标是为量子计量学中的[[性能算符\|性能算符]] $\Omega(h)$提供一个全新的、基于纯化的物理解释和数学表达式。
+
+推导从量子信息的基本原理出发：一个混合末态 $\rho_\theta$ 的量子费雪信息（QFI）等于其所有可能纯化 $|\psi\rangle$ 的 QFI 的最小值。我们通过信道的施廷斯普林扩张（Stinespring Dilation）构造了末态的一个一般纯化 $|\psi\rangle = |V\rangle \star |w\rangle$，其中 $|V\rangle$ 是信道 Choi 矩阵的纯化，而 $|w\rangle$ 是策略 $W$ 的纯化。
+
+推导的关键在于证明，遍历所有可能的信道纯化（这等价于在扩张的辅助空间 $A$ 上应用任意幺正变换 $U_A$）在数学上完全等价于遍历所有厄米矩阵 $h$（其中 $ih_A = U_A^\dagger \dot{U}_A$）。
+
+最终，我们得到了性能算符的等价表达式：
+$$
+\Omega(h) \coloneqq 4 \left( \mathrm{tr}_A \left[ |\dot{V}(h)\rangle\langle\dot{V}(h)| \right] \right)^T
+$$
+其中 $|\dot{V}(h)\rangle \equiv |\dot{V}\rangle + (i\mathbb{I}_{T^\mathrm{io}} \otimes h_A)|V\rangle\in \mathcal{H}^{T^\mathrm{io}A}$ 是在特定纯化选择（由 $h$ 参数化）下的“有效导数”纯态。
+
+这个表达式的意义在于，它将用于半定规划（SDP）的抽象代数对象 $\Omega(h)$ 与一个清晰的物理图像联系起来：**性能算符本质上是在最不利的纯化选择下，信道纯化态对参数变化的响应速度（速度模方）在系统空间上的投影。**
+
+进一步利用$|V\rangle = \sum_{j=1}^q |K_j\rangle\rangle \otimes |j\rangle_A$可以得到Kraus算符表述的性能算符
+$$
+\Omega(h) = 4 \left( \sum_i \left( |\dot{K}_i\rangle\rangle + i \sum_j |K_j\rangle\rangle h_{ji} \right) \left( \langle\langle\dot{K}_i| - i \sum_k \langle\langle K_k| h_{ik} \right) \right)^T
+$$
+
+
+具体推导参见： [[遍历Stinespring等距得到信道的QFI的证明#QFI纯化公式推导1：性能算符的另一种表达式\|遍历Stinespring等距得到信道的QFI的证明#QFI纯化公式推导1：性能算符的另一种表达式]] 
+
 ## 关联材料
+- [[张量网络凸优化与QFI数值程序\|张量网络凸优化与QFI数值程序]] 
 ### 文章
 来自 
 - [[2 项目笔记/不定因果/Necessity of non-unitarity for metrological advantage of indefinite causal order\|Necessity of non-unitarity for metrological advantage of indefinite causal order]]
