@@ -124,9 +124,10 @@ $$
 
 2023年的一项重要工作 [[Using adaptiveness and causal superpositions against noise in quantum metrology\|Using adaptiveness and causal superpositions against noise in quantum metrology]] (S. Kurdziałek et al., PRL 131, 090801) 进一步证明，对于更广义的**自适应（串行）策略** 和**因果叠加策略**，式 (B1) 中的上界在渐近上仍然是**紧的 (tight)**。这意味着，在 $N \to \infty$ 的极限下，这些更复杂的定因果序策略相比并行策略**不存在渐近优势**。也就是说，它们的QFI比值极限为1，标度及其主导系数都相同。
 
-因此，要证明 $\lim_{N\to\infty} R_N(\mathsf{E}_g) = 1$，我们的核心任务就转化为证明：**对于最一般的ICO策略，其QFI的渐近上界也由式 (B1) 给出。** 
+因此，要证明 $\lim_{N\to\infty} R_N(\mathsf{E}_g) = 1$，我们的核心任务就转化为证明：**对于最一般的ICO策略，其QFI的渐近上界也由式 (B1) 或类似的式给出给出。** 
+经过数值试验 ( [[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 用随机系综比较不同的QFI：求ICO的可能的上界) 发现ICO经常能够超过(B1) 的界$4 \min_h \left[ N\|\alpha_h\| + N(N-1)\|\beta_h\|^2 \right]$，但是仍然满足下面的不等式
 $$
-\mathcal{F}_N^{\mathsf{ICO}}(\mathsf{E}_g) \le 4 \min_h \left[ N\|\alpha_h\| + N(N-1)\|\beta_h\|^2 \right] \tag{B1}
+\mathcal{F}_N^{\mathsf{ICO}}(\mathsf{E}_g) \le 4 \min_h \left[ N\|\alpha_h\| + N(N-1)\|\beta_h\|\sqrt{\|\alpha_h\|} \right] \tag{B1}
 $$
 如果这个不等式得以证明，那么结合并行策略的可达下界，我们就可以断定ICO策略与并行策略是渐近等价的。
 
@@ -138,10 +139,8 @@ $$
     2.  **推广到ICO**:
         *   一个ICO过程可以看作是不同因果序（即不同自适应策略）的“量子叠加”。我们需要分析在最一般的ICO过程（由过程矩阵 $W$ 描述）下，经过 $N$ 次信道调用后的系统等效Kraus算符是什么样的。
         *   **关键挑战**: 证明对于由一般过程矩阵 $W_{\mathsf{ICO}}$ 连接的 $N$ 个信道，其整体性能算符的范数，或者说等效的 $a^{(N)}_{\mathsf{ICO}}$，仍然受上述迭代关系的约束。Kurdziałek等人的证明对CS策略是有效的，因为CS策略的信道 $A^{(CS)}$ 结构相对明确（见其文章附录C）。对于一个抽象的、仅满足线性约束的ICO过程矩阵，推导过程可能需要全新的工具，例如**过程张量网络**或者**算符代数**的方法。
-        *   如果能够证明ICO策略的QFI上界 $\mathcal{F}^{\mathsf{ICO}}_N$ 也服从这个迭代关系，那么其解的渐近行为将与并行/自适应策略相同，即：
-            $$ \mathcal{F}^{\mathsf{ICO}}_N \le 4a^{(N)} \xrightarrow{N\to\infty} 4N^2 \min_h \|\beta_h\|^2 \quad (\text{or } O(N)) $$
-
-
+        *   如果能够证明ICO策略的QFI上界 $\mathcal{F}^{\mathsf{ICO}}_N$ 也服从这个迭代关系，那么其解的渐近行为将与并行/自适应策略相同.
+        
 尽管数值上已经观察到对于某些信道，ICO策略可以在有限$N$时略微超越为`CS`策略推导的界限，但这些证据表明这种超越可能是一个不依赖于$N$的常数，并不会改变 $O(N^2)$ 项的系数。因此，一个合理的猜想是，ICO策略的优势是非渐近的，它会消失在 $N \to \infty$ 的极限中。证明这一猜想是当前该领域的一个核心**开放问题**，其关键可能在于KKT条件框架与大$N$极限下的代数和Kurdzialek中的迭代方法相结合。
 
 - [[ICO无渐进优势的证明思路的进一步分析\|ICO无渐进优势的证明思路的进一步分析]] 
@@ -192,29 +191,35 @@ $$
 
 ## 信道的QFI渐进行为与ICO优势汇总
 当前的方法==只有能力证明ICO无优势==，因为我总是在验证解是否满足KKT条件。
-
+### HL
  在并联策略下能够达到HL，即满足HNKS的信道，例如下面的：
-- ICO有优势
-	- 通过数值试验确认了满足条件的信道存在
-		- 参见：[[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 
-			- 接收系综及其导数的QFI计算：存在ICO有优势且满足HL的信道
-				- 根据随机系综判断是否满足HNKS 
-				- 生成一个满足NHKS条件的随机系综
+#### ICO有优势
+- 通过数值试验确认了满足条件的信道存在
+	- 参见：[[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 
+		- 接收系综及其导数的QFI计算：存在ICO有优势且满足HL的信道
+			- 根据随机系综判断是否满足HNKS 
+			- 生成一个满足NHKS条件的随机系综
 - ICO无优势
 	 - z轴旋转+比特翻转噪声，可以完全纠正掉，得到最好的QFI，这种情况下应该不可能通过ICO获得更高的QFI，而且这是一种我们的上界得到饱和的例子也即$\|\beta\|^2=\|\alpha\|$ [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
 	 - 绕着z轴和x轴的对角线旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
-
+### SQL
 在并联策略不能达到HL的信道
-- ICO有优势
-	- 广义幅值衰减信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+广义幅值阻尼 已知有优势 - 下面也是GAD信道，画更多的图
-	- 擦除信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Erasure，有优势 N增长
-	- AD复合比特翻转信道 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Gemini：幅值-比特翻转信道 (Amplitude-Bit-Flip Channel, ABFC)
-- ICO无优势
-	- z轴旋转+退相干 [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 旋转+退相干 dephasing  或比特翻转 ，特定情况（sandwich，噪声+旋转+噪声）有优势
-	- 已经严格证明ICO无优势，在某些特殊的参数下无法达到HL（大概率是任何参数都不行）[[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 泡利信道：Mothe：专注于没有SQL的例子（我就需要一个例子来说明我们的界是松的）
+#### ICO有优势
+- 广义[[幅值衰减\|幅值衰减]]+z旋转信道
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+广义幅值阻尼 已知有优势 - 下面也是GAD信道，画更多的图
+- [[擦除信道\|擦除信道]]+z旋转
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Erasure，有优势 N增长	
+- [[AD复合比特翻转\|AD复合比特翻转]]+z旋转信道
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Gemini：幅值-比特翻转信道 (Amplitude-Bit-Flip Channel, ABFC)
+#### ICO无优势
+- z轴旋转+退相干
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 旋转+退相干 dephasing  或比特翻转 ，特定情况（sandwich，噪声+旋转+噪声）有优势
+- 已经严格证明ICO无优势，在某些特殊的参数下无法达到HL（大概率是任何参数都不行）
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 泡利信道：Mothe：专注于没有SQL的例子（我就需要一个例子来说明我们的界是松的）
 ## 其他可能有帮助的推导
 
 - [[性能算符的N到2N迭代\|性能算符的N到2N迭代]] 
+- [[最优化问题关于内部的考虑\|最优化问题关于内部的考虑]] 
 
 
 ### 性能算符的纯化表达式
@@ -261,4 +266,5 @@ $$
 - [[Variational Analysis\|Variational Analysis]] 
 # 松散的内容
 - [[项目：ICO metrology 的渐近行为松散的内容\|项目：ICO metrology 的渐近行为松散的内容]] 
+- [[ICO metrology项目提示词\|ICO metrology项目提示词]] 
 
