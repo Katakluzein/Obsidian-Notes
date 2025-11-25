@@ -109,7 +109,7 @@ $$
 ## ICO无渐进优势的证明思路
 
 当前数值分析和物理直觉都表明实际上ICO没有任何渐近优势，即$R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}\to 1~(N\to\infty)$，下面考虑其证明.  
-### 证明思路1
+### 证明思路1：渐近KKT条件
 
 *   **核心思想**: 尽管我们不知道最优并行策略 $S^*_{\text{Para}}$ 的确切形式，但 **Zhou and Jiang** 的工作告诉我们它的**结构性质**（即，它是在逻辑层面上的GHZ态或自旋压缩态的物理实现）。我们可以利用这些已知的结构性质，尝试为 $S^*_{\text{Para}}$ 构造一组“渐近满足”ICO问题KKT条件的对偶变量。为了分析比值 $R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}$ 在 $N \to \infty$ 时的行为，我们需要为分子（ICO策略的QFI）建立一个有效的渐近上界，并与分母（并行策略的QFI）的已知渐近行为进行比较。对于作为分母的并行策略，其渐近行为已有深入研究（上一节）。
 
@@ -119,7 +119,63 @@ $$
     3.  利用该候选解的结构性质（如纯态、叠加态性质、算符期望值的渐近标度等）来简化KKT条件。
     4.  核心是证明**渐近互补松弛性**，即证明 $\lim_{N\to\infty} \frac{\operatorname{tr}(Y_N S^*_{\text{Para}})}{\mathcal{F}^{\mathsf{Para}}_N} = 0$。
 
-### 证明思路2
+为了能将这个思路推广到最一般的情形中，先对简单的例子来试验一下，已知噪声优先垂直退相干，即先做比特翻转错误再做z轴旋转能达到海森堡极限（[[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]]）。
+
+具体计算参见[[利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型\|利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型]]。
+
+### 证明思路2：通过构造对偶上界来约束ICO的QFI
+
+我们的总体策略是为ICO策略下的最大QFI（$\mathcal{F}_N^{\text{ICO}}$）建立一个普适的**上界**，并证明这个上界在 $N\to\infty$ 的极限下，其主导项与已知的、可达到的并行策略QFI（这是一个**下界**）相吻合。
+从最简单的能够达到海森堡极限的 [[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]] 模型开始，这个模型的渐近最优初态不需要加入辅助系统，且最优初态是GHZ态，希望对这个模型的理解最终推广到一般的信道（以逻辑GHZ态为最优初态）中。
+
+这个思路中碰到的一些过度缩放导致的失败参见[[利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型\|利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型]]。
+#### 利用对偶性建立普适上界
+
+1.  **问题的原始形式**: ICO的QFI是一个min-max问题：
+    $$
+    \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) = \min_{h} \max_{S \in \text{ICO}} \text{tr}(\Omega(h)S)
+    $$
+2.  **对偶形式与上界**: 根据强对偶性，这个问题等价于其对偶问题。这为我们提供了一个关键的工具：对于**任何**特定的厄米矩阵 $h$ 和**任何**对偶变量 $E$，我们都能得到一个严格的上界：
+    $$
+    \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) \le d_{\text{out}}^N \cdot \left( \min_{E} \|\Omega(h) - \mathcal{Q}_{\text{ICO}}^\dagger(E)\|_{\infty} \right)
+    $$
+3.  **选择Ansatz**: 为了使上界尽可能紧，我们选择一个物理意义明确的 $h$，即并行策略下的最优解 $h_{Para}^*$。对于垂直退相干模型，已经严格证明（[[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]]） $h_{Para}^*=0$。因此，上界简化为：
+    $$
+    \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) \le d_{\text{out}}^N \cdot \left( \min_{E} \|\Omega(0) - \mathcal{Q}_{\text{ICO}}^\dagger(E)\|_{\infty} \right)
+    $$
+
+#### 两条失败的路径
+
+这是整个证明的核心困难，我们排除了几种看似可行但实际无效的路径。
+
+1.  **路径一：简单取 $E=0$ (不可行)**
+    *   如果直接令 $E=0$，我们需要计算 $\|\Omega(0)\|_{\infty}$。
+    *   **问题**: $\|\Omega(0)\|_{\infty}$ 是在整个算符空间上计算的范数，其最大本征态很可能不满足因果约束。这导致的上界过于松散，会随 $N$ **指数增长**，失去了作为物理界限的意义。
+
+2.  **路径二：利用2-范数放缩 (不可行)**
+    *   **思路**: 利用范数不等式 $\|\cdot\|_{\infty} \le \|\cdot\|_{F}$，并将关于 $E$ 的最小化问题转化为在2-范数下的最佳逼近问题，即计算 $\| \mathcal{P}_{\text{ICO}}(\Omega(0)) \|_{F}$。
+    *   **问题**: 经过显式计算和阶数分析（如您在“2范数放缩垂直退相干ICO-QFI的粗略估计”中所做），我们发现 $\| \mathcal{P}_{\text{ICO}}(\Omega(0)) \|_{F}$ 的主导行为是 $O(N d^{N/2})$。这导致最终的QFI上界依然是**指数增长**的。
+    *   **根本原因**: 2-范数（Frobenius范数）对算符的所有奇异值都敏感，而算符范数（$\|\cdot\|_{\infty}$）只关心最大的那一个。对于 $\Omega(0)$ 这样具有大量非零本征值的算符，两个范数之间存在指数级的差距。
+
+#### 当前最可行的证明路径
+
+排除了上述两种方法后，我们认识到必须**直接处理算符范数**以及对偶变量 $E$ 的作用。
+
+1.  **核心表达式的几何意义**:
+    $$
+    \min_{E} \|\Omega(0) - \mathcal{Q}_{\text{ICO}}^\dagger(E)\|_{\infty}
+    $$
+    这个表达式的精确几何意义是：**算符 $\Omega(0)$ 到由 $\mathcal{Q}_{\text{ICO}}^\dagger$ 的像空间（即“非法”因果结构所张成的子空间）的距离**，该距离由算符范数度量。
+
+2.  **最终猜想与待证明的环节**:
+    结合下界和上界，我们强烈地推断出：
+    $$
+    \min_{E} \|\Omega(0) - \mathcal{Q}_{\text{ICO}}^\dagger(E)\|_{\infty} \leq \frac{(1-2p)^2 N^2}{d_{out}^N}
+    $$
+    **待证明的关键一步是**：证明通过选择一个足够好的非零对偶变量 $E_{opt}$，我们无法将上界 $\|\Omega(0) - \mathcal{Q}_{\text{ICO}}^\dagger(E_{opt})\|_{\infty}$ 的 $N^2$ 系数减小到 $(1-2p)^2$ 以下。物理直觉是，$\Omega(0)$ 的最大本征态（GHZ态）已经是一个合法的因果态，因此任何用于“惩罚”非法因果性的 $E$ 在这个方向上都无能为力。将这个物理直觉转化为严格的数学证明是完成此路径的最后一步。
+
+
+### 证明思路3
 **核心思想**: 证明Kurdziałek等人为自适应/因果叠加(CS)策略推导出的迭代QFI上界，对于最一般的ICO策略同样适用。
 
 2023年的一项重要工作 [[Using adaptiveness and causal superpositions against noise in quantum metrology\|Using adaptiveness and causal superpositions against noise in quantum metrology]] (S. Kurdziałek et al., PRL 131, 090801) 进一步证明，对于更广义的**自适应（串行）策略** 和**因果叠加策略**，式 (B1) 中的上界在渐近上仍然是**紧的 (tight)**。这意味着，在 $N \to \infty$ 的极限下，这些更复杂的定因果序策略相比并行策略**不存在渐近优势**。也就是说，它们的QFI比值极限为1，标度及其主导系数都相同。
@@ -188,34 +244,56 @@ $$
 ## HL上界可以被非幺正的信道达到
 - z轴旋转+比特翻转噪声(见下一节)满足$\|\beta\|^2=\|\alpha\|$，因此HL可以被达到，因此这种问题的Para最优就是ICO最优。这也符合数值试验的结果。
 
-
 ## 信道的QFI渐进行为与ICO优势汇总
 当前的方法==只有能力证明ICO无优势==，因为我总是在验证解是否满足KKT条件。
+- [[四种典型噪声：平行、垂直；退相干、振幅衰减\|四种典型噪声：平行、垂直；退相干、振幅衰减]] 这四种典型的噪声都被我进行了分类，见下。
 ### HL
  在并联策略下能够达到HL，即满足HNKS的信道，例如下面的：
 #### ICO有优势
-- 通过数值试验确认了满足条件的信道存在
+- 通过随机数值试验确认了满足条件的信道存在
 	- 参见：[[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 
 		- 接收系综及其导数的QFI计算：存在ICO有优势且满足HL的信道
 			- 根据随机系综判断是否满足HNKS 
 			- 生成一个满足NHKS条件的随机系综
-- ICO无优势
-	 - z轴旋转+比特翻转噪声，可以完全纠正掉，得到最好的QFI，这种情况下应该不可能通过ICO获得更高的QFI，而且这是一种我们的上界得到饱和的例子也即$\|\beta\|^2=\|\alpha\|$ [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
-	 - 绕着z轴和x轴的对角线旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
+-  先经历垂直退相干噪声再经历z轴旋转，N=2没有出现优势，N=3才出现
+	- [[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]] 
+	- [[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 
+		- 噪声先作用：模型 (a): 垂直退相干 (Perpendicular Dephasing)（比较ICO和FO）
+### ICO无优势
+ - 先z轴旋转+再经历比特翻转噪声（垂直退相干的另一个版本），可以完全纠正掉，得到最好的QFI，这种情况下应该不可能通过ICO获得更高的QFI，而且这是一种我们的上界得到饱和的例子也即$\|\beta\|^2=\|\alpha\|$
+	 - [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		 - z轴旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
+		 - 信号先作用：模型 (a): 垂直退相干 (Perpendicular Dephasing)。→只有数值验证，没有严格证明
+ - 绕着z轴和x轴的对角线旋转+比特翻转没有任何优势，达到海森堡极限的噪声信道。
 ### SQL
 在并联策略不能达到HL的信道
 #### ICO有优势
+- 先作用退相干噪声再作用z轴旋转
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]]
+		- 噪声先作用（更容易出现优势）：平行、垂直退相干；平行、垂直幅值衰减（比较ICO和FO）
+			- 噪声先作用：模型 (b) : 平行退相干 (Parallel Dephasing)（比较ICO和FO）
 - 广义[[幅值衰减\|幅值衰减]]+z旋转信道
-	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] z轴旋转+广义幅值阻尼 已知有优势 - 下面也是GAD信道，画更多的图
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		- z轴旋转+广义幅值阻尼 已知有优势 - 下面也是GAD信道，画更多的图
+- 先AD噪声再z轴旋转
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		- 噪声先作用：模型 (c): 垂直幅值阻尼 (Perpendicular Amplitude Damping)（比较ICO和FO）
+- 先x轴的AD噪声再z轴旋转
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		- 噪声先作用：模型 (d): 平行幅值阻尼 (Parallel Amplitude Damping)（比较ICO和FO）
 - [[擦除信道\|擦除信道]]+z旋转
-	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Erasure，有优势 N增长	
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		- Erasure，有优势 N增长	
 - [[AD复合比特翻转\|AD复合比特翻转]]+z旋转信道
-	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] Gemini：幅值-比特翻转信道 (Amplitude-Bit-Flip Channel, ABFC)
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		- Gemini：幅值-比特翻转信道 (Amplitude-Bit-Flip Channel, ABFC)
+- 先z轴旋转+再退相干，测量z轴转角有优势，测量退相干强度没有优势，N=2没有，N=3才出现优势
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		- 旋转+退相干 dephasing  或比特翻转 ，特定情况（sandwich，噪声+旋转+噪声）有优势
 #### ICO无优势
-- z轴旋转+退相干
-	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 旋转+退相干 dephasing  或比特翻转 ，特定情况（sandwich，噪声+旋转+噪声）有优势
-- 已经严格证明ICO无优势，在某些特殊的参数下无法达到HL（大概率是任何参数都不行）
-	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 泡利信道：Mothe：专注于没有SQL的例子（我就需要一个例子来说明我们的界是松的）
+- 泡利信道测量保持不变的概率，已经严格证明ICO无优势，在某些特殊的参数下无法达到HL（大概率是任何参数都不行）
+	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
+		- 泡利信道：Mothe：专注于没有SQL的例子（我就需要一个例子来说明我们的界是松的）
 ## 其他可能有帮助的推导
 
 - [[性能算符的N到2N迭代\|性能算符的N到2N迭代]] 
@@ -242,7 +320,6 @@ $$
 $$
 \Omega(h) = 4 \left( \sum_i \left( |\dot{K}_i\rangle\rangle + i \sum_j |K_j\rangle\rangle h_{ji} \right) \left( \langle\langle\dot{K}_i| - i \sum_k \langle\langle K_k| h_{ik} \right) \right)^T
 $$
-
 
 具体推导参见： [[遍历Stinespring等距得到信道的QFI的证明#QFI纯化公式推导1：性能算符的另一种表达式\|遍历Stinespring等距得到信道的QFI的证明#QFI纯化公式推导1：性能算符的另一种表达式]] 
 
