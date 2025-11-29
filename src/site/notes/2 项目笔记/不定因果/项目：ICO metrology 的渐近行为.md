@@ -54,7 +54,7 @@
 *   **信道表示**: 信道由其 Choi 矩阵的系综分解表示。对于 $N$ 个信道，总 Choi 矩阵 $\mathsf{E}_{\text{tot}}(g) = \mathsf{E}_g^{\otimes N}$ 分解为 $\mathsf{E}_{\text{tot}}(g) = \mathbf{C}_g^0 (\mathbf{C}_g^0)^\dagger$，其中 $\mathbf{C}_g^0$ 是线性算符。其关于参数 $g$ 的导数记为 $\dot{\mathbf{C}}_g^0$。
 *   **性能算符**: 给定厄米矩阵 $h \in \mathbb{H}_q$，性能算符定义为 $\Omega_g(h) = 4 [ (\dot{\mathbf{C}}_g^0 - i \mathbf{C}_g^0 h) (\dot{\mathbf{C}}_g^0 - i \mathbf{C}_g^0 h)^\dagger ]^\top$。
 *   **策略集**（可行域）:
-    *   $\mathsf{ICO} = \{ S \succeq 0 \mid \mathrm{tr}(S)=d^N, \mathcal{Q}_{\mathsf{ICO}}(S)=0 \}$。其中投影超算符定义为 $\mathcal{Q}_{\mathsf{ICO}} = [ \bigotimes_{k=1}^N ( \mathcal{I} - \mathcal{D}_{T_k^\mathrm{o}} + \mathcal{D}_{T_k^\mathrm{i} T_k^\mathrm{o}} ) ] - \mathcal{D}_{T_{\text{tot}}^\mathrm{i} T_{\text{tot}}^\mathrm{o}}$，这里 $\mathcal{D}_X$ 是子系统 $X$ 上的完全退极化信道。
+    *   $\mathsf{ICO} = \{ S \succeq 0 \mid \mathrm{tr}(S)=d^N, \mathcal{Q}_{\mathsf{ICO}}(S)=0 \}$。其中投影超算符定义为 $\mathcal{Q}_{\mathsf{ICO}} =  \bigotimes_{k=1}^N ( \mathcal{I} - \mathcal{D}_{T_k^\mathrm{o}} + \mathcal{D}_{T_k^\mathrm{i} T_k^\mathrm{o}} )  - \mathcal{D}_{T_{\text{tot}}^\mathrm{i} T_{\text{tot}}^\mathrm{o}}=  \bigotimes_{k=1}^N ( \mathcal{I} - \mathcal{D}_{T_k^\mathrm{o}} + \mathcal{D}_{T_k^\mathrm{i} T_k^\mathrm{o}} )  - \bigotimes_{k=1}^N \mathcal{D}_{T_{k}^\mathrm{i} T_{k}^\mathrm{o}}$，这里 $\mathcal{D}_X$ 是子系统 $X$ 上的完全退极化信道。
     *   $\mathsf{Para} = \{ S = \rho \otimes \mathbb{I}_{T_{\text{tot}}^\mathrm{o}} \mid \rho \succeq 0, \mathrm{tr}(\rho)=1 \}$。
 
 ## 最优化问题 (Optimization Problem)
@@ -79,7 +79,7 @@ $$
 
 # 核心问题：ICO在量子计量学中的渐近优势边界
 
-最大化QFI比值的问题是高度复杂、层层嵌套的最优化问题，对于有限的$N$执行数值最优化是非常困难的，但是在精密测量问题中，**我们往往只关心QFI关于$N$的增长速率**，且我们不需要从头开始，关于最优并联策略的渐进行为已经有相当多的分析了，我们可以从这些问题出发寻找ICO策略上界。
+最大化QFI比值的问题是高度复杂、层层嵌套的最优化问题，对于有限的$N$执行数值最优化是非常困难的，但是在精密测量问题中，**我们往往只关心QFI关于$N$的增长速率**，且我们不需要从头开始，关于最优并联策略的渐近行为已经有相当多的分析了，我们可以从这些问题出发寻找ICO策略上界。
 
 ## 并联策略的渐近行为
 一个著名且可达到的QFI上界在 [[Asymptotic Theory of Quantum Channel Estimation\|Asymptotic Theory of Quantum Channel Estimation]] (S. Zhou and L. Jiang, PRX Quantum 2, 010343) 等文献中有详细阐述：
@@ -92,13 +92,13 @@ $$
     $$
     \mathcal{F}_N^{\mathsf{Para}}(\mathsf{E}_g) \le 4 N \min_{h: \|\beta_h\|=0} \|\alpha_h\|  \tag{B2}
     $$
-这篇文章分别在HL情形和SQL情形中制作了一个**完美纠错码**和一个**近似纠错码**来达到这些上界。其中一个证明ICO没有渐进优势的方法就是利用他们制作的最优初态在这两种情况下分别近似满足ICO问题的KKT条件。
+这篇文章分别在HL情形和SQL情形中制作了一个**完美纠错码**和一个**近似纠错码**来达到这些上界。其中一个证明ICO没有渐近优势的方法就是利用他们制作的最优初态在这两种情况下分别近似满足ICO问题的KKT条件。
 
  **命题 (HNKS Condition Equivalence)**
 设量子信道 $\mathcal{E}_g$ 由 Kraus 算符集 $\{K_i\}$ 描述。定义该信道的 **Kraus 张成空间 (Kraus Span)** $\mathcal{S}$ 为由所有 $K_i^\dagger K_j$ 线性组合生成的厄米算符空间：$\mathcal{S} := \mathrm{span}_{\mathbb{H}} \left\{ K_i^\dagger K_j \mid \forall i, j \right\}.$ 同时定义信道的 **有效哈密顿量 (Effective Hamiltonian)** $H$ 为：$H := i \sum_k K_k^\dagger \dot{K}_k$。
 
 则以下两个条件是等价的：
-1.  **无渐进参数依赖条件**: 对于任意可能的 Kraus 表示变换矩阵 $h$（对应于 $\beta(h) = \sum_k \dot{\tilde{K}}_k^\dagger \tilde{K}_k = 0$），总是存在某种表示使得 $\beta$ 消失。
+1.  **无渐近参数依赖条件**: 对于任意可能的 Kraus 表示变换矩阵 $h$（对应于 $\beta(h) = \sum_k \dot{\tilde{K}}_k^\dagger \tilde{K}_k = 0$），总是存在某种表示使得 $\beta$ 消失。
 2.  **哈密顿量不在 Kraus 张成空间内 (Hamiltonian-not-in-Kraus-span, HNKS)**:    $H \notin \mathcal{S}.$ 
 
 **注记**:
@@ -106,7 +106,45 @@ $$
 *   如果 $H \notin \mathcal{S}$，则信道在并在适当的量子纠错或控制下，能恢复出海森堡极限缩放 $\mathcal{F} \sim O(N^2)$。
 *   显然蔡氏矩阵的秩等于Kraus算符用复数张成的线性空间的维度，但是$\mathcal{S}$的维度是如何确定的呢？
 	* 对于非平凡的[[泡利信道\|泡利信道]]（例如完全退极化信道）来说，$\mathcal{S}$ 能够张成全空间，只能达到SQL。
-## ICO无渐进优势的证明思路
+
+## 渐近分析第一步：构建海森堡($N^2$)极限
+
+本节阐明了海森堡极限（HL）在量子计量学中的普适性地位，证明了即使引入不定因果序（ICO）策略，量子参数估计的精度依然受到 $N^2$ 标度律的根本限制。核心结论及讨论如下：
+
+1.  **HL 的普适性定理**：
+    我们证明了对于任意 $N$ 次使用的量子信道 $\mathcal{E}_g$，其在任意 ICO 策略下的最大量子费雪信息（QFI） $\mathcal{F}_N^{\mathsf{Gen}}$ 均被该信道 Stinespring 扩张 $\mathcal{V}_g$ 的海森堡极限所约束，即 $\mathcal{F}_N^{\mathsf{Gen}}(\mathcal{E}_g) \le N^2 \mathcal{F}_1(\mathcal{V}_g)$。
+    *   **幺正信道特例**：对于幺正信道，该上界是紧致且可饱和的。我们通过构造性的 KKT 证明指出，此时 ICO 策略并不优于最优并联策略，两者均严格达到 HL。
+
+2.  **普适性证明逻辑**：
+    *   **幺正情形**：基于凸优化和递归 KKT 条件，证明并联策略在 ICO 集合中的全局最优性。
+    *   **普适情形**：利用 Stinespring 扩张定理将一般信道映射为更高维度的等距信道，并利用数据处理不等式将问题约化为幺正情形，从而确立 HL 的普适约束。
+
+3.  **ICO 优势的边界分析**：
+    通过对比我们的 **普适 ICO 上界** ($4N^2 \min \|\alpha\|$) 与现有的 **固定因果序上界** ($4N\|\alpha\| + 4N(N-1)\min \|\beta\|^2$)，我们量化了 ICO 策略的潜在优势空间。
+    *   数学上，由于 $\|\beta\|^2 \le \|\alpha\|$，固定因果序上界始终小于等于 ICO 上界。
+    *   两者间的差距（主导项为 $4N^2 (\|\alpha\| - \|\beta\|^2)$）界定了 ICO 策略在非幺正信道中可能超越固定顺序策略的最大渐近增益。
+
+4.  **开放问题**：
+    虽然 HL 确立了 $N^2$ 的硬性天花板，但在非幺正信道（噪声环境）下，ICO 策略是否能通过利用 $\|\alpha\| > \|\beta\|^2$ 的空间来实现 **渐近优势**（即获得比固定顺序策略更大的 $N^2$ 前系数），仍是一个极具价值的开放问题，有待通过寻找更紧致的单字母界来解决。
+
+详见：[[Universality of the Heisenberg Limit in Quantum Metrology Across All Causal Structures#不定因果序（ICO）计量学的海森堡极限（HL）普适性\|Universality of the Heisenberg Limit in Quantum Metrology Across All Causal Structures#不定因果序（ICO）计量学的海森堡极限（HL）普适性]]
+
+
+## HL上界不渐近紧：泡利信道无ICO优势且满足SQL
+
+本节简要概述了关于广义泡利信道（Generalized Pauli Channels）在不定因果序（ICO）框架下计量精度的严格证明。我们证实，对于此类信道，ICO 策略所能达到的最大量子费雪信息（QFI）严格等同于最优并联策略，即 $\mathcal{F}_N^{\mathsf{ICO}} = \mathcal{F}_N^{\mathsf{Para}} = \frac{N}{\vartheta(1-\vartheta)}$。这表明在该模型下，ICO 资源无法提供海森堡极限的渐近优势，且我们提出的上界不是渐近紧的，存在一个仅$N$ scaling的例子。
+
+证明主要基于凸优化框架下的 **Karush-Kuhn-Tucker (KKT) 条件**，核心逻辑如下：
+
+1.  **候选解的构造**：基于 N-Choi 电路的物理直觉，我们构造了完全混合策略 $S^\star = \mathbb{I}/d^N$ 配合辅助参数 $h^\star=0$ 作为优化问题的候选鞍点。
+2.  **互补松弛条件的利用**：利用 $S^\star$ 的严格正定性（满秩），结合 KKT 的互补松弛条件，我们在数学上推导出对偶变量 $Y$ 必须恒为零。这一关键洞察将复杂的半正定性验证问题简化为等式验证问题。
+3.  **几何约束的代数验证**：证明最终归结为验证构造的对偶变量 $E$ 是否满足 ICO 的因果结构约束（即 $E$ 是否为投影算符 $\mathcal{Q}_{\mathsf{ICO}}$ 的不动点）。利用泡利信道 Choi 矩阵及其导数在偏迹操作下的特殊对称性，我们确认了这一几何条件成立，从而证明了候选解的全局最优性。
+
+详见：[[泡利信道无ICO优势且满足SQL证明详情\|泡利信道无ICO优势且满足SQL证明详情]] 
+## HL上界可以被非幺正的信道达到
+- z轴旋转+比特翻转噪声(见下一节)满足$\|\beta\|^2=\|\alpha\|$，因此HL可以被达到，因此这种问题的Para最优就是ICO最优。这也符合数值试验的结果。
+
+## ICO无渐近优势的证明思路
 
 当前数值分析和物理直觉都表明实际上ICO没有任何渐近优势，即$R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}\to 1~(N\to\infty)$，下面考虑其证明.  
 ### 证明思路1：渐近KKT条件
@@ -119,16 +157,14 @@ $$
     3.  利用该候选解的结构性质（如纯态、叠加态性质、算符期望值的渐近标度等）来简化KKT条件。
     4.  核心是证明**渐近互补松弛性**，即证明 $\lim_{N\to\infty} \frac{\operatorname{tr}(Y_N S^*_{\text{Para}})}{\mathcal{F}^{\mathsf{Para}}_N} = 0$。
 
-为了能将这个思路推广到最一般的情形中，先对简单的例子来试验一下，已知噪声优先垂直退相干，即先做比特翻转错误再做z轴旋转能达到海森堡极限（[[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]]）。
-
-具体计算参见[[利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型\|利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型]]。
+为了能将这个思路推广到最一般的情形中，先对简单的例子来试验一下，已知噪声优先垂直退相干，即先做比特翻转错误再做z轴旋转能达到海森堡极限（[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]）。
 
 ### 证明思路2：通过构造对偶上界来约束ICO的QFI
 
 我们的总体策略是为ICO策略下的最大QFI（$\mathcal{F}_N^{\text{ICO}}$）建立一个普适的**上界**，并证明这个上界在 $N\to\infty$ 的极限下，其主导项与已知的、可达到的并行策略QFI（这是一个**下界**）相吻合。
-从最简单的能够达到海森堡极限的 [[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]] 模型开始，这个模型的渐近最优初态不需要加入辅助系统，且最优初态是GHZ态，希望对这个模型的理解最终推广到一般的信道（以逻辑GHZ态为最优初态）中。
+从最简单的能够达到海森堡极限的**噪声优先的垂直退相干**模型开始，这个模型的渐近最优初态不需要加入辅助系统，且最优初态是GHZ态，希望对这个模型的理解最终推广到一般的信道（以逻辑GHZ态为最优初态）中。
 
-这个思路中碰到的一些过度缩放导致的失败参见[[利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型\|利用对偶性求ICO-QFI的上界：噪声优先垂直退相干模型]]。
+这个思路中碰到的一些过度缩放导致的失败参见 [[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]] 。
 #### 利用对偶性建立普适上界
 
 1.  **问题的原始形式**: ICO的QFI是一个min-max问题：
@@ -139,9 +175,9 @@ $$
     $$
     \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) \le d_{\text{out}}^N \cdot \left( \min_{E} \|\Omega(h) - \mathcal{Q}_{\text{ICO}}^\dagger(E)\|_{\infty} \right)
     $$
-3.  **选择Ansatz**: 为了使上界尽可能紧，我们选择一个物理意义明确的 $h$，即并行策略下的最优解 $h_{Para}^*$。对于垂直退相干模型，已经严格证明（[[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]]） $h_{Para}^*=0$。因此，上界简化为：
+3.  **选择Ansatz**: 为了使上界尽可能紧，我们选择一个物理意义明确的 $h$，即并行策略下的最优解 $h_{Para}^*$。对于垂直退相干模型，已经严格证明（[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]） $h_{Para}^*=0$。因此，上界简化为：
     $$
-    \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) \le d_{\text{out}}^N \cdot \left( \min_{E} \|\Omega(0) - \mathcal{Q}_{\text{ICO}}^\dagger(E)\|_{\infty} \right)
+    \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) \le d_{\text{out}}^N \cdot \left( \min_{E} \|\Omega(0) - \mathcal{Q}_{\text{ICO}}(E)\|_{\infty} \right)
     $$
 
 #### 两条失败的路径
@@ -151,13 +187,17 @@ $$
 1.  **路径一：简单取 $E=0$ (不可行)**
     *   如果直接令 $E=0$，我们需要计算 $\|\Omega(0)\|_{\infty}$。
     *   **问题**: $\|\Omega(0)\|_{\infty}$ 是在整个算符空间上计算的范数，其最大本征态很可能不满足因果约束。这导致的上界过于松散，会随 $N$ **指数增长**，失去了作为物理界限的意义。
+    * [[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]]
+	    * 取E=0来放大，指数增长
 
 2.  **路径二：利用2-范数放缩 (不可行)**
     *   **思路**: 利用范数不等式 $\|\cdot\|_{\infty} \le \|\cdot\|_{F}$，并将关于 $E$ 的最小化问题转化为在2-范数下的最佳逼近问题，即计算 $\| \mathcal{P}_{\text{ICO}}(\Omega(0)) \|_{F}$。
     *   **问题**: 经过显式计算和阶数分析（如您在“2范数放缩垂直退相干ICO-QFI的粗略估计”中所做），我们发现 $\| \mathcal{P}_{\text{ICO}}(\Omega(0)) \|_{F}$ 的主导行为是 $O(N d^{N/2})$。这导致最终的QFI上界依然是**指数增长**的。
     *   **根本原因**: 2-范数（Frobenius范数）对算符的所有奇异值都敏感，而算符范数（$\|\cdot\|_{\infty}$）只关心最大的那一个。对于 $\Omega(0)$ 这样具有大量非零本征值的算符，两个范数之间存在指数级的差距。
+    *   [[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]]
+	    * 用2-范数给出了一个上界，指数增长
 
-#### 当前最可行的证明路径
+#### 仍然可能可行的证明路径
 
 排除了上述两种方法后，我们认识到必须**直接处理算符范数**以及对偶变量 $E$ 的作用。
 
@@ -175,7 +215,7 @@ $$
     **待证明的关键一步是**：证明通过选择一个足够好的非零对偶变量 $E_{opt}$，我们无法将上界 $\|\Omega(0) - \mathcal{Q}_{\text{ICO}}^\dagger(E_{opt})\|_{\infty}$ 的 $N^2$ 系数减小到 $(1-2p)^2$ 以下。物理直觉是，$\Omega(0)$ 的最大本征态（GHZ态）已经是一个合法的因果态，因此任何用于“惩罚”非法因果性的 $E$ 在这个方向上都无能为力。将这个物理直觉转化为严格的数学证明是完成此路径的最后一步。
 
 
-### 证明思路3
+### 证明思路3：QFI的迭代公式
 **核心思想**: 证明Kurdziałek等人为自适应/因果叠加(CS)策略推导出的迭代QFI上界，对于最一般的ICO策略同样适用。
 
 2023年的一项重要工作 [[Using adaptiveness and causal superpositions against noise in quantum metrology\|Using adaptiveness and causal superpositions against noise in quantum metrology]] (S. Kurdziałek et al., PRL 131, 090801) 进一步证明，对于更广义的**自适应（串行）策略** 和**因果叠加策略**，式 (B1) 中的上界在渐近上仍然是**紧的 (tight)**。这意味着，在 $N \to \infty$ 的极限下，这些更复杂的定因果序策略相比并行策略**不存在渐近优势**。也就是说，它们的QFI比值极限为1，标度及其主导系数都相同。
@@ -198,53 +238,19 @@ $$
         *   如果能够证明ICO策略的QFI上界 $\mathcal{F}^{\mathsf{ICO}}_N$ 也服从这个迭代关系，那么其解的渐近行为将与并行/自适应策略相同.
         
 尽管数值上已经观察到对于某些信道，ICO策略可以在有限$N$时略微超越为`CS`策略推导的界限，但这些证据表明这种超越可能是一个不依赖于$N$的常数，并不会改变 $O(N^2)$ 项的系数。因此，一个合理的猜想是，ICO策略的优势是非渐近的，它会消失在 $N \to \infty$ 的极限中。证明这一猜想是当前该领域的一个核心**开放问题**，其关键可能在于KKT条件框架与大$N$极限下的代数和Kurdzialek中的迭代方法相结合。
+- [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]] 
 
-- [[ICO无渐进优势的证明思路的进一步分析\|ICO无渐进优势的证明思路的进一步分析]] 
-### 如果ICO能够提供渐近优势
+### 证明思路4：建立ICO策略与并联策略的关系
+结合了证明思路2，但是基本失败了，参见[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]
+
+## 如果ICO能够提供渐近优势？
 由于这是开放问题，我们不排除ICO提供渐近优势的可能，它可能在以下两种意义下提供渐近优势
 - 式(B1)的结构保持不变，其中的标度的系数更大
 - 式(B1)从根本上就是错误地 ，存在一些串并联联策略下无法达到海森堡极限，但是ICO能够达到海森堡极限的信道，这将是最令人以外的
 如果ICO确实存在渐近优势，那么最有可能出现这种情况的信道，应该是那些**因果结构和噪声动力学高度耦合**的信道。例如，可以从已知的、在有限N下ICO优势最显著的信道（如旋转+幅值阻尼）出发
 **两种优势**: 即使渐近等价性成立，ICO在有限N下的的优势仍然是巨大且有价值的。因此，另一个重要的研究方向是：**对于给定的噪声模型和资源限制**，如何系统性地找到最优的ICO策略，并量化其相比并行策略的具体优势大小？ 这正是 kurdzialek2024 (Tensor Network) 这篇文章试图解决的问题。
 
-## 渐进分析第一步：构建海森堡($N^2$)极限
-
-本节阐明了海森堡极限（HL）在量子计量学中的普适性地位，证明了即使引入不定因果序（ICO）策略，量子参数估计的精度依然受到 $N^2$ 标度律的根本限制。核心结论及讨论如下：
-
-1.  **HL 的普适性定理**：
-    我们证明了对于任意 $N$ 次使用的量子信道 $\mathcal{E}_g$，其在任意 ICO 策略下的最大量子费雪信息（QFI） $\mathcal{F}_N^{\mathsf{Gen}}$ 均被该信道 Stinespring 扩张 $\mathcal{V}_g$ 的海森堡极限所约束，即 $\mathcal{F}_N^{\mathsf{Gen}}(\mathcal{E}_g) \le N^2 \mathcal{F}_1(\mathcal{V}_g)$。
-    *   **幺正信道特例**：对于幺正信道，该上界是紧致且可饱和的。我们通过构造性的 KKT 证明指出，此时 ICO 策略并不优于最优并联策略，两者均严格达到 HL。
-
-2.  **普适性证明逻辑**：
-    *   **幺正情形**：基于凸优化和递归 KKT 条件，证明并联策略在 ICO 集合中的全局最优性。
-    *   **普适情形**：利用 Stinespring 扩张定理将一般信道映射为更高维度的等距信道，并利用数据处理不等式将问题约化为幺正情形，从而确立 HL 的普适约束。
-
-3.  **ICO 优势的边界分析**：
-    通过对比我们的 **普适 ICO 上界** ($4N^2 \min \|\alpha\|$) 与现有的 **固定因果序上界** ($4N\|\alpha\| + 4N(N-1)\min \|\beta\|^2$)，我们量化了 ICO 策略的潜在优势空间。
-    *   数学上，由于 $\|\beta\|^2 \le \|\alpha\|$，固定因果序上界始终小于等于 ICO 上界。
-    *   两者间的差距（主导项为 $4N^2 (\|\alpha\| - \|\beta\|^2)$）界定了 ICO 策略在非幺正信道中可能超越固定顺序策略的最大渐进增益。
-
-4.  **开放问题**：
-    虽然 HL 确立了 $N^2$ 的硬性天花板，但在非幺正信道（噪声环境）下，ICO 策略是否能通过利用 $\|\alpha\| > \|\beta\|^2$ 的空间来实现 **渐进优势**（即获得比固定顺序策略更大的 $N^2$ 前系数），仍是一个极具价值的开放问题，有待通过寻找更紧致的单字母界来解决。
-
-详见：[[Universality of the Heisenberg Limit in Quantum Metrology Across All Causal Structures#不定因果序（ICO）计量学的海森堡极限（HL）普适性\|Universality of the Heisenberg Limit in Quantum Metrology Across All Causal Structures#不定因果序（ICO）计量学的海森堡极限（HL）普适性]]
-
-
-## HL上界不渐进紧：泡利信道无ICO优势且满足SQL
-
-本节简要概述了关于广义泡利信道（Generalized Pauli Channels）在不定因果序（ICO）框架下计量精度的严格证明。我们证实，对于此类信道，ICO 策略所能达到的最大量子费雪信息（QFI）严格等同于最优并联策略，即 $\mathcal{F}_N^{\mathsf{ICO}} = \mathcal{F}_N^{\mathsf{Para}} = \frac{N}{\vartheta(1-\vartheta)}$。这表明在该模型下，ICO 资源无法提供海森堡极限的渐进优势，且我们提出的上界不是渐近紧的，存在一个仅$N$ scaling的例子。
-
-证明主要基于凸优化框架下的 **Karush-Kuhn-Tucker (KKT) 条件**，核心逻辑如下：
-
-1.  **候选解的构造**：基于 N-Choi 电路的物理直觉，我们构造了完全混合策略 $S^\star = \mathbb{I}/d^N$ 配合辅助参数 $h^\star=0$ 作为优化问题的候选鞍点。
-2.  **互补松弛条件的利用**：利用 $S^\star$ 的严格正定性（满秩），结合 KKT 的互补松弛条件，我们在数学上推导出对偶变量 $Y$ 必须恒为零。这一关键洞察将复杂的半正定性验证问题简化为等式验证问题。
-3.  **几何约束的代数验证**：证明最终归结为验证构造的对偶变量 $E$ 是否满足 ICO 的因果结构约束（即 $E$ 是否为投影算符 $\mathcal{Q}_{\mathsf{ICO}}$ 的不动点）。利用泡利信道 Choi 矩阵及其导数在偏迹操作下的特殊对称性，我们确认了这一几何条件成立，从而证明了候选解的全局最优性。
-
-详见：[[泡利信道无ICO优势且满足SQL证明详情\|泡利信道无ICO优势且满足SQL证明详情]] 
-## HL上界可以被非幺正的信道达到
-- z轴旋转+比特翻转噪声(见下一节)满足$\|\beta\|^2=\|\alpha\|$，因此HL可以被达到，因此这种问题的Para最优就是ICO最优。这也符合数值试验的结果。
-
-## 信道的QFI渐进行为与ICO优势汇总
+## 信道的QFI渐近行为与ICO优势汇总
 当前的方法==只有能力证明ICO无优势==，因为我总是在验证解是否满足KKT条件。
 - [[四种典型噪声：平行、垂直；退相干、振幅衰减\|四种典型噪声：平行、垂直；退相干、振幅衰减]] 这四种典型的噪声都被我进行了分类，见下。
 ### HL
@@ -256,7 +262,7 @@ $$
 			- 根据随机系综判断是否满足HNKS 
 			- 生成一个满足NHKS条件的随机系综
 -  先经历垂直退相干噪声再经历z轴旋转，N=2没有出现优势，N=3才出现
-	- [[噪声优先垂直退相干Para-QFI\|噪声优先垂直退相干Para-QFI]] 
+	- [[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]] 
 	- [[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 
 		- 噪声先作用：模型 (a): 垂直退相干 (Perpendicular Dephasing)（比较ICO和FO）
 ### ICO无优势
@@ -295,11 +301,6 @@ $$
 	- [[new avai SPD data generation simCmdC0.nb\|new avai SPD data generation simCmdC0.nb]] 
 		- 泡利信道：Mothe：专注于没有SQL的例子（我就需要一个例子来说明我们的界是松的）
 ## 其他可能有帮助的推导
-
-- [[性能算符的N到2N迭代\|性能算符的N到2N迭代]] 
-- [[最优化问题关于内部的考虑\|最优化问题关于内部的考虑]] 
-
-
 ### 性能算符的纯化表达式
 
 本节的核心目标是为量子计量学中的[[性能算符\|性能算符]] $\Omega(h)$提供一个全新的、基于纯化的物理解释和数学表达式。
@@ -316,15 +317,27 @@ $$
 
 这个表达式的意义在于，它将用于半定规划（SDP）的抽象代数对象 $\Omega(h)$ 与一个清晰的物理图像联系起来：**性能算符本质上是在最不利的纯化选择下，信道纯化态对参数变化的响应速度（速度模方）在系统空间上的投影。**
 
-进一步利用$|V\rangle = \sum_{j=1}^q |K_j\rangle\rangle \otimes |j\rangle_A$可以得到Kraus算符表述的性能算符
+进一步利用$|V\rangle = \sum_{j=1}^q |K_j^\top \rangle \otimes |j\rangle_A$可以得到Kraus算符表述的性能算符
+
 $$
-\Omega(h) = 4 \left( \sum_i \left( |\dot{K}_i\rangle\rangle + i \sum_j |K_j\rangle\rangle h_{ji} \right) \left( \langle\langle\dot{K}_i| - i \sum_k \langle\langle K_k| h_{ik} \right) \right)^T
+\Omega(h) =4\sum_i \left(|\dot{K}_i^\top\rangle - i\sum_j h_{ji}|K_j^\top\rangle\right) \left(\langle\dot{K}_i^\top| + i\sum_k h_{ki}\langle K_k^\top|\right)= 4 \left( \sum_i | \dot{\tilde{K}}_i(h)^\top \rangle\rangle \langle\langle \dot{\tilde{K}}_i(h)^\top | \right)^\top= 4 \sum_i | \dot{\tilde{K}}_i(h)^\dagger\rangle\rangle \langle\langle \dot{\tilde{K}}_i(h)^\dagger | 
 $$
+其中$\dot{\tilde{K}}_i(h) = \dot{K}_i + i \sum_j h_{ij} K_j$ 。
 
 具体推导参见： [[遍历Stinespring等距得到信道的QFI的证明#QFI纯化公式推导1：性能算符的另一种表达式\|遍历Stinespring等距得到信道的QFI的证明#QFI纯化公式推导1：性能算符的另一种表达式]] 
 
-## 关联材料
+前面的公式都是$N$信道的，而单信道的Choi矩阵记为$\mathsf{E} \coloneqq \mathrm{tr}_A \left[ |V\rangle\langle V| \right] = \sum_m |K_m^\top \rangle\langle K_m^\top |$，满足$\mathrm{tr}_{out}\mathsf{E}=\mathbb{I}_{in}$
+最好能够用到符号$$\alpha_h := \mathrm{tr}_{out}\left( \sum_i |\dot{\tilde{K}}_i^\top(h)\rangle \langle \dot{\tilde{K}}_i^\top(h)| \right)= \sum \dot{\tilde{K}}_i^\dagger(h)\dot{\tilde{K}}_i(h)$$
+$$\beta_h=\mathrm{tr}_{out}\left( \sum_i |K_i^\top(h)\rangle \langle \dot{\tilde{K}}_i^\top(h)|\right)= \sum K_i^\dagger(h)\dot{\tilde{K}}_i(h)$$
+- [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]] 
+## 关联材料和推导
+- [[性能算符的迭代\|性能算符的迭代]] 
+- [[最优化问题关于内部的考虑\|最优化问题关于内部的考虑]] 
+- [[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]
+	- [[将ICO的投影超算符作用到性能算符上\|将ICO的投影超算符作用到性能算符上]] 
 - [[张量网络凸优化与QFI数值程序\|张量网络凸优化与QFI数值程序]] 
+- [[ICO无渐近优势的证明思路的进一步分析\|ICO无渐近优势的证明思路的进一步分析]] 
+
 ### 文章
 来自 
 - [[2 项目笔记/不定因果/Necessity of non-unitarity for metrological advantage of indefinite causal order\|Necessity of non-unitarity for metrological advantage of indefinite causal order]]
