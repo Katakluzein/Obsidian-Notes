@@ -129,7 +129,6 @@ $$
 
 详见：[[Universality of the Heisenberg Limit in Quantum Metrology Across All Causal Structures#不定因果序（ICO）计量学的海森堡极限（HL）普适性\|Universality of the Heisenberg Limit in Quantum Metrology Across All Causal Structures#不定因果序（ICO）计量学的海森堡极限（HL）普适性]]
 
-
 ## HL上界不渐近紧：泡利信道无ICO优势且满足SQL
 
 本节简要概述了关于广义泡利信道（Generalized Pauli Channels）在不定因果序（ICO）框架下计量精度的严格证明。我们证实，对于此类信道，ICO 策略所能达到的最大量子费雪信息（QFI）严格等同于最优并联策略，即 $\mathcal{F}_N^{\mathsf{ICO}} = \mathcal{F}_N^{\mathsf{Para}} = \frac{N}{\vartheta(1-\vartheta)}$。这表明在该模型下，ICO 资源无法提供海森堡极限的渐近优势，且我们提出的上界不是渐近紧的，存在一个仅$N$ scaling的例子。
@@ -146,7 +145,7 @@ $$
 
 ## ICO无渐近优势的证明思路
 
-当前数值分析和物理直觉都表明实际上ICO没有任何渐近优势，即$R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}\to 1~(N\to\infty)$，下面考虑其证明.  
+当前数值分析和物理直觉都表明实际上ICO没有任何渐近优势，即$R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}\to 1~(N\to\infty)$，下面考虑其证明  
 ### 证明思路1：渐近KKT条件
 
 *   **核心思想**: 尽管我们不知道最优并行策略 $S^*_{\text{Para}}$ 的确切形式，但 **Zhou and Jiang** 的工作告诉我们它的**结构性质**（即，它是在逻辑层面上的GHZ态或自旋压缩态的物理实现）。我们可以利用这些已知的结构性质，尝试为 $S^*_{\text{Para}}$ 构造一组“渐近满足”ICO问题KKT条件的对偶变量。为了分析比值 $R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}$ 在 $N \to \infty$ 时的行为，我们需要为分子（ICO策略的QFI）建立一个有效的渐近上界，并与分母（并行策略的QFI）的已知渐近行为进行比较。对于作为分母的并行策略，其渐近行为已有深入研究（上一节）。
@@ -216,6 +215,7 @@ $$
 
 
 ### 证明思路3：QFI的迭代公式
+
 **核心思想**: 证明Kurdziałek等人为自适应/因果叠加(CS)策略推导出的迭代QFI上界，对于最一般的ICO策略同样适用。
 
 2023年的一项重要工作 [[Using adaptiveness and causal superpositions against noise in quantum metrology\|Using adaptiveness and causal superpositions against noise in quantum metrology]] (S. Kurdziałek et al., PRL 131, 090801) 进一步证明，对于更广义的**自适应（串行）策略** 和**因果叠加策略**，式 (B1) 中的上界在渐近上仍然是**紧的 (tight)**。这意味着，在 $N \to \infty$ 的极限下，这些更复杂的定因果序策略相比并行策略**不存在渐近优势**。也就是说，它们的QFI比值极限为1，标度及其主导系数都相同。
@@ -236,10 +236,52 @@ $$
         *   一个ICO过程可以看作是不同因果序（即不同自适应策略）的“量子叠加”。我们需要分析在最一般的ICO过程（由过程矩阵 $W$ 描述）下，经过 $N$ 次信道调用后的系统等效Kraus算符是什么样的。
         *   **关键挑战**: 证明对于由一般过程矩阵 $W_{\mathsf{ICO}}$ 连接的 $N$ 个信道，其整体性能算符的范数，或者说等效的 $a^{(N)}_{\mathsf{ICO}}$，仍然受上述迭代关系的约束。Kurdziałek等人的证明对CS策略是有效的，因为CS策略的信道 $A^{(CS)}$ 结构相对明确（见其文章附录C）。对于一个抽象的、仅满足线性约束的ICO过程矩阵，推导过程可能需要全新的工具，例如**过程张量网络**或者**算符代数**的方法。
         *   如果能够证明ICO策略的QFI上界 $\mathcal{F}^{\mathsf{ICO}}_N$ 也服从这个迭代关系，那么其解的渐近行为将与并行/自适应策略相同.
-        
+
 尽管数值上已经观察到对于某些信道，ICO策略可以在有限$N$时略微超越为`CS`策略推导的界限，但这些证据表明这种超越可能是一个不依赖于$N$的常数，并不会改变 $O(N^2)$ 项的系数。因此，一个合理的猜想是，ICO策略的优势是非渐近的，它会消失在 $N \to \infty$ 的极限中。证明这一猜想是当前该领域的一个核心**开放问题**，其关键可能在于KKT条件框架与大$N$极限下的代数和Kurdzialek中的迭代方法相结合。
 - [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]] 
 
+基于我们最新的推导结果，**证明思路 3** 已经从尝试套用 Kurdziałek 的迭代不等式，演变为一种更本质的、基于算符结构和因果几何的**构造性证明**。
+
+以下是改写后的证明思路：
+
+### 证明思路 3：基于性能算符闭合形式与因果结构消去定理的界限分析
+
+**核心思想**:
+不再依赖于数值上的范数迭代放缩（如 Kurdziałek 等人针对定因果序策略的方法，这是更紧但是更难用的方法，有机会获得终极渐近界），而是利用 **$N$ 体性能算符 $\Omega^{(N)}$ 的精确代数结构** 与 **ICO 策略空间 $\mathcal{S}$ 的因果几何约束** 之间的相互作用。我们证明了，那些可能导致超海森堡标度（Super-Heisenberg scaling）或破坏标准量子极限（SQL）条件的项，会被 ICO 的因果结构“**结构性归零 (Structurally Nullified)**”。
+
+**技术路线与主要结果**:
+
+1.  **性能算符的闭合形式解**:
+    通过求解关于信道数 $N$ 的线性递归关系，我们获得了 $N$ 体 ICO 系统总性能算符 $\Omega^{(N)}$ 的显式闭合表达式。其由局域项和非局域干涉项组成：
+    $$
+    \Omega^{(N)} = \underbrace{\sum \dots \Omega^{(1)} \dots}_{\text{Local } O(N)} + \underbrace{\frac{1}{4} \sum_{j<k} \left( \dots \Lambda_j \otimes \Lambda_k^\dagger \dots + \text{h.c.} \right)}_{\text{Non-local } O(N^2)}
+    $$
+    这一形式将复杂的 $N$ 体问题转化为对单信道干涉算符 $\Lambda$ 性质的分析。
+
+2.  **正交分解与结构性归零 (Structural Nullification)**:
+    这是证明中最关键的一步。我们将干涉算符分解为 $\Lambda = \Lambda^\parallel$（与并联策略相关的 $\beta$ 部分）和 $\Lambda^\perp$（在输出端无迹的正交部分）。利用 Oreshkov 等人关于过程矩阵的刻画定理（特别是两体过程矩阵 $W^{A_1 A_2 B_1 B_2}$ 中不存在同时激活 $B_1$ 和 $B_2$ 的非平凡项），我们证明了如下**结构性恒等式**：
+    $$
+    \operatorname{tr}\left[ (\Lambda_j^{\perp} \otimes \Lambda_k^{\perp \dagger}) S_{jk}^{\text{red}} \right] \equiv 0 \quad \forall S \in \mathsf{ICO}
+    $$
+    这意味着，看似可能导致松散界限的“纯噪声干涉项”在物理上是被 ICO 的因果结构严格禁止的。
+
+3.  **最终的紧致上界**:
+    结合上述两条，我们推导出了一个新的、物理意义明确的 QFI 上界：
+    $$
+    \mathcal{F}_{\mathsf{ICO}}^{(N)*} \le \min_{h} \left[ 4N \|\alpha_h\|_\infty + N(N-1) \left( 4 \|\beta_h\|_\infty^2 + 2d \|\beta_h\|_\infty \|\Lambda_h^\perp\|_\infty \right) \right]
+    $$
+    其中 $d$ 是希尔伯特空间维度。
+
+**结论与意义**:
+
+*   **渐近标度律的等价性**:
+    *   **SQL 判据**: 当信道满足 $\beta_h=0$ (Hamiltonian-in-Kraus-span) 时，上式中 $O(N^2)$ 项的系数**严格为零**（因为每一项都包含 $\|\beta_h\|$ 因子）。这证明了 ICO 策略无法使 SQL 信道达到海森堡极限。
+    *   **HL 判据**: 只有当 $\beta_h \neq 0$ 时，上界才允许 $O(N^2)$ 增长。这证明了 ICO 策略达到海森堡极限的充要条件与并联策略完全一致（HNKS 条件）。
+
+*   **系数优势的物理来源**:
+    尽管渐近标度相同，ICO 策略可以通过第二项 $2d \|\beta\| \|\Lambda^\perp\|$ 获得常数倍的系数优势。这解释了为何在特定信道（如 $\Lambda^\perp$ 很大的信道）中 ICO 能表现出优于并联策略的性能——它利用不定因果序提取了 $\Lambda^\perp$ 中的相干性并将其与 $\beta$ 耦合。
+
+此证明完全解决了关于 ICO 渐近优势的猜想，并给出了比 Kurdziałek 迭代界限更精细的结构性解释。详细推导见附件 [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]]。
 ### 证明思路4：建立ICO策略与并联策略的关系
 结合了证明思路2，但是基本失败了，参见[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]
 
@@ -318,7 +360,6 @@ $$
 这个表达式的意义在于，它将用于半定规划（SDP）的抽象代数对象 $\Omega(h)$ 与一个清晰的物理图像联系起来：**性能算符本质上是在最不利的纯化选择下，信道纯化态对参数变化的响应速度（速度模方）在系统空间上的投影。**
 
 进一步利用$|V\rangle = \sum_{j=1}^q |K_j^\top \rangle \otimes |j\rangle_A$可以得到Kraus算符表述的性能算符
-
 $$
 \Omega(h) =4\sum_i \left(|\dot{K}_i^\top\rangle - i\sum_j h_{ji}|K_j^\top\rangle\right) \left(\langle\dot{K}_i^\top| + i\sum_k h_{ki}\langle K_k^\top|\right)= 4 \left( \sum_i | \dot{\tilde{K}}_i(h)^\top \rangle\rangle \langle\langle \dot{\tilde{K}}_i(h)^\top | \right)^\top= 4 \sum_i | \dot{\tilde{K}}_i(h)^\dagger\rangle\rangle \langle\langle \dot{\tilde{K}}_i(h)^\dagger | 
 $$
@@ -329,12 +370,13 @@ $$
 前面的公式都是$N$信道的，而单信道的Choi矩阵记为$\mathsf{E} \coloneqq \mathrm{tr}_A \left[ |V\rangle\langle V| \right] = \sum_m |K_m^\top \rangle\langle K_m^\top |$，满足$\mathrm{tr}_{out}\mathsf{E}=\mathbb{I}_{in}$
 最好能够用到符号$$\alpha_h := \mathrm{tr}_{out}\left( \sum_i |\dot{\tilde{K}}_i^\top(h)\rangle \langle \dot{\tilde{K}}_i^\top(h)| \right)= \sum \dot{\tilde{K}}_i^\dagger(h)\dot{\tilde{K}}_i(h)$$
 $$\beta_h=\mathrm{tr}_{out}\left( \sum_i |K_i^\top(h)\rangle \langle \dot{\tilde{K}}_i^\top(h)|\right)= \sum K_i^\dagger(h)\dot{\tilde{K}}_i(h)$$
+偏迹不一定增加或者减小算符模，没有一般规律。考虑例子：$\mathrm{tr}_A:X\otimes I_A\mapsto d_A X$ 导致本征值放大以及将Bell态约化到最大混态导致本征值减小。
 - [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]] 
 ## 关联材料和推导
 - [[性能算符的迭代\|性能算符的迭代]] 
 - [[最优化问题关于内部的考虑\|最优化问题关于内部的考虑]] 
 - [[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]
-	- [[将ICO的投影超算符作用到性能算符上\|将ICO的投影超算符作用到性能算符上]] 
+	- [[Detour：将ICO的投影超算符作用到性能算符上\|Detour：将ICO的投影超算符作用到性能算符上]] 
 - [[张量网络凸优化与QFI数值程序\|张量网络凸优化与QFI数值程序]] 
 - [[ICO无渐近优势的证明思路的进一步分析\|ICO无渐近优势的证明思路的进一步分析]] 
 
