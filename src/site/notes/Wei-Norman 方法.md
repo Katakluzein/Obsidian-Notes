@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Wei-Norman 方法/","tags":["量子模拟"]}
+{"dg-publish":true,"permalink":"/Wei-Norman 方法/","tags":["#量子模拟","#ai警告"]}
 ---
 
 ## Wei-Norman方法介绍

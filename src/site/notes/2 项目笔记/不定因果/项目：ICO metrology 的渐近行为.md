@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/2 项目笔记/不定因果/项目：ICO metrology 的渐近行为/","tags":["不定因果与因果结构","量子精密测量"]}
+{"dg-publish":true,"permalink":"/2 项目笔记/不定因果/项目：ICO metrology 的渐近行为/","tags":["#不定因果与因果结构","#量子精密测量"]}
 ---
 
 # 背景介绍与问题引入
@@ -236,7 +236,7 @@ $$
     $$
     这意味着，看似可能导致松散界限的“纯噪声干涉项”在物理上是被 ICO 的因果结构严格禁止的。
 
-3.  **最终的紧致上界**:
+3.  **上界**:
     结合上述两条，我们推导出了一个新的、物理意义明确的 QFI 上界：
     $$
     \mathcal{F}_{\mathsf{ICO}}^{(N)*} \le \min_{h} \left[ 4N \|\alpha_h\|_\infty + N(N-1) \left( 4 \|\beta_h\|_\infty^2 + 2d \|\beta_h\|_\infty \|\Lambda_h^\perp\|_\infty \right) \right]

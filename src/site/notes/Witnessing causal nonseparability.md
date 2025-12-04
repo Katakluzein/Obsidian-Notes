@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Witnessing causal nonseparability/","tags":["论文阅读笔记","不定因果与因果结构"]}
+{"dg-publish":true,"permalink":"/Witnessing causal nonseparability/","tags":["#论文阅读笔记","#不定因果与因果结构"]}
 ---
 
 好的，这是一份对论文《Witnessing causal nonseparability》的详细分析报告。

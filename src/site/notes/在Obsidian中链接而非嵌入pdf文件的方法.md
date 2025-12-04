@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/在Obsidian中链接而非嵌入pdf文件的方法/","tags":["obsidian"]}
+{"dg-publish":true,"permalink":"/在Obsidian中链接而非嵌入pdf文件的方法/","tags":["#obsidian"]}
 ---
 
 在 Obsidian 里，“链接本地 PDF 文件（而不是嵌入）”可以通过多种方式实现，下面是常用方法 + 注意点 + 扩展插件推荐：

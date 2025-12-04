@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Encyclopedia of Mathemacial Physics/","tags":["数学物理","凝聚态与量子多体","论文阅读笔记"]}
+{"dg-publish":true,"permalink":"/Encyclopedia of Mathemacial Physics/","tags":["#数学物理","#凝聚态与量子多体","#论文阅读笔记"]}
 ---
 
 ## 第一卷

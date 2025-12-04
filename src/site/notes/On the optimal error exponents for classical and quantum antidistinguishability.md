@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/On the optimal error exponents for classical and quantum antidistinguishability/","tags":["量子信息","论文阅读笔记"]}
+{"dg-publish":true,"permalink":"/On the optimal error exponents for classical and quantum antidistinguishability/","tags":["#量子信息","#论文阅读笔记"]}
 ---
 
 ## 论文信息和标签
