@@ -253,34 +253,69 @@ $$
     尽管渐近标度相同，ICO 策略仍然可能通过第二项 $2d \|\beta\| \|\Lambda^\perp\|$ 获得常数倍的系数优势。这解释了为何在特定信道（如 $\Lambda^\perp$ 很大的信道）中 ICO 能表现出优于并联策略的性能——它利用不定因果序提取了 $\Lambda^\perp$ 中的相干性并将其与 $\beta$ 耦合。
 
 此证明很大程度上解决了关于 ICO 渐近优势的猜想，并给出了比 Kurdziałek 迭代界限更精细的结构性解释。详细推导见附件 [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]]。
-### 证明思路4：QFI的单步迭代公式
 
-**核心思想**: 证明Kurdziałek等人为自适应/因果叠加(CS)策略推导出的迭代QFI上界，对于最一般的ICO策略同样适用。
+### 证明思路4：QFI的单步迭代公式与ICO策略的渐近行为
 
-2023年的一项重要工作 [[Using adaptiveness and causal superpositions against noise in quantum metrology\|Using adaptiveness and causal superpositions against noise in quantum metrology]] (S. Kurdziałek et al., PRL 131, 090801) 进一步证明，对于更广义的**自适应（串行）策略** 和**因果叠加策略**，式 (B1) 中的上界在渐近上仍然是**紧的 (tight)**。这意味着，在 $N \to \infty$ 的极限下，这些更复杂的定因果序策略相比并行策略**不存在渐近优势**。也就是说，它们的QFI比值极限为1，标度及其主导系数都相同。
+**核心思想**: 证明对于最一般的ICO策略，其QFI的单步增长也受到一个普适的迭代不等式约束，并且该不等式的解在渐近极限下与已知的所有定因果序策略（并行、自适应、因果叠加）的界限一致，从而确立它们的渐近等价性。
 
-因此，要证明 $\lim_{N\to\infty} R_N(\mathsf{E}_g) = 1$，我们的核心任务就转化为证明：**对于最一般的ICO策略，其QFI的渐近上界也由式 (B1) 或类似的式给出给出。** 
-经过数值试验 ( [[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 用随机系综比较不同的QFI：求ICO的可能的上界) 发现ICO经常能够超过(B1) 的界$4 \min_h \left[ N\|\alpha_h\| + N(N-1)\|\beta_h\|^2 \right]$，但是仍然满足下面的不等式
+#### 1. 背景：定因果序策略的迭代界限
+
+2023年的一项重要工作 (S. Kurdziałek et al., PRL 131, 090801) [[Using adaptiveness and causal superpositions against noise in quantum metrology\|Using adaptiveness and causal superpositions against noise in quantum metrology]] 证明，对于广义的自适应策略和因果叠加（CS）策略，其QFI的上界 $\mathcal{F}_N$ 满足如下的单步迭代不等式：
 $$
-\mathcal{F}_N^{\mathsf{ICO}}(\mathsf{E}_g) \le 4 \min_h \left[ N\|\alpha_h\| + N(N-1)\|\beta_h\|\sqrt{\|\alpha_h\|} \right] \tag{B1}
+a^{(i+1)} \le a^{(i)} + \|\alpha\| + 2\|\beta\| \sqrt{a^{(i)}}
 $$
-如果这个不等式得以证明，那么结合并行策略的可达下界，我们就可以断定ICO策略与并行策略是渐近等价的。
+其中 $a^{(i)}$ 是 $i$ 次调用后的QFI上界（$\mathcal{F}_i/4$）。这个不等式的解给出了一个渐近紧致的界，其形式为 $4 \min_h \left[ N\|\alpha_h\| + N(N-1)\|\beta_h\|^2 \right]$。这意味着，在 $N \to \infty$ 的极限下，这些更复杂的定因果序策略相比并行策略**不存在渐近优势**。
 
-*   **技术路线**:
-    1.  **理解迭代界限的核心**: Kurdziałek等人的关键步骤是证明了单次信道调用后QFI的增量可以被一个只依赖于当前QFI和单信道性质的函数所约束：
-        $$ a^{(i+1)} \le a^{(i)} + \|\alpha\| + 2\|\beta\| \sqrt{a^{(i)}} $$
-        其中 $4a^{(i)}$ 是 $i$ 次调用后的QFI上界。这个不等式对**任意**中间酉操作 $V_i$ 都成立。
+#### 2. 将迭代方法推广至一般ICO策略
 
-    2.  **推广到ICO**:
-        *   一个ICO过程可以看作是不同因果序（即不同自适应策略）的“量子叠加”。我们需要分析在最一般的ICO过程（由过程矩阵 $W$ 描述）下，经过 $N$ 次信道调用后的系统等效Kraus算符是什么样的。
-        *   **关键挑战**: 证明对于由一般过程矩阵 $W_{\mathsf{ICO}}$ 连接的 $N$ 个信道，其整体性能算符的范数，或者说等效的 $a^{(N)}_{\mathsf{ICO}}$，仍然受上述迭代关系的约束。Kurdziałek等人的证明对CS策略是有效的，因为CS策略的信道 $A^{(CS)}$ 结构相对明确（见其文章附录C）。对于一个抽象的、仅满足线性约束的ICO过程矩阵，推导过程可能需要全新的工具，例如**过程张量网络**或者**算符代数**的方法。
-        *   如果能够证明ICO策略的QFI上界 $\mathcal{F}^{\mathsf{ICO}}_N$ 也服从这个迭代关系，那么其解的渐近行为将与并行/自适应策略相同.
+我们的核心任务是证明，对于由最一般的过程矩阵 $W$ 所描述的ICO策略，其QFI的渐近上界也遵循相似的结构。基于我们最新的推导结果 [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]]，我们已经为一般ICO策略下的QFI建立了一个精确的单步迭代公式。
 
-尽管数值上已经观察到对于某些信道，ICO策略可以在有限$N$时略微超越为`CS`策略推导的界限，但这些证据表明这种超越可能是一个不依赖于$N$的常数，并不会改变 $O(N^2)$ 项的系数。因此，一个合理的猜想是，ICO策略的优势是非渐近的，它会消失在 $N \to \infty$ 的极限中。证明这一猜想是当前该领域的一个核心**开放问题**，其关键可能在于KKT条件框架与大$N$极限下的代数和Kurdzialek中的迭代方法相结合。
-- [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]] 
+首先，总的 $N$-通道性能算符 $\Omega^{(N)}$ 满足递推关系：
+$$
+\Omega^{(N)} = \Omega^{(N-1)} \otimes \mathsf{E}^\top + \mathsf{E}^{\otimes (N-1)\top} \otimes \Omega^{(1)} + \frac{1}{4}\left( \Lambda^{(N-1)} \otimes \Lambda^{(1)\dagger} + \text{h.c.} \right)
+$$
+对于任意策略 $S$，其QFI $\mathcal{F}^{(N)}(S) = \mathrm{tr}(S\Omega^{(N)})$ 相应地满足：
+$$
+\mathcal{F}^{(N)}(S) = \mathsf{H}_N(S) + \mathsf{L}_N(S) + \mathcal{F}_{\text{int}}(S)
+$$
+其中 $\mathsf{H}_N(S)$ 和 $\mathsf{L}_N(S)$ 分别是历史项和局域项，$\mathcal{F}_{\text{int}}(S)$ 是干涉项。
 
-基于我们最新的推导结果，**证明思路 3** 已经从尝试套用 Kurdziałek 的迭代不等式，演变为一种更本质的、基于算符结构和因果几何的**构造性证明**。
+**关键步骤**: 我们通过广义算符柯西-施瓦茨不等式严格证明了干涉项被历史项和局域项的几何平均值所约束：
+$$
+|\mathcal{F}_{\text{int}}(S)| \le \frac{1}{2} \sqrt{\mathsf{H}_N(S) \cdot \mathsf{L}_N(S)}
+$$
+这直接导出了一个对**任意**半正定算符 $S$（包括非物理策略）都成立的普适迭代不等式：
+$$
+\mathcal{F}^{(N)}(S) \le \left( \sqrt{\mathsf{H}_N(S)} + \sqrt{\mathsf{L}_N(S)} \right)^2
+$$
 
+#### 3. 施加因果约束并求解上界
+
+当我们将优化范围限制在物理上合法的ICO策略集 $\mathsf{Gen}$ 内时，因果约束保证了约化过程的物理性，从而有：
+$$
+\max_{S \in \mathsf{Gen}} \min_h \mathsf{H}_N(S) \le \mathcal{F}_{N-1}^{\mathsf{Gen}} \quad \text{and} \quad \max_{S \in \mathsf{Gen}} \min_h \mathsf{L}_N(S) \le \mathcal{F}_1^{\mathsf{Gen}}
+$$
+这最终导出了ICO策略最大QFI所必须服从的迭代不等式：
+$$
+\mathcal{F}_N^{\mathsf{Gen}} \le \left( \sqrt{\mathcal{F}_{N-1}^{\mathsf{Gen}}} + \sqrt{\mathcal{F}_1^{\mathsf{Gen}}} \right)^2
+$$
+该不等式的闭合形式解为 $\mathcal{F}_N^{\mathsf{Gen}} \le N^2 \mathcal{F}_1^{\mathsf{Gen}} = 4N^2 \min_h \|\alpha_h\|$，这正是我们在论文中提出的**界1 (Bound 1)**。
+
+这个结果虽然已经证明了海森堡极限的普适性，但它在结构上比 Kurdziałek 等人的界更松，因为它没有显式地分离出由 $\beta$ 主导的渐近系数。
+
+#### 4. 迈向更紧的界与渐近等价性
+
+尽管数值试验 [[ICO策略下不同QFI的比较.nb\|ICO策略下不同QFI的比较.nb]] 发现ICO策略的QFI有时能够超过并行策略的上界，但我们的**界2 (Bound 2)**
+$$
+\mathcal{F}_N^{\mathsf{Gen}}(\mathcal{E}_g) \le \min_{\{K_i\}} \left[ 4N \|\alpha\| + N(N-1) \left( 4 \|\beta\|^2 + 2d \|\beta\| \|\Lambda^\perp\| \right) \right]
+$$
+已经通过对 `Λ` 算符的正交分解和利用ICO的“结构性归零”性质，在代数上证明了ICO策略的 $O(N^2)$ 项系数**必然**与 $\|\beta\|^2$ 和 $\|\beta\|\|\Lambda^\perp\|$ 有关。
+
+**核心论点**: 当一个信道是SQL信道时（即存在一种Kraus分解使得 $\beta=0$），界2的 $O(N^2)$ 项严格为零。这证明了ICO策略无法将一个SQL信道提升为HL信道，确立了与并行/自适应策略相同的SQL/HL划分标准。
+
+对于HL信道（$\min\|\beta\| \ne 0$），界2的 $N^2$ 系数 $4\|\beta\|^2 + 2d\|\beta\|\|\Lambda^\perp\|$ 与并行策略的系数 $4\|\beta\|^2$ 相比，多出了一项 $2d\|\beta\|\|\Lambda^\perp\|$。尽管数值上已经观察到对于某些信道，ICO策略可以在有限$N$时略微超越定序策略的界限，但这些证据表明这种超越可能是一个不依赖于$N$的常数，并不会改变 $O(N^2)$ 项的系数。一个合理的猜想是，ICO策略的渐近优势（即 $N \to \infty$ 时QFI的比值）为零。证明这一猜想是当前该领域的一个核心**开放问题**，其关键可能在于证明在最优策略下，信号-噪声交叉项的贡献是渐近次阶的，或者在KKT条件框架与大$N$极限下的代数和Kurdzialek中的迭代方法相结合。
+
+- [[整理前的ICO-QFI单步迭代证明思路4\|整理前的ICO-QFI单步迭代证明思路4]] 
 ### 证明思路5：建立ICO策略与并联策略的关系
 结合了证明思路2，但是基本失败了，参见[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]
 
