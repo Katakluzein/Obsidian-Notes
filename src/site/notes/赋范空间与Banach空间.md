@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/赋范空间与Banach空间/","tags":["#量子力学数学基础"]}
+{"dg-publish":true,"permalink":"/赋范空间与Banach空间/","tags":["量子力学数学基础"]}
 ---
 
 本节中的$\mathsf{X},\mathsf{Y}$均为赋范空间。

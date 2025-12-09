@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/论文阅读笔记/Comparison of Quantum Channels by Superchannels/","tags":["#量子信息","#开放量子系统","#不定因果与因果结构"]}
+{"dg-publish":true,"permalink":"/论文阅读笔记/Comparison of Quantum Channels by Superchannels/","tags":["量子信息","开放量子系统","不定因果与因果结构"]}
 ---
 
 # 论文信息和标签

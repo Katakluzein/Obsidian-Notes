@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/C star代数/","tags":["#量子力学数学基础"]}
+{"dg-publish":true,"permalink":"/C star代数/","tags":["量子力学数学基础"]}
 ---
 
 

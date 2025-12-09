@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Fundamental Limitations on the Recoverability of Quantum Processes/","tags":["#量子纠错","#开放量子系统"]}
+{"dg-publish":true,"permalink":"/Fundamental Limitations on the Recoverability of Quantum Processes/","tags":["量子纠错","开放量子系统"]}
 ---
 
 

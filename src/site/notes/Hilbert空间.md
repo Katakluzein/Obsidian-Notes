@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Hilbert空间/","tags":["#量子力学数学基础"]}
+{"dg-publish":true,"permalink":"/Hilbert空间/","tags":["量子力学数学基础"]}
 ---
 
 

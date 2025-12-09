@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/2 项目笔记/不定因果/项目：ICO metrology 的渐近行为/","tags":["#不定因果与因果结构","#量子精密测量"]}
+{"dg-publish":true,"permalink":"/2 项目笔记/不定因果/项目：ICO metrology 的渐近行为/","tags":["不定因果与因果结构","量子精密测量"]}
 ---
 
 # 背景介绍与问题引入
@@ -57,7 +57,7 @@
     *   $\mathsf{ICO} = \{ S \succeq 0 \mid \mathrm{tr}(S)=d^N, \mathcal{Q}_{\mathsf{ICO}}(S)=0 \}$。其中投影超算符定义为 $\mathcal{Q}_{\mathsf{ICO}} =  \bigotimes_{k=1}^N ( \mathcal{I} - \mathcal{D}_{T_k^\mathrm{o}} + \mathcal{D}_{T_k^\mathrm{i} T_k^\mathrm{o}} )  - \mathcal{D}_{T_{\text{tot}}^\mathrm{i} T_{\text{tot}}^\mathrm{o}}=  \bigotimes_{k=1}^N ( \mathcal{I} - \mathcal{D}_{T_k^\mathrm{o}} + \mathcal{D}_{T_k^\mathrm{i} T_k^\mathrm{o}} )  - \bigotimes_{k=1}^N \mathcal{D}_{T_{k}^\mathrm{i} T_{k}^\mathrm{o}}$，这里 $\mathcal{D}_X$ 是子系统 $X$ 上的完全退极化信道。
     *   $\mathsf{Para} = \{ S = \rho \otimes \mathbb{I}_{T_{\text{tot}}^\mathrm{o}} \mid \rho \succeq 0, \mathrm{tr}(\rho)=1 \}$。
 
-## 最优化问题 (Optimization Problem)
+## 最优化问题
 
 最大化 QFI 比值 $R(\mathcal{E}_g) = \mathcal{F}^{\mathsf{ICO}}_N(\mathcal{E}_g) / \mathcal{F}^{\mathsf{Para}}_N(\mathcal{E}_g)$ 的问题可表述为：
 
@@ -251,6 +251,12 @@ $$
 
 *   **系数优势的物理来源**:
     尽管渐近标度相同，ICO 策略仍然可能通过第二项 $2d \|\beta\| \|\Lambda^\perp\|$ 获得常数倍的系数优势。这解释了为何在特定信道（如 $\Lambda^\perp$ 很大的信道）中 ICO 能表现出优于并联策略的性能——它利用不定因果序提取了 $\Lambda^\perp$ 中的相干性并将其与 $\beta$ 耦合。
+
+2. **当前工具的局限性**： 对于最普适的 ICO (Gen) 策略，我们目前拥有的 **广义柯西-施瓦茨不等式** 及其在性能算符上的应用（如 Bound 2 的推导中所示）还不足以在不对称的交叉项上提供足够紧致的约束。Bound 2 的推导虽然在代数上消除了纯噪声项 ($\Lambda^\perp \otimes \Lambda^{\perp\dagger}$)，但 **未能消除信号-噪声交叉项** ($\Lambda^\parallel \otimes \Lambda^{\perp\dagger}$)，导致 $C_{\text{cross}}$ 最终保留下来。
+
+3. **定因果序（AD/CS）的成功经验**： Kurdziałek 等人在 2023 年的工作中，正是采用了 **单步迭代** 的方法，成功地证明了在定因果序（AD/CS）策略下，QFI 的增长满足更紧的界限： $$a^{(i+1)} \le a^{(i)} + |\alpha| + 2|\beta|\sqrt{a^{(i)}}$$ 该迭代不等式的解（$a^{(N)} \le N^2 |\beta|^2$ 加上次导项）**自动压制了** $N^2$ 交叉项的出现，从而在不依赖于对 $C_{\text{cross}}$ 进行复杂代数分析的情况下，证明了 AD/CS 策略的渐近等价性,。
+    
+
 
 此证明很大程度上解决了关于 ICO 渐近优势的猜想，并给出了比 Kurdziałek 迭代界限更精细的结构性解释。详细推导见附件 [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]]。
 

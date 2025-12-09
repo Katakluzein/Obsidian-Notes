@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Grand Unification of Quantum Algorithms/","tags":["#论文阅读笔记","#量子算法","#量子模拟"]}
+{"dg-publish":true,"permalink":"/Grand Unification of Quantum Algorithms/","tags":["论文阅读笔记","量子算法","量子模拟"]}
 ---
 
 好的，这是一份对论文《Grand Unification of Quantum Algorithms》的详细解析。

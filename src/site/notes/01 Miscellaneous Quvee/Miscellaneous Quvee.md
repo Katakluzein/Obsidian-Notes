@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/01 Miscellaneous Quvee/Miscellaneous Quvee/","tags":["#资源","#gardenEntry","gardenEntry"]}
+{"dg-publish":true,"permalink":"/01 Miscellaneous Quvee/Miscellaneous Quvee/","tags":["资源","gardenEntry"]}
 ---
 
 早上好，欢迎来到我的公开学习、研究笔记。

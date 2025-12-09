@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/How to develop good research questions/","tags":["#效率"]}
+{"dg-publish":true,"permalink":"/How to develop good research questions/","tags":["效率"]}
 ---
 
 

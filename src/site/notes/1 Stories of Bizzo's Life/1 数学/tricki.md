@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/1 Stories of Bizzo's Life/1 数学/tricki/","tags":["#数学技巧"]}
+{"dg-publish":true,"permalink":"/1 Stories of Bizzo's Life/1 数学/tricki/","tags":["数学技巧"]}
 ---
 
 ## 一般数学技巧
