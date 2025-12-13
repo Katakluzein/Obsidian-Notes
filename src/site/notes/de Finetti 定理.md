@@ -32,9 +32,35 @@ $$
     $$
     P(X_1=x_1, \dots, X_n=x_n) = \int_0^1 \theta^k (1-\theta)^{n-k} \, d\mu(\theta)
     $$
-    其中 $k = \sum_{i=1}^n x_i$ 是序列中结果为“1”的次数。
+    其中 $k = \sum_{i=1}^n x_i$ 是序列中结果为“1”的次数。如果已知联合概率分布，那我们就可以得到$\Theta$的各阶矩，从而确定概率分布本身。
+    
 
----
+**德·菲内蒂定理 (一般形式):**
+
+设 $X_1, X_2, \dots$ 是一个取值于某个**标准波莱尔空间 (Standard Borel Space)** $\mathcal{X}$ 的可交换随机变量序列。（您可以将 $\mathcal{X}$ 想象成任何“良好”的空间，比如实数轴 $\mathbb{R}$、欧几里得空间 $\mathbb{R}^d$，或者任何完备可分的度量空间）。
+
+那么，**必然存在**一个随机变量 $P$，其取值是 $\mathcal{X}$ 上的**概率测度 (probability measures)** 的集合 $\mathcal{M}(\mathcal{X})$，使得：
+
+1.  **条件独立同分布:** 给定 $P=p$ (其中 $p$ 是 $\mathcal{X}$ 上的一个具体概率分布)，序列 $X_1, X_2, \dots$ 是**条件独立同分布的**，并且它们共同的分布就是 $p$。
+
+2.  **混合表示:** 任何有限序列的联合概率测度都可以表示为一个**混合积分**：
+    $$
+    \mathbb{P}(X_1 \in A_1, \dots, X_n \in A_n) = \int_{\mathcal{M}(\mathcal{X})} \left( \prod_{i=1}^n p(A_i) \right) \, d\mu(p)
+    $$
+    其中：
+    *   $A_1, \dots, A_n$ 是空间 $\mathcal{X}$ 中的可测集。
+    *   $p$ 是一个具体的概率测度（例如，一个高斯分布 $N(\mu, \sigma^2)$）。
+    *   $p(A_i) = \int_{A_i} dp$ 是测度 $p$ 赋予集合 $A_i$ 的概率。
+    *   $\mu(p)$ 是随机测度 $P$ 在所有可能测度构成的空间 $\mathcal{M}(\mathcal{X})$ 上的**先验分布**。
+
+用更普通的记号写成
+$$P(X_1=x_1, \dots, X_n=x_n) = \int P(\theta) \prod_{i=1}^n P(x_i|\theta) d\theta$$
+
+**这个一般形式告诉我们什么？**
+
+它惊人地普适。无论你观察的是一系列可交换的抛硬币结果（$\mathcal{X}=\{0,1\}$），还是一系列可交换的某粒子的测量位置（$\mathcal{X}=\mathbb{R}^3$），或是一系列可交换的股票日收益率（$\mathcal{X}=\mathbb{R}$），德·菲内蒂定理都保证了其背后存在一个“元随机性”——即一个关于**概率分布本身**的概率分布。
+
+我们观测到的数据序列，可以被看作是这个元随机性“实例化”为一个具体的概率分布后，再从该实例中独立抽样的结果。这个两层结构（层次模型）是贝叶斯统计的核心，而德·菲内蒂定理为其提供了最根本的理论依据。
 
 ### **关键推论：随机变量 $\Theta$ 的操作性定义**
 
@@ -105,6 +131,9 @@ $P(X_1=1, X_2=1) = \int \theta^2 d\mu(\theta) = 0$。这意味着概率分布 $\
 #### **3. 推广**
 
 德·菲内蒂定理可以从二元变量推广到更一般的随机变量（例如，取有限个或连续值的变量），此时的混合模型将不再是伯努利分布的混合，而是其他指数族分布的混合。量子力学中也有相应的**量子德·菲内蒂定理 (Quantum de Finetti Theorem)**，它在量子信息论，特别是量子密码学的安全性证明中扮演着至关重要的角色。
+
+## 关联
+- [probability - What is so cool about de Finetti's representation theorem? - Cross Validated](https://stats.stackexchange.com/questions/34465/what-is-so-cool-about-de-finettis-representation-theorem) 
 # 松散的内容
 
 [[de Finetti 定理松散的内容\|de Finetti 定理松散的内容]] 

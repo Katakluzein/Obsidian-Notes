@@ -146,7 +146,7 @@ $$
 ## ICO无渐近优势的证明思路
 
 当前数值分析和物理直觉都表明实际上ICO没有任何渐近优势，即$R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}\to 1~(N\to\infty)$，下面考虑其证明  
-### 证明思路1：渐近KKT条件
+### 证明思路1：扰动KKT条件
 
 *   **核心思想**: 尽管我们不知道最优并行策略 $S^*_{\text{Para}}$ 的确切形式，但 **Zhou and Jiang** 的工作告诉我们它的**结构性质**（即，它是在逻辑层面上的GHZ态或自旋压缩态的物理实现）。我们可以利用这些已知的结构性质，尝试为 $S^*_{\text{Para}}$ 构造一组“渐近满足”ICO问题KKT条件的对偶变量。为了分析比值 $R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}$ 在 $N \to \infty$ 时的行为，我们需要为分子（ICO策略的QFI）建立一个有效的渐近上界，并与分母（并行策略的QFI）的已知渐近行为进行比较。对于作为分母的并行策略，其渐近行为已有深入研究（上一节）。
 
@@ -157,7 +157,10 @@ $$
     4.  核心是证明**渐近互补松弛性**，即证明 $\lim_{N\to\infty} \frac{\operatorname{tr}(Y_N S^*_{\text{Para}})}{\mathcal{F}^{\mathsf{Para}}_N} = 0$。
 
 为了能将这个思路推广到最一般的情形中，先对简单的例子来试验一下，已知噪声优先垂直退相干，即先做比特翻转错误再做z轴旋转能达到海森堡极限（[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]）。
-
+- [[用近似互补松弛证明逻辑GHZ态在ICO中的最优性\|用近似互补松弛证明逻辑GHZ态在ICO中的最优性]] 
+相关论文
+- [[On Approximate KKT Condition and its Extension to Continuous Variational Inequalities\|On Approximate KKT Condition and its Extension to Continuous Variational Inequalities]]
+- [[Approximate KKT points and a proximity measure for termination\|Approximate KKT points and a proximity measure for termination]] 
 ### 证明思路2：通过构造对偶上界来约束ICO的QFI（当前最优希望的路径）
 
 我们的总体策略是为ICO策略下的最大QFI（$\mathcal{F}_N^{\text{ICO}}$）建立一个普适的**上界**，并证明这个上界在 $N\to\infty$ 的极限下，其主导项与已知的、可达到的并行策略QFI（这是一个**下界**）相吻合。
@@ -176,7 +179,7 @@ $$
     $$
 3.  **选择Ansatz**: 为了使上界尽可能紧，我们选择一个物理意义明确的 $h$，即并行策略下的最优解 $h_{Para}^*$。对于垂直退相干模型，已经严格证明（[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]） $h_{Para}^*=0$。因此，上界简化为：
     $$
-    \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) \le d_{\text{out}}^N \cdot \left( \min_{E} \|\Omega(0) - \mathcal{Q}_{\text{ICO}}(E)\|_{\infty} \right)
+    \mathcal{F}_N^{\text{ICO}}(\mathcal{E}_g) \le d^N \cdot \left( \min_{E} \|\Omega(0) - \mathcal{Q}_{\text{ICO}}(E)\|_{\infty} \right)
     $$
 
 #### 两条失败的路径
@@ -259,8 +262,8 @@ $$
 
 此证明很大程度上解决了关于 ICO 渐近优势的猜想，并给出了比 Kurdziałek 迭代界限更精细的结构性解释。详细推导见附件 [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]]。
 
+- [[完整ICO-QFI迭代的的过度放大的原因分析\|完整ICO-QFI迭代的的过度放大的原因分析]]  
 #### 用完整迭代依然能够得到HL的界
-
 - [[用性能算符的完整迭代得到HL界\|用性能算符的完整迭代得到HL界]] 
 
 ### 证明思路4：QFI的单步迭代公式与ICO策略的渐近行为
