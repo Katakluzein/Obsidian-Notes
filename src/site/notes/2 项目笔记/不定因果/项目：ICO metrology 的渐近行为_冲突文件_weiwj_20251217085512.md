@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/2 项目笔记/不定因果/项目：ICO metrology 的渐近行为/","tags":["不定因果与因果结构","量子精密测量"]}
+{"dg-publish":true,"permalink":"/2 项目笔记/不定因果/项目：ICO metrology 的渐近行为_冲突文件_weiwj_20251217085512/","tags":["不定因果与因果结构","量子精密测量"]}
 ---
 
 # 背景介绍与问题引入
@@ -145,10 +145,10 @@ $$
 
 ## ICO无渐近优势的证明思路
 
-当前数值分析和物理直觉都表明实际上ICO没有任何渐近优势，即$$R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}\to 1~(N\to\infty)$$下面考虑其证明  
-### 证明思路1：近似互补松弛
+当前数值分析和物理直觉都表明实际上ICO没有任何渐近优势，即$R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}\to 1~(N\to\infty)$，下面考虑其证明  
+### 证明思路1：扰动KKT条件
 
-*   **核心思想**: [[用近似互补松弛证明逻辑GHZ态在ICO中的最优性\|用近似互补松弛证明逻辑GHZ态在ICO中的最优性]] 。尽管我们不知道最优并行策略 $S^*_{\text{Para}}$ 的确切形式，但 **Zhou and Jiang** 的工作告诉我们它的**结构性质**（即，它是在逻辑层面上的GHZ态或自旋压缩态的物理实现）。我们可以利用这些已知的结构性质，尝试为 $S^*_{\text{Para}}$ 构造一组“渐近满足”ICO问题KKT条件的对偶变量。为了分析比值 $R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}$ 在 $N \to \infty$ 时的行为，我们需要为分子（ICO策略的QFI）建立一个有效的渐近上界，并与分母（并行策略的QFI）的已知渐近行为进行比较。对于作为分母的并行策略，其渐近行为已有深入研究（上一节）。
+*   **核心思想**: 尽管我们不知道最优并行策略 $S^*_{\text{Para}}$ 的确切形式，但 **Zhou and Jiang** 的工作告诉我们它的**结构性质**（即，它是在逻辑层面上的GHZ态或自旋压缩态的物理实现）。我们可以利用这些已知的结构性质，尝试为 $S^*_{\text{Para}}$ 构造一组“渐近满足”ICO问题KKT条件的对偶变量。为了分析比值 $R_N(\mathsf{E}_g) = \frac{\mathcal{F}^{\mathsf{ICO}}_N(\mathsf{E}_g)}{\mathcal{F}^{\mathsf{Para}}_N(\mathsf{E}_g)}$ 在 $N \to \infty$ 时的行为，我们需要为分子（ICO策略的QFI）建立一个有效的渐近上界，并与分母（并行策略的QFI）的已知渐近行为进行比较。对于作为分母的并行策略，其渐近行为已有深入研究（上一节）。
 
 *   **关键步骤**:
     1.  写出适用于一般非幺正信道的、完整的**ICO问题KKT（鞍点）条件**。KKT条件详见tex文档章节 ：对 min-max 问题直接构建最优 ICO 策略的 KKT（鞍点）条件
@@ -157,13 +157,11 @@ $$
     4.  核心是证明**渐近互补松弛性**，即证明 $\lim_{N\to\infty} \frac{\operatorname{tr}(Y_N S^*_{\text{Para}})}{\mathcal{F}^{\mathsf{Para}}_N} = 0$。
 
 为了能将这个思路推广到最一般的情形中，先对简单的例子来试验一下，已知噪声优先垂直退相干，即先做比特翻转错误再做z轴旋转能达到海森堡极限（[[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]]）。
-- [[ICO-QFI对偶变量的构造\|ICO-QFI对偶变量的构造]]
-- [[最优并联策略：逻辑GHZ态\|最优并联策略：逻辑GHZ态]]
 - [[用近似互补松弛证明逻辑GHZ态在ICO中的最优性\|用近似互补松弛证明逻辑GHZ态在ICO中的最优性]] 
 相关论文
 - [[On Approximate KKT Condition and its Extension to Continuous Variational Inequalities\|On Approximate KKT Condition and its Extension to Continuous Variational Inequalities]]
 - [[Approximate KKT points and a proximity measure for termination\|Approximate KKT points and a proximity measure for termination]] 
-### 证明思路2：通过构造对偶上界来约束ICO的QFI
+### 证明思路2：通过构造对偶上界来约束ICO的QFI（当前最优希望的路径）
 
 我们的总体策略是为ICO策略下的最大QFI（$\mathcal{F}_N^{\text{ICO}}$）建立一个普适的**上界**，并证明这个上界在 $N\to\infty$ 的极限下，其主导项与已知的、可达到的并行策略QFI（这是一个**下界**）相吻合。
 从最简单的能够达到海森堡极限的**噪声优先的垂直退相干**模型开始，这个模型的渐近最优初态不需要加入辅助系统，且最优初态是GHZ态，希望对这个模型的理解最终推广到一般的信道（以逻辑GHZ态为最优初态）中。
@@ -260,6 +258,8 @@ $$
 
 3. **定因果序（AD/CS）的成功经验**： Kurdziałek 等人在 2023 年的工作中，正是采用了 **单步迭代** 的方法，成功地证明了在定因果序（AD/CS）策略下，QFI 的增长满足更紧的界限： $$a^{(i+1)} \le a^{(i)} + |\alpha| + 2|\beta|\sqrt{a^{(i)}}$$ 该迭代不等式的解（$a^{(N)} \le N^2 |\beta|^2$ 加上次导项）**自动压制了** $N^2$ 交叉项的出现，从而在不依赖于对 $C_{\text{cross}}$ 进行复杂代数分析的情况下，证明了 AD/CS 策略的渐近等价性,。
     
+
+
 此证明很大程度上解决了关于 ICO 渐近优势的猜想，并给出了比 Kurdziałek 迭代界限更精细的结构性解释。详细推导见附件 [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]]。
 
 - [[完整ICO-QFI迭代的的过度放大的原因分析\|完整ICO-QFI迭代的的过度放大的原因分析]]  
