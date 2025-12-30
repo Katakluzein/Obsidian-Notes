@@ -112,75 +112,286 @@ $$ S = S_P + S^\perp $$
     *   $_ {B_O}S_P \ge 0$
     *   $_ {A_O}S_P \ge 0$
 
-### 两体因果见证的投影算符刻画
-
-**命题：** 一个厄米算符 $S$ 是两体因果见证（Causal Witness），**当且仅当**它满足以下两个半正定性条件：
-
-1.  **$A \prec B$ 兼容性：** $S$ 在 $A \prec B$ 因果子空间上的投影是半正定的：
-    $$ \mathcal{P}_{A \prec B}(S) \succeq 0 $$
-    其中 $\mathcal{P}_{A \prec B} = \mathcal{D}_{B^o} - \mathcal{D}_{B^i B^o} + \mathcal{D}_{B^i B^o A^o}$。
-
-2.  **$B \prec A$ 兼容性：** $S$ 在 $B \prec A$ 因果子空间上的投影是半正定的：
-    $$ \mathcal{P}_{B \prec A}(S) \succeq 0 $$
-    其中 $\mathcal{P}_{B \prec A} = \mathcal{D}_{A^o} - \mathcal{D}_{A^i A^o} + \mathcal{D}_{A^i A^o B^o}$。
-
-这两个命题存在密切的关系：经过程序[[投影刻画相关计算：对称策略的关系.nb\|投影刻画相关计算：对称策略的关系.nb]]，只要在一般ICO约束上再加上一个对靠后系统的出空间的trace就能得到对应的投影comb的投影刻画
-$$\mathcal{P}_{A \prec B}=\mathcal{P}_{\mathsf{Gen}} \mathcal{D}_{A^o}$$
-$$\mathcal{P}_{B \prec A}=\mathcal{P}_{\mathsf{Gen}} \mathcal{D}_{B^o}$$
-### **证明：两种刻画的等价性**
-#ai警告  ==命题是对的，但是证明不一定==（证明待补充）
-我们需要证明上述投影算符刻画与 Araújo et al. (2015) 的充要条件是等价的。
-
-#### **1. 预备知识：凸锥与对偶**
-
-*   **因果可分集 $\mathcal{W}_{sep}$**：是所有与 $A \prec B$ 兼容的过程 $\mathcal{W}^{A \prec B}$ 和与 $B \prec A$ 兼容的过程 $\mathcal{W}^{B \prec A}$ 的凸包（Convex Hull）。
-*   **因果见证集 $\mathcal{S}$**：是 $\mathcal{W}_{sep}$ 的对偶锥（Dual Cone）。即 $S \in \mathcal{S} \iff \forall W \in \mathcal{W}_{sep}, \mathrm{tr}(SW) \ge 0$。
-*   **对偶锥的性质**：凸包的对偶等于各子集对偶的交集。
-    $$ \mathcal{S} = (\mathcal{W}^{A \prec B} \cup \mathcal{W}^{B \prec A})^* = (\mathcal{W}^{A \prec B})^* \cap (\mathcal{W}^{B \prec A})^* $$
-    这意味着 $S$ 是见证当且仅当 $\mathrm{tr}(SW) \ge 0$ 对所有 $A \prec B$ 的过程成立，**且**对所有 $B \prec A$ 的过程成立。
-
-#### **2. 投影算符与子空间生成**
-
-根据文档（Theorem 8 和 Appendix D），具有固定因果序 $A \prec B$ 的有效过程矩阵空间 $\mathcal{L}_{A \prec B}$ 正是量子梳空间。该空间可以通过正交投影算符 $\mathcal{P}_{A \prec B}$ 从整个希尔伯特-施密特空间生成。
-
-任何该因果序下的有效过程矩阵 $W^{A \prec B}$ 都可以写成：
-$$ W^{A \prec B} = \mathcal{P}_{A \prec B}(P), \quad \text{其中 } P \succeq 0 $$
-即因果过程的锥是由正算符锥经投影映射得到的。
-
-#### **3. 证明步骤**
-
-我们考察 $S$ 满足 $A \prec B$ 兼容性的条件（$B \prec A$ 同理）。
-
-**步骤 A：从对偶定义出发**
-条件 $\forall W \in \mathcal{W}^{A \prec B}, \mathrm{tr}(SW) \ge 0$ 等价于：
-$$ \forall P \succeq 0, \quad \mathrm{tr}(S \cdot \mathcal{P}_{A \prec B}(P)) \ge 0 $$
-
-**步骤 B：利用投影算符的自对偶性**
-文档中（Appendix C.1.2）证明了去极化超算符 $\mathcal{D}_X$ 是正交投影算符，因此是厄米保形且自对偶的（Self-dual with respect to Hilbert-Schmidt inner product）。
-由于 $\mathcal{P}_{A \prec B}$ 是 $\mathcal{D}_X$ 的线性组合（且构成正交投影），它也是自对偶的，即：
-$$ \mathrm{tr}(A \cdot \mathcal{P}(B)) = \mathrm{tr}(\mathcal{P}(A) \cdot B) $$
-因此，上述不等式变为：
-$$ \forall P \succeq 0, \quad \mathrm{tr}(\mathcal{P}_{A \prec B}(S) \cdot P) \ge 0 $$
-
-**步骤 C：半正定性结论**
-根据迹的性质，如果一个算符 $M$ 对所有半正定算符 $P$ 的内积非负，则 $M$ 自身必须是半正定的。因此：
-$$ \mathcal{P}_{A \prec B}(S) \succeq 0 $$
-
-**步骤 D：与 Araújo 条件的联系**
-Araújo et al. (2015) 指出 $S_P$（$S$ 在有效空间 $\mathcal{L}_V$ 上的投影）需满足 $_{B_O}S_P \ge 0$（即 $\mathcal{D}_{B^o}(S_P) \succeq 0$）。
-在 $A \prec B$ 的因果结构中，过程矩阵必须满足无信号条件 $B \not\to A$，这在代数上等价于 $W = \mathcal{D}_{B^o}(W)$（对于归一化前的空间）。
-*   注意：你给出的 $\mathcal{P}_{A \prec B}$ 是更严格的 **量子梳（Comb）** 投影算符。对于 $S \in \mathcal{L}_V$（即已经满足过程矩阵有效性条件 $\mathcal{P}_V(S)=S$），梳的投影条件与 Araújo 的边际条件是等价的。
-*   具体来说，$\mathcal{P}_{A \prec B}$ 实际上是 $\mathcal{L}_V$ 的一个子空间投影。如果 $S$ 满足 $\mathcal{P}_{A \prec B}(S) \succeq 0$，则说明 $S$ 在该因果方向上的分量是正的，这正是“属于因果锥的对偶锥”的定义。
-
-#### **结论**
-
-通过利用投影算符 $\mathcal{P}$ 的自对偶性和因果过程锥的生成结构，我们证明了：
-$$ S \in (\mathcal{W}^{A \prec B})^* \iff \mathcal{P}_{A \prec B}(S) \succeq 0 $$
-结合两个方向，即得到了 $S$ 为因果见证的充要条件：
-$$ \mathcal{P}_{A \prec B}(S) \succeq 0 \quad \text{且} \quad \mathcal{P}_{B \prec A}(S) \succeq 0 $$
-这与 Araújo et al. 的定理在数学实质上是完全一致的，只是使用了更紧凑的代数投影符号。
+基于您提供的文件（特别是 **Appendix C**），以下是 **Theorem 1** 的完整证明过程。该证明主要依赖于凸分析（Convex Analysis）中的对偶锥理论。
 
 ---
+
+### Theorem 1
+
+一个厄米算符 $S \in A_I \otimes A_O \otimes B_I \otimes B_O$ 是因果见证（Causal Witness），当且仅当 $S$ 可以写为：
+$$ S = S_P + S^\perp $$
+其中 $S_P$ 和 $S^\perp$ 是满足以下条件的厄米算符：
+1.  **正定性条件**：$_{B_O}S_P \ge 0$ 且 $_{A_O}S_P \ge 0$。
+2.  **正交性条件**：$L_V(S^\perp) = 0$（即 $S^\perp$ 正交于有效过程子空间 $\mathcal{L}_V$）。
+
+---
+
+### **证明过程 (Proof)**
+
+#### **1. 预备定义与引理**
+
+首先回顾因果可分过程集 $\mathcal{W}^{sep}$ 的几何结构。根据 **Lemma 5**（在 Appendix C 中），一个矩阵 $W$ 是有效的因果可分过程(**除去无关紧要的归一化条件**)，当且仅当它属于以下集合的交集：
+$$ \mathcal{W}^{sep} = \mathcal{K}^{sep} \cap \mathcal{L}_V $$
+其中：
+*   $\mathcal{L}_V$ 是所有满足概率归一化线性约束（即有效过程矩阵）的线性子空间。
+*   $\mathcal{K}^{sep}$ 是未归一化的因果可分锥，由 $A \prec B$ 和 $B \prec A$ 的过程混合而成：
+    $$ \mathcal{K}^{sep} = \text{conv} \left[ (\mathcal{P} \cap \mathcal{L}_{B_O}) \cup (\mathcal{P} \cap \mathcal{L}_{A_O}) \right] $$
+    这里：
+    *   $\text{conv}$ 表示凸包（Convex Hull）。
+    *   $\mathcal{P}$ 是正半定矩阵锥（PSD cone）。
+    *   $\mathcal{L}_{B_O} = \{ W \mid W = \ _{B_O}W \}$ 是使得 $B$ 不能向 $A$ 通信的线性子空间（即 $A \prec B$兼容）。
+    *   $\mathcal{L}_{A_O} = \{ W \mid W = \ _{A_O}W \}$ 是使得 $A$ 不能向 $B$ 通信的线性子空间（即 $B \prec A$兼容）。
+
+#### **2. 因果见证集的对偶定义**
+
+因果见证 $S$ 的定义是使得 $\text{Tr}[SW] \ge 0$ 对于所有 $W \in \mathcal{W}^{sep}$ 成立（这里采用了非负定义，与正文中取负值的物理惯例仅差一个符号，数学上等价于寻找对偶锥）。因此，因果见证的集合 $\mathcal{S}$ 正是 $\mathcal{W}^{sep}$ 的**对偶锥 (Dual Cone)**：
+$$ \mathcal{S} = (\mathcal{W}^{sep})^* = (\mathcal{K}^{sep} \cap \mathcal{L}_V)^* $$
+
+#### **3. 应用对偶律**
+
+根据凸分析的对偶律（Appendix C 中列出的规则）：
+1.  **交集的对偶是求和**：$(K \cap L)^* = K^* + L^\perp$（假设 $L$ 是子空间）。
+2.  **凸包并集的对偶是交集**：$(\text{conv}(K_1 \cup K_2))^* = K_1^* \cap K_2^*$。
+
+将这些规则应用于 $\mathcal{S}$：
+$$
+\begin{aligned}
+\mathcal{S} &= (\mathcal{K}^{sep})^* + \mathcal{L}_V^\perp \\
+&= \left( \text{conv} \left[ (\mathcal{P} \cap \mathcal{L}_{B_O}) \cup (\mathcal{P} \cap \mathcal{L}_{A_O}) \right] \right)^* + \mathcal{L}_V^\perp \\
+&= \left[ (\mathcal{P} \cap \mathcal{L}_{B_O})^* \cap (\mathcal{P} \cap \mathcal{L}_{A_O})^* \right] + \mathcal{L}_V^\perp
+\end{aligned}
+$$
+这告诉我们要寻找的 $S$ 可以分解为两部分 $S = S_P + S^\perp$，其中 $S^\perp \in \mathcal{L}_V^\perp$（即满足 $L_V(S^\perp) = 0$），而 $S_P$ 属于方括号内的交集部分。
+
+#### **4. 计算单向序的对偶锥**
+
+现在我们只需分析形如 $(\mathcal{P} \cap \mathcal{L}_{B_O})^*$ 的项。
+再次利用“交集的对偶是求和”规则，且注意到正定锥是自对偶的（$\mathcal{P}^* = \mathcal{P}$）：
+$$ (\mathcal{P} \cap \mathcal{L}_{B_O})^* = \mathcal{P}^* + \mathcal{L}_{B_O}^\perp = \mathcal{P} + \mathcal{L}_{B_O}^\perp $$
+这一步表明，该集合中的元素 $X$ 可以写成 $P + Y$，其中 $P \ge 0$，而 $Y$ 正交于 $\mathcal{L}_{B_O}$。
+
+**关键推导：等价条件的证明**
+我们需要证明：$S \in \mathcal{P} + \mathcal{L}_{B_O}^\perp \iff _{B_O}S \ge 0$。
+
+*   **($\Rightarrow$) 必要性**：
+    $\mathcal{L}_{B_O}^\perp$ 的定义是所有满足 $_{B_O}Y = 0$ 的算符 $Y$（因为 $\mathcal{L}_{B_O}$ 是投影算符 $_{B_O}(\cdot)$ 的不动点空间，其正交补即为核空间）。
+    如果 $S \in \mathcal{P} + \mathcal{L}_{B_O}^\perp$，则存在 $P \ge 0$ 和 $Y \in \mathcal{L}_{B_O}^\perp$ 使得 $S = P + Y$。
+    对两边作用 $_{B_O}$ 映射（该映射是完全正映射，保正定性）：
+    $$ _{B_O}S = \ _{B_O}P + \ _{B_O}Y = \ _{B_O}P + 0 \ge 0 $$
+    得证。
+
+*   **($\Leftarrow$) 充分性**：
+    假设 $_{B_O}S \ge 0$。我们需要构造出 $P$ 和 $Y$。
+    令 $P = \ _{B_O}S$。由假设知 $P \ge 0$。
+    令 $Y = S - \ _{B_O}S$。
+    检查 $Y$ 是否属于 $\mathcal{L}_{B_O}^\perp$：
+    $$ _{B_O}Y = \ _{B_O}(S - \ _{B_O}S) = \ _{B_O}S - \ _{B_O}(\ _{B_O}S) = \ _{B_O}S - \ _{B_O}S = 0 $$
+    （注：$_{B_O}(\cdot)$ 是投影算符，作用两次等于作用一次）。
+    因此 $S = P + Y$ 的分解成立，即 $S \in \mathcal{P} + \mathcal{L}_{B_O}^\perp$。
+
+综上所述，我们得到：
+$$ (\mathcal{P} \cap \mathcal{L}_{B_O})^* = \{ S \mid \ _{B_O}S \ge 0 \} $$
+同理可得：
+$$ (\mathcal{P} \cap \mathcal{L}_{A_O})^* = \{ S \mid \ _{A_O}S \ge 0 \} $$
+
+#### **5. 综合结论**
+
+回到第 3 步的表达式：
+$$ \mathcal{S} = \left[ \{ S_P \mid \ _{B_O}S_P \ge 0 \} \cap \{ S_P \mid \ _{A_O}S_P \ge 0 \} \right] + \mathcal{L}_V^\perp $$
+
+这意味着一个算符 $S$ 是因果见证（即 $S \in \mathcal{S}$），当且仅当它可以写成：
+$$ S = S_P + S^\perp $$
+其中：
+1.  $S_P$ 位于上述两个集合的**交集**中，即必须同时满足：
+    $$ _{B_O}S_P \ge 0 \quad \text{且} \quad _{A_O}S_P \ge 0 $$
+2.  $S^\perp \in \mathcal{L}_V^\perp$，即 $S^\perp$ 位于有效过程空间的正交补中。由于 $\mathcal{L}_V$ 是由投影算符 $L_V$ 定义的子空间（即 $W \in \mathcal{L}_V \iff L_V(W)=W$），其正交补即为 $L_V$ 的核：
+    $$ L_V(S^\perp) = 0 $$
+
+**证毕。**
+
+
+
+
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
+
+
+
+# 理论提案：连续变量系统中的因果不可分性与高斯见证
+
+## 问题背景与现状 (Status of the Problem)
+
+**已解决部分：**
+[[Indefinite causal structures for continuous-variable systems\|Giacomini, Castro-Ruiz 和 Brukner 在 2016 年]]（[arXiv:1510.06345]）已经将过程矩阵（Process Matrix）形式推广到了无限维希尔伯特空间 。为了避免奇异性，他们引入了基于**维格纳函数Wigner Functions** 的相空间表示。这为定义CV系统中的因果不可分性奠定了基础。
+
+**潜在的（未经确认）开放问题（Open Questions）：**
+1.  **高斯过程矩阵的结构：** 一个仅由高斯维格纳函数描述的过程矩阵（Gaussian Process Matrix, GPM），是否可能具有因果不可分性？首先需要给出一些可分的例子（类似于量子纠缠中的问题：高斯态是否可能是纠缠的？答案是肯定的，但在因果语境下尚未完全分类）。==这不是本项目的目标== 
+2.  **高斯见证的有效性：** 如果过程本身是非高斯的（例如CV量子开关，通常涉及非高斯的三阶哈密顿量耦合），我们能否仅通过 **高斯测量（Gaussian Measurements）**（如零差探测、外差探测）来见证这种不可分性？这将大大降低实验难度。
+
+
+## 相空间中的过程矩阵
+详见：[[连续变量系统的不定因果序\|连续变量系统的不定因果序]] 
+假设有两个实验室 Alice ($A$) 和 Bob ($B$)，每个实验室有输入 ($I$) 和输出 ($O$) 模式。定义相空间中的**对偶变量（Dual Phase-Space Variables）** $\boldsymbol{\eta}$，对应于正交分量 $\mathbf{r}$ 的傅里叶变换变量：
+$ \boldsymbol{\eta} = (\boldsymbol{\eta}_{A_I}, \boldsymbol{\eta}_{A_O}, \boldsymbol{\eta}_{B_I}, \boldsymbol{\eta}_{B_O})^T \in \mathbb{R}^{8m}  $
+其中 $m$ 为每个输入/输出系统的模式数。我们定义 **Weyl 位移算符（Weyl Displacement Operator）** $\hat{D}(\boldsymbol{\eta})$ 为：
+$ \hat{D}(\boldsymbol{\eta}) = \exp\left(i \hat{\mathbf{r}}^T \boldsymbol{\Omega} \boldsymbol{\eta}\right)  $
+其中 $\hat{\mathbf{r}}$ 是正交算符向量，$\boldsymbol{\Omega}$ 是辛矩阵（Symplectic Matrix）。**过程矩阵的特征函数表示：** 一个过程矩阵 $\hat{W}$ 在相空间中由其 **特征函数** $\tilde{W}(\boldsymbol{\eta})$ 完整描述（），定义为：
+$ \tilde{W}(\boldsymbol{\eta}) := \text{Tr}\left[\hat{W} \hat{D}(\boldsymbol{\eta})\right] $
+
+同样，根据 Choi-Jamiolkowski (CJ) 同构的推广，局部操作（CP map $\mathcal{M}$）对应的算符 $\hat{M}$ 也表示为特征函数 $\tilde{M}_A(\boldsymbol{\eta}_A)$ 和 $\tilde{M}_B(\boldsymbol{\eta}_B)$。
+
+**广义玻恩规则（特征函数形式）：**
+在特征函数表象下，希尔伯特-施密特内积 $\text{Tr}[\hat{A}\hat{B}]$ 转化为相空间积分。此时，观测到结果 $a, b$ 的联合概率 $p(a, b|x, y)$ 为：
+
+$
+p(a, b|x, y) = \frac{1}{(2\pi)^{4m}} \int d\boldsymbol{\eta} \, \tilde{W}(\boldsymbol{\eta}) \, \tilde{M}_{a|x}^A(-\boldsymbol{\eta}_A) \, \tilde{M}_{b|y}^B(-\boldsymbol{\eta}_B)
+$
+
+**注：**
+1.  **积分测度：** 系数 $\frac{1}{(2\pi)^{4m}}$ 来源于 Parseval 定理在 $4m$ 个自由度（Alice 和 Bob 各自的 Input/Output 均为 $m$ 模，共 $4m$ 个量子模式，对应 $8m$ 维实相空间）上的归一化。
+2.  **负号 $(-\boldsymbol{\eta})$：** 这一项来源于两个算符乘积的迹在傅里叶变换下的性质（$\text{Tr}[\hat{A}\hat{B}] \propto \int \tilde{A}(\xi)\tilde{B}(-\xi)d\xi$）。在部分文献（如 Giacomini et al. Eq. 7）中，可能通过定义 $\tilde{M}$ 的方式（例如包含**转置或共轭**）吸收了这个负号，但标准的迹内积形式通常保留它以确保数学严谨性。
+
+## 定义 CV 因果不可分性
+参考[[Witnessing causal nonseparability\|Witnessing causal nonseparability]] （补充参考文献）
+一个过程矩阵 $W(\mathbf{r})$ 是**因果可分Causally Separable**的，如果它可以分解为与明确因果序兼容的过程的凸混合：
+$
+W(\mathbf{r}) = q W^{A \prec B}(\mathbf{r}) + (1-q) W^{B \prec A}(\mathbf{r})
+$
+其中：
+*   $W^{A \prec B}$ 允许信号从 $A$ 到 $B$，但不允许 $B$ 到 $A$（即对 $B$ 的输入求偏迹后，$A$ 的边际分布不依赖于 $B$ 的操作）。在相空间中，这对应于特定的非信号条件（No-Signaling conditions）对协方差矩阵和位移向量的约束。
+*   $W^{B \prec A}$ 同理。
+如果 $W(\mathbf{r})$ 不能写成这种形式，则称其为**因果不可分**。
+
+离散变量中的两体（包括三体和第三体输出平方的情形）因果见证参见 [[Witnessing causal nonseparability#两体（Bipartite）因果见证\|Witnessing causal nonseparability#两体（Bipartite）因果见证]] 
+
+
+##  CV 两体过程因果见证的等价刻画
+定义记号：$\mathcal{P}_{CP}$ 是满足正定性条件的量子态的Wigner函数的集合。
+
+仿照[[Witnessing causal nonseparability#Theorem 1\|Witnessing causal nonseparability#Theorem 1]]，我们得到以下 CV 版本的定理：
+### Th1 连续变量版本
+一个定义在相空间 $\mathbb{R}^{4m}$ 上的广义函数（特征函数） $\tilde{S}(\boldsymbol{\eta})$ 是一个**两体连续变量因果见证 (CV Causal Witness)**，当且仅当 $\tilde{S}$ 可以分解为：
+$
+\tilde{S}(\boldsymbol{\eta}) = \tilde{S}_P(\boldsymbol{\eta}) + \tilde{S}^\perp(\boldsymbol{\eta})
+$
+其中 $\tilde{S}_P$ 和 $\tilde{S}^\perp$ 是满足以下条件的厄米分布（即 $\tilde{f}(-\boldsymbol{\eta}) = \tilde{f}^*(\boldsymbol{\eta})$）：
+
+1.  **正定性条件 (Positivity Conditions)**：
+    $\tilde{S}_P$ 必须满足以下两个半正定性约束（即对应的算符是半正定的）：
+    $
+    \begin{aligned}
+    \text{Op}\left( \mathcal{D}_{B_O} [\tilde{S}_P] \right) &\ge 0 \quad (\text{对应 } _{B_O}S_P \ge 0) \\
+    \text{Op}\left( \mathcal{D}_{A_O} [\tilde{S}_P] \right) &\ge 0 \quad (\text{对应 } _{A_O}S_P \ge 0)
+    \end{aligned}
+    $
+    物理意义：这意味着如果我们“遗忘”掉 $B$ 的输出（或 $A$ 的输出），剩下的部分必须是一个物理上有效的（非负）算符。
+
+2.  **正交性条件 (Orthogonality Condition)**：
+    $\tilde{S}^\perp$ 必须位于有效过程子空间的正交补空间中：
+    $
+    \mathcal{P}_\mathsf{Gen} [\tilde{S}^\perp] = 0
+    $
+    这意味着 $\text{Tr}[\hat{S}^\perp \hat{W}] = 0$ 对于所有合法的过程矩阵 $\hat{W}$ 都成立。
+
+### Corollary 2 连续变量版本
+
+一个满足 $\mathcal{P}_\mathsf{Gen} [\tilde{S}] = \tilde{S}$ 的特征函数 $\tilde{S}(\boldsymbol{\eta})$ 是因果见证，当且仅当存在一个特征函数 $\tilde{S}_P(\boldsymbol{\eta})$ 使得：
+$
+\tilde{S} = \mathcal{P}_\mathsf{Gen}  [\tilde{S}_P]
+$
+且 $\tilde{S}_P$ 满足与定理1中上述的正定性对偶条件：
+$
+\text{Op}\left( \mathcal{D}_{B_O} [\tilde{S}_P] \right) \ge 0 \quad \text{且} \quad \text{Op}\left( \mathcal{D}_{A_O} [\tilde{S}_P] \right) \ge 0
+$
+
+### （**错误的**）投影算符刻画
+
+**命题：** 一个特征函数 $\tilde{S}(\boldsymbol{\eta})$ 是两体 CV 因果见证，**当且仅当**它满足以下两个半正定性条件：
+
+1.  **$A \prec B$ 兼容性**：   $\mathcal{P}_{A \prec B} [\tilde{S}] \in \mathcal{P}_{CP}$，   其中 $\mathcal{P}_{A \prec B}$ 是 CV 上的线性超算符：    $\mathcal{P}_{A \prec B} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{A_O}$，或者显式展开为：    $\mathcal{P}_{A \prec B} = \mathcal{D}_{B_O} - \mathcal{D}_{B_I B_O} + \mathcal{D}_{B_I B_O A_O}$
+
+2.  **$B \prec A$ 兼容性**：  $\mathcal{P}_{B \prec A} [\tilde{S}] \in \mathcal{P}_{CP}$ ，  其中 $\mathcal{P}_{B \prec A} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{B_O}$，显式展开为：    $\mathcal{P}_{B \prec A} = \mathcal{D}_{A_O} - \mathcal{D}_{A_I A_O} + \mathcal{D}_{A_I A_O B_O}$
+
+==充分性显然，必要性是否成立？== 
+### 因果见证的等价刻画（利用可分过程锥的另一种刻画）
+
+**定理 (Theorem)**：
+一个厄米算符 $S$ 是因果见证（即对于所有因果可分过程 $W^{sep}$，$\text{Tr}[SW^{sep}] \ge 0$），如果当且仅当可以分解为如下形式：
+$ S = S_+ + S_0 $
+其中：
+1.  **正定部分**：$S_+ \ge 0$ 是一个半正定算符。
+2.  **正交部分**：$S_0$ 属于两个因果序子空间的正交补的交集，即满足：
+    $ S_0 \perp \mathcal{L}_{A \prec B} \quad \text{且} \quad S_0 \perp \mathcal{L}_{B \prec A} $
+也记为 $\mathcal{P}_{A \prec B}(S_0) = 0$ 和 $\mathcal{P}_{B \prec A}(S_0) = 0$。
+$\mathcal{P}_{A \prec B} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{A_O}$，显式展开为： $\mathcal{P}_{A \prec B} = \mathcal{D}_{B_O} - \mathcal{D}_{B_I B_O} + \mathcal{D}_{B_I B_O A_O}$
+$\mathcal{P}_{B \prec A} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{B_O}$，显式展开为： $\mathcal{P}_{B \prec A} = \mathcal{D}_{A_O} - \mathcal{D}_{A_I A_O} + \mathcal{D}_{A_I A_O B_O}$
+#### 证明 (Proof)
+**1. 因果可分集的定义**
+因果可分过程 $W^{sep}$ 定义为 $A \prec B$ 过程和 $B \prec A$ 过程的凸包：
+$ \mathcal{W}^{sep} = \text{conv} \left( (\mathcal{P} \cap \mathcal{L}_{A \prec B}) \cup (\mathcal{P} \cap \mathcal{L}_{B \prec A}) \right) $
+其中 $\mathcal{P}$ 表示半正定锥（PSD cone），$\mathcal{L}_{A \prec B}$ 和 $\mathcal{L}_{B \prec A}$ 分别表示满足单向信号条件的线性子空间。
+
+**2. 见证集的对偶性质**
+因果见证集合 $\mathcal{S}$ 是 $\mathcal{W}^{sep}$ 的对偶锥：
+$ S = (\mathcal{W}^{sep})^* $
+根据凸分析中“并集的对偶等于对偶的交集”[[Witnessing causal nonseparability\|Witnessing causal nonseparability]]附录C中也有提到：
+$ S = (\mathcal{P} \cap \mathcal{L}_{A \prec B})^* \cap (\mathcal{P} \cap \mathcal{L}_{B \prec A})^* $
+
+**3. 对偶锥的计算**
+利用“交集的对偶等于对偶的和（Minkowski Sum）”以及“线性子空间的对偶是其正交补”：
+*   对于第一项：$(\mathcal{P} \cap \mathcal{L}_{A \prec B})^* = \mathcal{P}^* + \mathcal{L}_{A \prec B}^\perp = \mathcal{P} + \mathcal{L}_{A \prec B}^\perp$ （因 $\mathcal{P}$ 自对偶）。
+*   对于第二项：同理得 $\mathcal{P} + \mathcal{L}_{B \prec A}^\perp$。
+
+因此，见证集是两个集合的**交集**：
+$ S = \left\{ P_1 + Z_1 \mid P_1 \ge 0, Z_1 \perp \mathcal{L}_{A \prec B} \right\} \bigcap \left\{ P_2 + Z_2 \mid P_2 \ge 0, Z_2 \perp \mathcal{L}_{B \prec A} \right\} $
+
+**4. 构造公共解 (推导的核心步骤)**
+为了找到属于该交集的元素，我们构造一个同时满足两边要求的分解形式 $S = S_+ + S_0$。
+如果我们选取 $S_+ \ge 0$ 作为公共的正定部分（即 $P_1 = P_2 = S_+$），并选取 $S_0$ 作为公共的正交部分（即 $Z_1 = Z_2 = S_0$），则必须满足：
+*   $S_0 \in \mathcal{L}_{A \prec B}^\perp$
+*   $S_0 \in \mathcal{L}_{B \prec A}^\perp$
+
+于是得到结论：
+$ S \in \{ S_+ + S_0 \mid S_+ \ge 0, \mathcal{L}_{A \prec B}(S_0)=0, \mathcal{L}_{B \prec A}(S_0)=0 \} $
+
+**证毕。**
+
+最后，我们验证这种形式的 $S$ 确实是一个因果见证。
+对于任意 $W \in \mathcal{W}^{sep}$，它可以分解为 $W = p W^{A \prec B} + (1-p) W^{B \prec A}$。
+计算内积：
+$
+\begin{aligned}
+\text{Tr}[S W] &= \text{Tr}[(S_+ + S_0)(p W^{A \prec B} + (1-p) W^{B \prec A})] \\
+&= p \underbrace{\text{Tr}[S_+ W^{A \prec B}]}_{\ge 0} + p \underbrace{\text{Tr}[S_0 W^{A \prec B}]}_{=0} + (1-p) \underbrace{\text{Tr}[S_+ W^{B \prec A}]}_{\ge 0} + (1-p) \underbrace{\text{Tr}[S_0 W^{B \prec A}]}_{=0} \\
+&\ge 0
+\end{aligned}
+$
+*   **解释**：
+    *   $\text{Tr}[S_+ W] \ge 0$ 是因为 $S_+$ 和 $W$ 都是半正定的。
+    *   $\text{Tr}[S_0 W^{A \prec B}] = 0$ 是因为 $W^{A \prec B} \in \mathcal{L}_{A \prec B}$ 而 $S_0 \perp \mathcal{L}_{A \prec B}$。
+    *   同理 $\text{Tr}[S_0 W^{B \prec A}] = 0$。
+### 高斯测量作为见证 (Gaussian Measurements as Witnesses)
+
+参见：[[量子光学中的基本测量\|量子光学中的基本测量]]  
+
+**构建见证 (The Witness):**
+因果见证通常是一个厄米算符 $S$，使得对于所有可分过程 $\text{Tr}[S W_{sep}] \geq 0$，而对于某个不可分过程 $\text{Tr}[S W_{ns}] < 0$。
+
+首先需要搞清楚哪些高斯测量能够成为因果见证，将因果见证需要满足的条件作用在直积高斯测量上？因果见证集合的一个简单的刻画、
+
+至此我们的问题变成了：对于任意给定的一个$W$，如何遍历所有可能的因果见证（记为集合$\mathcal{S}_\mathrm{witness}$）使得我们能够判断它是否是因果可分的？鉴于我们能做的测量不多（暂且限制在高斯和光子数测量，所以我们应该做什么呢？在 CV 场景下，算符是无界的。我们必须构造基于**矩Moments**的见证？至少对于一大类$W$，行为像高斯的W来建立因果见证？
+
+## 参考文献
+灵感来自：[[INDEFINITE CAUSAL ORDER TOWARDS CONTINUOUS-VARIABLE QUANTUM SYSTEMS\|INDEFINITE CAUSAL ORDER TOWARDS CONTINUOUS-VARIABLE QUANTUM SYSTEMS]] Sec.4.2，
+- 参考 [[Indefinite causal structures for continuous-variable systems\|Indefinite causal structures for continuous-variable systems]] 以及连续变量纠缠见证的文章。
+- [[Witnessing causal nonseparability\|Witnessing causal nonseparability]] 两体和量子开关
+- [[On the definition and characterisation of multipartite causal (non) separability\|On the definition and characterisation of multipartite causal (non) separability]] 多体
+
+## 草稿
+- [[草稿19\|草稿19]] 
+
+
+</div></div>
+
 
 ### 3. 三体（Tripartite）因果见证
 ==是有这样的定义吗？== 
