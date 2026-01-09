@@ -2,8 +2,6 @@
 {"dg-publish":true,"permalink":"/Witnessing causal nonseparability/","tags":["论文阅读笔记","不定因果与因果结构"]}
 ---
 
-好的，这是一份对论文《Witnessing causal nonseparability》的详细分析报告。
-
 ## 论文信息和标签
 - **标题**: Witnessing causal nonseparability (见证因果不可分性)
 - **作者**: Mateus Araújo, Cyril Branciard, Fabio Costa, Adrien Feix, Christina Giarmatzi, Časlav Brukner
@@ -69,6 +67,8 @@ P(a_{\sigma(1)}, ..., a_{\sigma(i)} | x_{\sigma(1)}, ..., x_{\sigma(i)}, x_{\sig
 \forall x_{\sigma(j)}, x'_{\sigma(j)}. \quad (93)
 \end{aligned}
 $$
+{ #2a37f9}
+
 
 一个与至少一种因果顺序 $\sigma$ 兼容的概率分布被称为是**因果有序的（causally ordered）**。
 
@@ -396,15 +396,7 @@ $
 \text{Op}\left( \mathcal{D}_{B_O} [\tilde{S}_P] \right) \ge 0 \quad \text{且} \quad \text{Op}\left( \mathcal{D}_{A_O} [\tilde{S}_P] \right) \ge 0
 $
 
-### （**错误的**）投影算符刻画
 
-**命题：** 一个特征函数 $\tilde{S}(\boldsymbol{\eta})$ 是两体 CV 因果见证，**当且仅当**它满足以下两个半正定性条件：
-
-1.  **$A \prec B$ 兼容性**：   $\mathcal{P}_{A \prec B} [\tilde{S}] \in \mathcal{P}_{CP}$，   其中 $\mathcal{P}_{A \prec B}$ 是 CV 上的线性超算符：    $\mathcal{P}_{A \prec B} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{A_O}$，或者显式展开为：    $\mathcal{P}_{A \prec B} = \mathcal{D}_{B_O} - \mathcal{D}_{B_I B_O} + \mathcal{D}_{B_I B_O A_O}$
-
-2.  **$B \prec A$ 兼容性**：  $\mathcal{P}_{B \prec A} [\tilde{S}] \in \mathcal{P}_{CP}$ ，  其中 $\mathcal{P}_{B \prec A} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{B_O}$，显式展开为：    $\mathcal{P}_{B \prec A} = \mathcal{D}_{A_O} - \mathcal{D}_{A_I A_O} + \mathcal{D}_{A_I A_O B_O}$
-
-==充分性显然，必要性是否成立？== 
 ### 因果见证的等价刻画（利用可分过程锥的另一种刻画）
 
 **定理 (Theorem)**：
@@ -492,6 +484,7 @@ $
 $
 \gamma(\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{u}, \boldsymbol{v}) =  \left(\frac{2}{\pi}\right)^{2m}  \cdot P_S(\Gamma \boldsymbol{a}, \boldsymbol{b}, \Gamma \boldsymbol{u}, \boldsymbol{v})
 $
+
 这表明展开系数 $\gamma$ 本质上是算符 $\hat{S}_{AB}$ 的 P-函数，仅需对**输入端口**的相空间变量进行**时间反演 动量反转**操作。
 
 ### 从算符到P-表象
@@ -514,11 +507,9 @@ $
 *   **实验测量**：尽管 $\gamma$ 可能奇异，但在实验中我们测量的是观测量 $\text{Tr}[\hat{S}\hat{W}]$，这在数学上对应于 $\gamma$ 与过程矩阵 $\hat{W}$ 的 Q-函数（由外差探测直接测得）的卷积积分。由于物理态的 Q-函数总是光滑且有界的，这个物理量的积分总是收敛且良定义的。这意味着我们实际上是用 $\hat{S}$ 的（输入反转后的）P-函数作为权重核，对实验测得的 $\hat{W}$ 的 Q-函数进行加权求和。
 ## 高斯测量作为见证
 
+==一个需要考虑的问题==，当前的见证是设备相关的（或者说理论相关的），需要一种和设备无关的验证 [[Device-independent certification of indefinite causal order in the quantum switch\|Device-independent certification of indefinite causal order in the quantum switch]] 这是一个相当不一样的理论，类似于（但不是）因果关联的凸包，这些凸包的面会提供一些不等式，我们可以用这些不等式是否违反来判定是否存在不定因果（因果不可分性）。为什么需要引入隐变量？
+
 参见：[[量子光学中的基本测量\|量子光学中的基本测量]]  
-
-
-非常感谢您的指正。这是极其重要的一点区分。
-
 **部分求迹（Partial Trace）** $\text{Tr}_X$ 是将算符映射到更小的希尔伯特空间，而**完全退极化（Complete Depolarization）** $\mathcal{D}_X$ 是一个超算符（Superoperator），它将算符映射回**原空间**，但在该子系统上变成了单位算符（即丢失了所有信息）。
 
 $ \mathcal{D}_X[\hat{O}] = \mathbb{I}_X \otimes \text{Tr}_X[\hat{O}] $
@@ -526,7 +517,6 @@ $ \mathcal{D}_X[\hat{O}] = \mathbb{I}_X \otimes \text{Tr}_X[\hat{O}] $
 在连续变量系统中，由于 $\mathbb{I}_X$ 不是迹类算符，这会导致 P-表示函数发生特定的变化。我们需要推导这个操作在 Glauber-Sudarshan P-表示下的具体形式，并据此修正定理中的约束条件。
 
 ---
-
 ### 1. 完全退极化 $\mathcal{D}_X$ 在 P-表示下的作用
 
 #### 1.1 单位算符 $\mathbb{I}$ 的 P-表示

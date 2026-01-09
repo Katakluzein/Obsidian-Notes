@@ -7,11 +7,11 @@
 # 基本定义
 参考{（[[wechs2021QuantumCircuitsClassical\|wechs2021QuantumCircuitsClassical]] Sec.V.B）,（[[salzger2024MappingIndefiniteCausal\|salzger2024MappingIndefiniteCausal]] Apdx.B）}。$N$个外部(相对量子梳而言)信道$\{\mathcal{A}_k:B(\mathsf{H}^{A_{k}^I}) \rightarrow B(\mathsf{H}^{A_{k}^O}),k=1,2,\ldots,n\}$，由一个QC-QC过程控制其作用顺序。不失一般性，设每个信道的蔡氏秩是1，将所有的输入空间视同，记为$\mathsf{H}^{\tilde{A}_{k_n}^I}$，将输出空间也视同，记为$\mathsf{H}^{\tilde{A}_{k_n}^I}$。显式地引入控制系统$C_n,~n=1,\ldots,N$，基底设为
 $$
-\left|\mathcal{K}_{n - 1}, k_n\right\rangle^{C_n}=\left|\left\{k_1, \ldots, k_{n - 1}\right\}, k_n\right\rangle^{C_n}
+\left|\mathcal{K}_{n - 1}, k_n\right\rangle^{C_n}=\left|\left\{k_1, \ldots, k_{n - 1}\right\}, k_n\right\rangle^{C_n}  
 $$
 空间维度为
 $$
-\mathrm{dim~}C_n= C_N^{n-1}C_{N-n+1}^1=\frac{N!}{(N-n)!(n-1)!}
+\mathrm{dim~}C_n= C_N^{n-1}C_{N-n+1}^1=\frac{N!}{(N-n)!(n-1)!}   
 $$
 这个控制基底记录了上一次以及在这之前作用的信道，上一次作用了$\mathcal{A}_{k_n}$，而再前面作用的信道为$\mathcal{A}_{k_1},\cdots ,\mathcal{A}_{k_{n- 1}}$，它们的作用顺序没有被记录下来。这个改动是实现动态相干的关键？
 将外部信道嵌入到$n$个更大的信道中，设在第$n$个时间步上(滥用记号$\tilde{A}_n$)，外部信道和控制系统上的映射为
@@ -78,15 +78,10 @@ $$
 \left|V_{\{k_1,\cdots,k_{i-2}\},k_{i-1}}^{\rightarrow k_i}\right\rangle  *\left|V_{{\{k_1,\cdots,k_{i-1}\},k_{i}}}^{\rightarrow k_{i+1}}\right\rangle =\left|V_{\{k_1,\cdots,k_{i-2}\},k_{i-1}}^{\rightarrow k_i}\right\rangle  \otimes \left|V_{{\{k_1,\cdots,k_{i-1}\},k_{i}}}^{\rightarrow k_{i+1}}\right\rangle
 $$
 将蔡氏向量的定义代入到归一化条件式\eqref{eq:qcqctpcond}可得
-\begin{figure}[htbp]
- \centering
- \includegraphics[width=0.7\textwidth]{image//2025-06-10-16-37-23.png}
- \caption{因果结构p.25 }
- \label{  }
-\end{figure}
 
-利用上面定义的符号，式\eqref{eq:qcqcprocessvec}，QC-QC的过程矩阵是
-(这样的过程矩阵有投影刻画吗？)
+因果结构p.25
+![2025-06-10-16-37-23.png|800](/img/user/2025-06-10-16-37-23.png)
+利用上面定义的符号，式\eqref{eq:qcqcprocessvec}，QC-QC的过程矩阵是 (这样的过程矩阵有投影刻画吗？)
 $$
 \begin{aligned}
     W & =\operatorname{Tr}_{\alpha_F}\left|w_{(\mathcal{N}, F)}\right\rangle\left\langle w_{(\mathcal{N}, F)}\right|
@@ -95,16 +90,15 @@ $$
 eq-eq-qcqcprocesm
 
 式\eqref{eq:qcqcprocesm}中的控制系统已经被缩并了。保迹性条件来自于内部操作$\tilde{V}_i$(式\eqref{eq:internalisometry})的等距性，在构建一个QC-QC时，应该从这一点出发，直接从缩并掉控制系统后的保迹条件出发是很难构造的。
-> [!theorem] QC-QC的等价刻画{} （[[mothe2024ReassessingAdvantageIndefinite\|mothe2024ReassessingAdvantageIndefinite]] (24)）
-> - 正定矩阵$W$是QC-QC中的元素当且仅当对于任意的$n$，$\mathcal{N}=\{1,\ldots ,N\}$的势为$n-1$任意真子集$\mathcal{K}_{n-1}$，以及任意$k_n\in \mathcal{N} \backslash \mathcal{K}_{n-1}$，存在正定矩阵$W_{\left(\mathcal{K}_{n-1}, k_n\right)} \in B\left(\mathsf{H}^{A_{\mathcal{K}_{n-1}}^{I O} A_{k_n}^I}\right)$，使得特定的保迹条件得到满足
->
-$$
-\begin{aligned}
+> [!theorem] QC-QC的等价刻画 
+> （[[mothe2024ReassessingAdvantageIndefinite\|mothe2024ReassessingAdvantageIndefinite]] (24)）
+>  正定矩阵$W$是QC-QC中的元素当且仅当对于任意的$n$，$\mathcal{N}=\{1,\ldots ,N\}$的势为$n-1$任意真子集$\mathcal{K}_{n-1}$，以及任意$k_n\in \mathcal{N} \backslash \mathcal{K}_{n-1}$，存在正定矩阵$W_{\left(\mathcal{K}_{n-1}, k_n\right)} \in B\left(\mathsf{H}^{A_{\mathcal{K}_{n-1}}^{I O} A_{k_n}^I}\right)$，使得特定的保迹条件得到满足$$\begin{aligned}
 & \operatorname{Tr}_F W=\sum_{k_N \in \mathcal{N}} W_{\left(\mathcal{N} \backslash\left\{k_N\right\}, k_N\right)} \otimes \mathbb{I}^{A_{k_N}^O}, \\ & \forall n=1, \ldots, N-1, \forall \emptyset \subsetneq {\mathcal { K } _ { n } \subsetneq \mathcal { N } ,}   \sum_{k_{n+1} \in \mathcal{N} \backslash \mathcal{K}_n} \operatorname{Tr}_{A_{k_{n+1}}^I} W_{\left(\mathcal{K}_n, k_{n+1}\right)}  =\sum_{k_n \in \mathcal{K}_n} W_{\left(\mathcal{K}_n \backslash\left\{k_n\right\}, k_n\right)} \otimes \mathbb{I}_{k_n}, \\
 & \sum_{k_1 \in \mathcal{N}} \operatorname{Tr} W_{\left(\emptyset, k_1\right)}=1,  \forall n=1, \ldots, N,\\
 & \forall \mathcal{K}_{n-1} \subsetneq \mathcal{N},   \forall k_n \in \mathcal{N} \backslash \mathcal{K}_{n-1}, W_{\left(\mathcal{K}_{n-1}, k_n\right)} \geq 0
-\end{aligned}
-$$
+\end{aligned}$$
+
+
 > [!note]
 > - 在上述刻画中，不需要显式出现辅助系统$\alpha_k$。为什么和蔡氏向量的刻画是相反的？
 
@@ -115,7 +109,6 @@ W_{\left(\mathcal{K}_{n-1}, k_n\right)}:= & \operatorname{Tr}_{\alpha_n}\left|w_
 \end{aligned}$$
 ### 关于QC-QC的问题
 嵌套的QC-QC，这是否能够提供更广的不定因果过程？如何对不同类型的QC-QC进行分类，找到其中的标准型，从而为各种任务提供参考？
-
 ## 例子
 ### 例：串联与并联
    最简单的例子是退化为并联和串联情形，并联例在原文中给出\cite[Apd.C]{wechs2021QuantumCircuitsClassical}，串联不知道怎么构造但可以通过把原文\cite[(D1)]{wechs2021QuantumCircuitsClassical}中的第一个操作与恒等置换初态缩并得到，即
@@ -240,39 +233,27 @@ $$        \begin{aligned}
 ### 例：两路的量子开关
 > [!example] 两路的量子开关
 > - 以第\ref{ex:quantumswitch}小节的量子开关为例，它的过程矩阵的蔡氏向量中的每一项都写为
->
-$$
-\begin{aligned}
+> $$\begin{aligned}
 \left.\left|V_{\emptyset, \emptyset}^{\rightarrow k_1}\right\rangle\right\rangle & =| \mathbb{I}\rangle\rangle^{P_t A_{k_1}^I} \otimes\left|k_1\right\rangle^{P_c}, \\
 \left.\left|V_{\emptyset, k_1}^{\rightarrow k_2}\right\rangle\right\rangle & =| \mathbb{I}\rangle\rangle^{A_{k_1}^O A_{k_2}^I}, \\
 \left.\left|V_{\left\{k_1\right\}, k_2}^F\right\rangle\right\rangle & =| \mathbb{I}\rangle\rangle^{A_{k_2}^O F_t} \otimes\left|k_1\right\rangle^{F_c} .
-\end{aligned}
-$$
+\end{aligned}$$
 >   根据式\eqref{eq:qcqcprocessvec}，我们要把所有可能的顺序相干地叠加起来得到量子开关的过程矩阵的蔡氏向量
->
-$$
-\begin{aligned}
+> $$\begin{aligned}
 |w_{\mathsf{DS}} \rangle=        |1\rangle^{P_c}| \mathbb{I} \rangle^{P_t A_1^I}| \mathbb{I} \rangle^{A_1^O A_2^I}| \mathbb{I} \rangle^{A_2^O F_t}|1\rangle^{F_c}       +|2\rangle^{P_c}| \mathbb{I} \rangle^{P_t A_2^I}| \mathbb{I} \rangle^{A_2^O A_1^I}| \mathbb{I} \rangle^{A_1^O F_t}|2\rangle^{F_c}  \in \mathcal{H}^{P_c P_t A_1^{I O} A_2^{I O} F_t F_c},
-\end{aligned}
-$$
+\end{aligned}$$
 ### 例：一个只有部分记忆的量子开关
 > [!example] ~一个只有部分记忆的量子开关
 > - 如果希望每个外部系统之间的操作是恒等操作，但又要保持每个时间步上的变换是等距的，就不可避免地引入一些辅助系统(我只在必要的时候引入辅助系统)，这最终导致了一个特殊的量子开关，它的行为完全可以通过在\eqref{eq:qsarbinput}中取合适的初态来实现。
->
-$$
-\begin{aligned}
+> $$\begin{aligned}
 & \left|V^{\rightarrow k_1}\right\rangle=|\mathbb{I}\rangle^{P A_{k_1}^I}\left|k_1\right\rangle^{P_c} \\
 & \left|V^{\rightarrow k_2}\right\rangle=\frac{1}{\sqrt{2}}|\mathbb{I}\rangle^{A_{k_1}^O A_{k_3}^I} \\
 & \left|V^{\rightarrow k_3}\right\rangle=|\mathbb{I}\rangle^{A_{k_1}^O A_{k_3}^I}\left|k_2\right\rangle^{\alpha_3} \\
 & \left|V^{\rightarrow F}\right\rangle=|\mathbb{I}\rangle^{A_{k_3}^O F}\left|k_3\right\rangle^{F_c}|\mathbb{I}\rangle^{\alpha_3 \alpha_F}
-\end{aligned}
-$$
+\end{aligned}$$
 >
 >   最终的蔡氏向量为
->
-$$
-\left|w_{(\mathcal{N}, F)}\right\rangle=\sum_{\left(k_1, k_2, k_3\right)} \frac{1}{\sqrt{2}}\left|\mathbb{I}^3\right\rangle^{P A_1 A_2 A_3 F}\left|k_1\right\rangle^{P_c}\left|k_2\right\rangle^{\alpha_F}\left|k_3\right\rangle^{F_c}
-$$
+> $$ \left|w_{(\mathcal{N}, F)}\right\rangle=\sum_{\left(k_1, k_2, k_3\right)} \frac{1}{\sqrt{2}}\left|\mathbb{I}^3\right\rangle^{P A_1 A_2 A_3 F}\left|k_1\right\rangle^{P_c}\left|k_2\right\rangle^{\alpha_F}\left|k_3\right\rangle^{F_c}$$
 >
 >   这是一个只接受3维控制输入的量子开关，如果接受控制系统上的一个初态$\frac{1}{\sqrt{3}} |\psi\rangle^{P_c}=\sum_{k_1} |k_1\rangle$，那么它就会等效为一个等权重叠加的量子开关。其构建过程如下图：
 >   \begin{figure}[htbp]
@@ -284,12 +265,11 @@ $$
 >   
 >   重复类似的推导，可以得到一些没有完整记忆的$N$体量子开关(待补充)，基本方法是如果控制系统的维度在变大，我们可以丢掉记忆并引入一个因子来保证保迹性(例如$\tilde{V}_2$)，如果控制系统的维度在减小，则引入辅助系统来保证单时间步算符的等距性(例如$\tilde{V}_3$和例如$\tilde{V}_4$)。而多体且拥有完整记忆的量子开关的构建参考（[[wechs2021QuantumCircuitsClassical\|wechs2021QuantumCircuitsClassical]] (D1)），这需要引入更多辅助系统，记忆之前的外部系统调用顺序。在受控系统上进行一些非等距的操作似乎是取得动态控制的必要条件。
 
-### 动态相干控制的三路开关
-> [!example] 动态相干控制的三路开关
-> - 相干、动态的顺序叠加的等效比特信道（[[wechs2021QuantumCircuitsClassical\|wechs2021QuantumCircuitsClassical]] (67)）。
->
-$$
-\begin{aligned}
+![2025-07-08-10-50-57.png|600](/img/user/2025-07-08-10-50-57.png)
+### 例：动态相干控制的三路开关
+
+- 相干、动态的顺序叠加的等效比特信道（[[wechs2021QuantumCircuitsClassical\|wechs2021QuantumCircuitsClassical]] (67)）。
+$$\begin{aligned}
 & V_{\emptyset, \emptyset}^{ \rightarrow k_1}=\frac{1}{\sqrt{3}}|\psi\rangle^{A_{k_1}^I}, \\
 & V_{\emptyset, k_1}^{ \rightarrow k_2}= \left\{\begin{array}{lll}
 |0\rangle^{A_{k_2}^I} \langle   0 |^{A_{k_1}^O}   & \text { if } k_2=k_1+1 & (\bmod 3)  \\
@@ -300,19 +280,12 @@ $$
 |0\rangle^{A_{k_3}^I}|1\rangle^{\alpha_3} \langle   0 |^{A_{k_2}^O}+\mid 1 \rangle^{A_{k_3}^I}|0\rangle^{\alpha_3} \langle   1 |^{A_{k_2}^O}   & \text { if } k_2=k_1+2 \quad(\bmod 3)
 \end{array},  \right. \\
 & V_{ \{k_1, k_2 \}, k_3}^{\rightarrow F}=\mathbb{I}^{A_{k_3}^O \alpha_3  \rightarrow \alpha_F^{(1)}} \otimes |k_3 \rangle^{\alpha_F^{(2)}},
-\end{aligned}
-$$
->
->   eq-eq-truethreeswitch
+\end{aligned}$$
 
-
-
->   $\alpha^{(1)}_F = F_t \alpha_F ,\alpha^{(2)}_F=F_c$。
->
->   修改式\eqref{eq:truethreeswitch}，显式地加入输入和输出空间，假设$P$和$F$都是单比特空间，
->
-$$
-\begin{aligned}
+  eq-eq-truethreeswitch
+  $\alpha^{(1)}_F = F_t \alpha_F ,\alpha^{(2)}_F=F_c$。
+  修改式\eqref{eq:truethreeswitch}，显式地加入输入和输出空间，假设$P$和$F$都是单比特空间，
+$$\begin{aligned}
 & V_{\emptyset, \emptyset}^{ \rightarrow k_1}=\frac{1}{\sqrt{3}}\mathbb{I}^{P\rightarrow A_{k_1}^I}, \\
 & V_{\emptyset, k_1}^{ \rightarrow k_2}= \left\{\begin{array}{lll}
 |0\rangle^{A_{k_2}^I} \langle   0 |^{A_{k_1}^O}   & \text { if } k_2=k_1+1 & (\bmod 3)  \\
@@ -323,143 +296,103 @@ $$
 |0\rangle^{A_{k_3}^I}|1\rangle^{\alpha_3} \langle   0 |^{A_{k_2}^O}+\mid 1 \rangle^{A_{k_3}^I}|0\rangle^{\alpha_3} \langle   1 |^{A_{k_2}^O}   & \text { if } k_2=k_1+2 \quad(\bmod 3)
 \end{array},  \right. \\
 & V_{ \{k_1, k_2 \}, k_3}^F=\mathbb{I}^{A_{k_3}^O \alpha_3  \rightarrow F^t \alpha_F } \otimes |k_3 \rangle^{F^c},
+\end{aligned}$$
+   其中，输出空间的辅助系统为$\alpha_F$，是比特系统，输出空间$F$由两部分组成，$F=F^cF^t$，$F^c$是三维系统，$F^t$是比特系统。如果我们在三个槽处插入三个一样的信道，利用公式 [[QC-QC在精密测量中没有渐近优势#QC-QC 的 Kraus 算符表达式\|QC-QC在精密测量中没有渐近优势#QC-QC 的 Kraus 算符表达式]] 可以得到等效的从P到F的Kraus算符
+   $$
+\begin{aligned}
+\mathbf{K}_{\vec{\nu}} = \frac{1}{\sqrt{3}} \Bigg\{ & |3\rangle^{F^c} \otimes \left( K_{\nu_3} \otimes \mathbb{I}_\alpha \right) \Big[ U_{\text{copy}} K_{\nu_2} |0\rangle\langle 0| K_{\nu_1} + U_{\text{flip}} K_{\nu_1} |1\rangle\langle 1| K_{\nu_2} \Big] \\
++ & |1\rangle^{F^c} \otimes \left( K_{\nu_1} \otimes \mathbb{I}_\alpha \right) \Big[ U_{\text{copy}} K_{\nu_3} |0\rangle\langle 0| K_{\nu_2} + U_{\text{flip}} K_{\nu_2} |1\rangle\langle 1| K_{\nu_3} \Big] \\
++ & |2\rangle^{F^c} \otimes \left( K_{\nu_2} \otimes \mathbb{I}_\alpha \right) \Big[ U_{\text{copy}} K_{\nu_1} |0\rangle\langle 0| K_{\nu_3} + U_{\text{flip}} K_{\nu_3} |1\rangle\langle 1| K_{\nu_1} \Big] \Bigg\}
 \end{aligned}
 $$
->   
 
-
->   其中，输出空间的辅助系统为$\alpha_F$，是比特系统，输出空间$F$由两部分组成，$F=F^cF^t$，$F^c$是三维系统，$F^t$是比特系统。更进一步的推广是
->
+其中辅助算符定义为：
 $$
-\begin{aligned}
+U_{\text{copy}} = |0\rangle_S |0\rangle_\alpha \langle 0|_S + |1\rangle_S |1\rangle_\alpha \langle 1|_S
+$$
+$$
+U_{\text{flip}} = |0\rangle_S |1\rangle_\alpha \langle 0|_S + |1\rangle_S |0\rangle_\alpha \langle 1|_S
+$$
+- [[动态量子开关的Kraus算符的保迹性检验\|动态量子开关的Kraus算符的保迹性检验]] 
+   
+   更进一步的推广是
+   $$\begin{aligned}
 &V_{\emptyset, \emptyset}^{\rightarrow k_1}:=\mathbb{I}^{P_t \rightarrow A_{k_1}^I} \otimes\left\langle\left. k_1\right|^{P_c},\right.\\
 &V_{\emptyset, k_1}^{\rightarrow k_2}:=\left(\mathbb{I}^{A_{k_2}^I} \otimes\left\langle\left.\sigma_{\left(k_1, k_2\right)}\right|^\alpha\right) \mathcal{V}_{k_1},\right.\\
 & V_{\left\{k_1\right\}, k_2}^{\rightarrow k_3}:=\mathcal{V}_{k_3}^{\prime}\left(\mathbb{I}^{A_{k_2}^O} \otimes\left|\sigma_{\left(k_1, k_2\right)}\right\rangle^{\alpha^{\prime}}\right),\\
 & V_{\left\{k_1, k_2\right\}, k_3}^{\rightarrow F }:=\mathbb{I}^{A_{k_3}^O \rightarrow F_t} \otimes \mathbb{I}^{\alpha_3 \rightarrow \alpha_F} \otimes\left|k_3\right\rangle^{F_c} .
-\end{aligned}
-$$
->
->   eq-eq-generalizedthreeswitch
+\end{aligned}$$
 
+  eq-eq-generalizedthreeswitch
+  其中 $\mathcal{V}_{k_1}: \mathcal{H}^{A_{k_1}^O} \rightarrow \mathcal{H}^{A_{k_2}^I \alpha},\mathcal{V}_{k_3}^{\prime}: \mathcal{H}^{A_{k_2}^O \alpha^{\prime}} \rightarrow \mathcal{H}^{A_{k_3}^I \alpha_3}$，$P^c$是三维系统，受控系统$P_t ,F_t$的相同维度而任意。$\sigma_{\left(k_1, k_2\right)}=0 \text { if } k_2=k_1+1(\bmod 3)$，$\sigma_{\left(k_1, k_2\right)}=1 \text { if } k_2=k_1+2(\bmod 3)$。构造这类过程的关键在于要满足保迹性条件，可以检验保迹性。$$\sum_{k_1} \text{tr}_{A_{k_1}^I} | w_{(\emptyset,k_1)}\rangle \langle  w_{(\emptyset,k_1)}| = \sum_{k_1} \text{tr}_{A_{k_1}^I} |V_{\emptyset,\emptyset}^{\to k_1}\rangle \langle V_{\emptyset,\emptyset}^{\to k_1}|$$
+$$= \sum_{k_1} \text{tr}_{A_{k_1}^I} |\mathbb{I}\rangle \langle \mathbb{I}|_{P_t A_{k_1}^I} \otimes |k_1\rangle \langle k_1|_{P_c} = \mathbb{I}_{P_t} \otimes \mathbb{I}_{P_c} = \mathbb{I}_P.$$
+ 大小为1的集合有3种可能的选取方式 $\mathcal{K}_1 = \{1 \}, \{2 \}, \{3 \}$ $$| w_{(\mathcal{K}_1,k_2)}\rangle = \sum_{k_1 \in \mathcal{K}_1} | w_{(k_1,k_2)}\rangle = | w_{(k_1,k_2)}\rangle \otimes |V_{\emptyset,k_1}^{\to k_2}\rangle, k_1 \in \mathcal{K}_1  $$   利用双矢量公式，有$$|V_{\emptyset,k_1}^{\to k_2}\rangle_{A_{k_1}^OA_{k_2}^I} = \mathbb{I}_{A_{k_1}^I} \otimes \langle \sigma_{(k_1,k_2)}|_\alpha \otimes \mathbb{I}_{A_{k_1}^O} |V_{k_1}\rangle_{A_{k_2}^I \alpha A_{k_1}^I} = \langle \sigma_{(k_1,k_2)}| \mathcal{V}_{k_1}\rangle_{A_{k_2}^I A_{k_1}^O}$$
 
->   其中 $\mathcal{V}_{k_1}: \mathcal{H}^{A_{k_1}^O} \rightarrow \mathcal{H}^{A_{k_2}^I \alpha},\mathcal{V}_{k_3}^{\prime}: \mathcal{H}^{A_{k_2}^O \alpha^{\prime}} \rightarrow \mathcal{H}^{A_{k_3}^I \alpha_3}$，$P^c$是三维系统，受控系统$P_t ,F_t$的相同维度而任意。$\sigma_{\left(k_1, k_2\right)}=0 \text { if } k_2=k_1+1(\bmod 3)$，$\sigma_{\left(k_1, k_2\right)}=1 \text { if } k_2=k_1+2(\bmod 3)$。构造这类过程的关键在于要满足保迹性条件，可以检验保迹性。
->
->
-> -
-$$
-\sum_{k_1} \text{tr}_{A_{k_1}^I} | w_{(\emptyset,k_1)}\rangle \langle  w_{(\emptyset,k_1)}| = \sum_{k_1} \text{tr}_{A_{k_1}^I} |V_{\emptyset,\emptyset}^{\to k_1}\rangle \langle V_{\emptyset,\emptyset}^{\to k_1}|
-$$
->
-$$
-= \sum_{k_1} \text{tr}_{A_{k_1}^I} |\mathbb{I}\rangle \langle \mathbb{I}|_{P_t A_{k_1}^I} \otimes |k_1\rangle \langle k_1|_{P_c} = \mathbb{I}_{P_t} \otimes \mathbb{I}_{P_c} = \mathbb{I}_P.
-$$
-> - 大小为1的集合有3种可能的选取方式 \($\mathcal{K}_1 = \{1 \}, \{2 \}, \{3 \}$\)
->
-$$
-| w_{(\mathcal{K}_1,k_2)}\rangle = \sum_{k_1 \in \mathcal{K}_1} | w_{(k_1,k_2)}\rangle = | w_{(k_1,k_2)}\rangle \otimes |V_{\emptyset,k_1}^{\to k_2}\rangle, k_1 \in \mathcal{K}_1
-$$
->
->   利用双矢量公式，有
->
-$$
-|V_{\emptyset,k_1}^{\to k_2}\rangle_{A_{k_1}^OA_{k_2}^I} = \mathbb{I}_{A_{k_1}^I} \otimes \langle \sigma_{(k_1,k_2)}|_\alpha \otimes \mathbb{I}_{A_{k_1}^O} |V_{k_1}\rangle_{A_{k_2}^I \alpha A_{k_1}^I} = \langle \sigma_{(k_1,k_2)}| \mathcal{V}_{k_1}\rangle_{A_{k_2}^I A_{k_1}^O}
-$$
->
->
-$$
-\sum_{k_2 \notin \mathcal{K}_1} \text{tr}_{A_{k_2}^I} | w_{(\mathcal{K}_1,k_2)}\rangle \langle  w_{(\mathcal{K}_1,k_2)}| = | w_{(k_1)}\rangle \langle  w_{(k_1)}| \otimes \sum_{k_2 \notin \mathcal{K}_1} \text{tr}_{A_{k_2}^I} |V_{\emptyset,k_1}^{\to k_2}\rangle \langle V_{\emptyset,k_1}^{\to k_2}|
-$$
->
-$$
-= | w_{(k_1)}\rangle \langle  w_{(k_1)}| \otimes \sum_{k_2} \text{tr}_{A_{k_2}^I} \langle \sigma_{(k_1,k_2)}| \mathcal{V}_{k_1}\rangle \langle \mathcal{V}_{k_1}| \sigma_{(k_1,k_2)} \rangle
-$$
->
-$$
-= | w_{(k_1)}\rangle \langle  w_{(k_1)}| \otimes \text{tr}_{A_{k_2}^I\alpha } | \mathcal{V}_{k_1}\rangle \langle \mathcal{V}_{k_1}|
-$$
->
-$$
-= | w_{(1)}\rangle \langle  w_{(1)}| \left( \text{tr}_{A_2^I} \langle 0 | \mathcal{V}_1\rangle \langle \mathcal{V}_1| 0\rangle + \text{tr}_{A_3^I} \langle 1| \mathcal{V}_1\rangle \langle \mathcal{V}_1| 1\rangle \right), \text{ 当 }k_1 = 1, k_2 = 2,3
-$$
->
-$$
-= | w_{(1)}\rangle \langle  w_{(1)}| \otimes \mathbb{I}_{A_1^o}
-$$
->   当\(k_1\)取其它值时也有类似结果。添加辅助系统的意义就是利用不同系统上的内积和trace得到对$\mathcal{V}_{k_1}$的蔡氏矩阵的输出空间的trace，从而得到$A_{k_1}^O$上的单位阵。
+$$\sum_{k_2 \notin \mathcal{K}_1} \text{tr}_{A_{k_2}^I} | w_{(\mathcal{K}_1,k_2)}\rangle \langle  w_{(\mathcal{K}_1,k_2)}| = | w_{(k_1)}\rangle \langle  w_{(k_1)}| \otimes \sum_{k_2 \notin \mathcal{K}_1} \text{tr}_{A_{k_2}^I} |V_{\emptyset,k_1}^{\to k_2}\rangle \langle V_{\emptyset,k_1}^{\to k_2}|$$
+$$= | w_{(k_1)}\rangle \langle  w_{(k_1)}| \otimes \sum_{k_2} \text{tr}_{A_{k_2}^I} \langle \sigma_{(k_1,k_2)}| \mathcal{V}_{k_1}\rangle \langle \mathcal{V}_{k_1}| \sigma_{(k_1,k_2)} \rangle$$
+$$= | w_{(k_1)}\rangle \langle  w_{(k_1)}| \otimes \text{tr}_{A_{k_2}^I\alpha } | \mathcal{V}_{k_1}\rangle \langle \mathcal{V}_{k_1}|$$
+$$= | w_{(1)}\rangle \langle  w_{(1)}| \left( \text{tr}_{A_2^I} \langle 0 | \mathcal{V}_1\rangle \langle \mathcal{V}_1| 0\rangle + \text{tr}_{A_3^I} \langle 1| \mathcal{V}_1\rangle \langle \mathcal{V}_1| 1\rangle \right), \text{ 当 }k_1 = 1, k_2 = 2,3$$
+$$= | w_{(1)}\rangle \langle  w_{(1)}| \otimes \mathbb{I}_{A_1^o}$$当$k_1$ 取其它值时也有类似结果。添加辅助系统的意义就是利用不同系统上的内积和trace得到对$\mathcal{V}_{k_1}$的蔡氏矩阵的输出空间的trace，从而得到$A_{k_1}^O$上的单位阵。$\mathcal{K}_2=\{12 \}, \{2 3\}, \{13 \}$
 
-
-$\mathcal{K}_2=\{12 \}, \{2 3\}, \{13 \}$
->
 $$
 \begin{aligned}
 &\sum_{k_3 \notin \mathcal{K}_2} \text{tr}_{A_{k_3}^I \alpha_3} | w_{(\mathcal{K}_2, k_3)}\rangle \langle  w_{(\mathcal{K}_2, k_3)}| \\
 =& \sum_{k_3 \notin \mathcal{K}_2} \text{tr}_{A_{k_3}^I \alpha_3} \sum_{k_2, q_2 \in \mathcal{K}_2} | w_{(\mathcal{K}_2 \setminus \{k_2\}, k_2)}\rangle \langle  w_{(\mathcal{K}_2 \setminus \{q_2\}, q_2)}| \otimes |V_{\mathcal{K}_2 \setminus \{k_2\}, k_2}^{\to k_3}\rangle \langle V_{\mathcal{K}_2 \setminus \{q_2\}, q_2}^{\to k_3}| \\
 =& \sum_{k_2, q_2 \in \mathcal{K}_2} | w_{(\mathcal{K}_2 \setminus \{k_2\}, k_2)}\rangle \langle  w_{(\mathcal{K}_2 \setminus \{q_2\}, q_2)}| \otimes \text{tr}_{A_{k_3}^I \alpha_3} |V_{\mathcal{K}_2 \setminus \{k_2\}, k_2}^{\to k_3}\rangle \langle V_{\mathcal{K}_2 \setminus \{q_2\}, q_2}^{\to k_3}| \quad (1)
-\end{aligned}
+\end{aligned} 
 $$
->   利用双矢量公式，有
->
+  利用双矢量公式，有
+
 $$
 |V_{\mathcal{K}_2 \setminus \{k_2\}, k_2}^{\to k_3}\rangle = (\mathbb{I}_{A_{k_2}^O}\otimes \mathcal{V}_{k_3}^\prime   ) |\mathbb{I}\rangle_{A_{k_2}^O A_{k_2}^O} \otimes |\sigma_{(k_1, k_2)}\rangle_{\alpha'}
 $$
->
+
 $$
 \text{tr}_{A_{k_3}^I \alpha_3} |V_{\mathcal{K}_2 \setminus \{k_2\}, k_2}^{\to k_3}\rangle \langle V_{\mathcal{K}_2 \setminus \{q_2\}, q_2}^{\to k_3}| = \sum_{ij} \text{tr}_{A_{k_3}^I \alpha_3} (\mathcal{V}_{k_3}' |i\rangle \langle j|_{A_{k_2}^o} \otimes |\sigma_{(\mathcal{K}_2 \setminus \{k_2\}, k_2)}\rangle \langle \sigma_{(\mathcal{K}_2 \setminus \{q_2\}, q_2)}|_{\alpha^\prime } \mathcal{V}_{k_3}^{\prime \dagger }) \otimes |i\rangle \langle j|_{A_{k_2}^o}
 $$
->
+
 $$
 = \delta_{k_2 q_2} \mathbb{I}_{A_{k_2}^o} \quad (2)
 $$
->   综合 (1), (2)，有
->
+  综合 (1), (2)，有
+
 $$
 \sum_{k_3 \notin \mathcal{K}_2} \text{tr}_{A_{k_3}^I \alpha_3} | w_{(\mathcal{K}_2, k_3)}\rangle \langle  w_{(\mathcal{K}_2, k_3)}| = \sum_{k_2 \in \mathcal{K}_2} | w_{(\mathcal{K}_2 \setminus \{k_2\}, k_2)}\rangle \langle  w_{(\mathcal{K}_2 \setminus \{q_2\}, q_2)}| \otimes \mathbb{I}_{A_{k_2}^o}
 $$
-
 最后一步
->  $$ \begin{align*}
->
->
->
->   &| w_{(\mathcal{N},F)}\rangle=\sum_{k_1,k_2,k_3}| w_{(k_1,k_2,k_3)}\rangle\star|V_{\{k_1,k_2\},k_3}^{\to F}\rangle=\sum|V_{\emptyset ,\emptyset}^{\to k_1}\rangle\otimes|V_{\emptyset,k_1}^{\to k_2}\rangle\otimes|V_{\{k_1\},k_2}^{\to k_3}\rangle\star|V_{\{k_1,k_2\},k_3}^{\to F}\rangle\\
->   =& \sum|V_{\emptyset,\emptyset}^{\to k_1}\rangle\otimes|V_{\emptyset,k_1}^{\to k_2}\rangle\otimes|V_{\{k_1\},k_2}^{\to k_3}\rangle|\mathbb{I}\rangle_{A_{k_3}^O F_t}|k_3\rangle_{F_c}\\
->   =& \sum_{k_3}\sum_{k_1k_2}| w_{(k_1,k_2,k_3)}\rangle|\mathbb{I}\rangle|k_3\rangle \\
->   =&\sum_{k_3} | w_{(\mathcal{N}\setminus  k_3,k_3)}\rangle|\mathbb{I}\rangle|k_3\rangle\,
->   \end{align*}$$
->   上式已经利用了
->
+ $$ \begin{align*}
+   &| w_{(\mathcal{N},F)}\rangle=\sum_{k_1,k_2,k_3}| w_{(k_1,k_2,k_3)}\rangle\star|V_{\{k_1,k_2\},k_3}^{\to F}\rangle=\sum|V_{\emptyset ,\emptyset}^{\to k_1}\rangle\otimes|V_{\emptyset,k_1}^{\to k_2}\rangle\otimes|V_{\{k_1\},k_2}^{\to k_3}\rangle\star|V_{\{k_1,k_2\},k_3}^{\to F}\rangle\\
+   =& \sum|V_{\emptyset,\emptyset}^{\to k_1}\rangle\otimes|V_{\emptyset,k_1}^{\to k_2}\rangle\otimes|V_{\{k_1\},k_2}^{\to k_3}\rangle|\mathbb{I}\rangle_{A_{k_3}^O F_t}|k_3\rangle_{F_c}\\
+   =& \sum_{k_3}\sum_{k_1k_2}| w_{(k_1,k_2,k_3)}\rangle|\mathbb{I}\rangle|k_3\rangle \\
+   =&\sum_{k_3} | w_{(\mathcal{N}\setminus  k_3,k_3)}\rangle|\mathbb{I}\rangle|k_3\rangle\,
+   \end{align*}$$
+  上式已经利用了
+
 $$
 | w_{(\mathcal{N}\setminus  k_3,k_3)}\rangle=\sum_{k_1k_2}| w_{(k_1,k_2,k_3)}\rangle=\sum_{k_1k_2}|V_{\emptyset,\emptyset}^{\to k_1}\rangle\star|V_{\emptyset,k_1}^{\to k_2}\rangle\star|V_{\{k_1,k_2\}}^{\to k_3}\rangle
 $$
->   以及
->
+  以及
+
 $$
 \begin{aligned}
 \left|V_{\{k_1\}, k_2}^{\rightarrow k_3}\right\rangle *\left|V_{\left\{k_1, k_2\right\}, k_3}^{\rightarrow F}\right\rangle & =\left(\left|V_{\left\{k_1\right\}, k_2}^{\rightarrow k_3}\right\rangle_{A_{k_3}^I \alpha_3 A_{k_2}^O}^{T_{\alpha_3}} \otimes \mathbb{I}_{F_t F_c \alpha_F}\right)\left(|\mathbb{I}\rangle_{A_{k_3}^O F_t} \otimes|\mathbb{I}\rangle_{\alpha_3 \alpha_F} \otimes\left|k_3\right\rangle_{F_c}\right) \\
 & =\mathbb{I}^{\alpha_3 \rightarrow \alpha_F}\left|V_{\left\{k_1\right\}, k_2}^{\rightarrow k_3}\right\rangle_{A_{k_3}^I \alpha_3 A_{k_2}^O}|\mathbb{I}\rangle_{A_{k_3}^O F_t}\left|k_3\right\rangle_{F_c}
 \end{aligned}
 $$
->   保迹条件写为
->  $$ \begin{align*}
+  保迹条件写为
+ $$ \begin{align*}
    &\mathrm{tr}_{F\alpha_F}| w(\mathcal{N},F)\rangle\langle  w(\mathcal{N},F)|=\mathrm{tr}_{F\alpha_F}\left(\sum_{k_3,q_3} | w_{(\mathcal{N}\setminus  k_3,k_3)}\rangle\langle  w_{(\mathcal{N}\setminus  q_3,q_3)}| \otimes|\mathbb{I}\rangle_{A_{k_3}^OF_t}\langle\mathbb{I}|\otimes|k_3\rangle_{F_c}\langle q_3|\right)\\
    =&\mathrm{tr}_{\alpha_F}| w_{(\mathcal{N}\setminus  k_3,k_3)}\rangle\langle  w_{(\mathcal{N}\setminus  q_3,q_3)}|\otimes\mathbb{I}_{A_{k_3}^O}\otimes\delta_{k_3q_3}\\
    =&\mathrm{tr}_{\alpha_F}| w_{(\mathcal{N}\setminus  k_3,k_3)}\rangle\langle  w_{(\mathcal{N}\setminus  k_3,k_3)}|\otimes\mathbb{I}_{A_{k_3}^O}
    \end{align*}$$
->   
+ 一个更具启发性且更简单的过程保迹性检验方式是利用$V_n$的等距性：
 
-
-
->   
->  一个更具启发性且更简单的过程保迹性检验方式是利用$V_n$的等距性：
->
-> -
 $$
 \begin{aligned}
 |\widetilde{V}_1\rangle &= \sum_{k_1} |\mathbb{I}\rangle^{P_t A_{k_1}^I} |k_1\rangle^{P_c} | \phi, k_1 \rangle^{C_1},\\
 \mathrm{tr}_{A_1^IC_1}  | \widetilde{V}_1 \rangle\langle \widetilde{V}_1|&= \mathbb{I}_{P_t}\otimes \mathbb{I}_{P_c}\otimes \mathbb{I}_{C_1}
 \end{aligned}
 $$
-> -
 $$
 \begin{aligned}
 |\widetilde{V}_2\rangle &= \sum_{ k_1 k_2 k_3} \langle \sigma_{(k_1,k_2)}| \mathcal{V}_{k_1}\rangle_{A_{k_2}^I A_{k_1}^O}  | \phi, k_2 \rangle^{C_1'} |\{k_1\}, k_2\rangle^{C_2}, \\
@@ -467,17 +400,15 @@ $$
 &= \mathbb{I}_{A_1^o} \otimes \mathbb{I}_{C_1'}.
 \end{aligned}
 $$
-> -
 $$
 \begin{aligned}
-|V_3\rangle &= \sum_{k_1,k_2,k_3} \mathbb{I}_{A_3^o} \otimes \mathcal{V}_3^\prime  |\mathbb{I}\rangle_{A_3^o A_3^o} |\sigma_{(k_1,k_2)}\rangle^{\alpha'} |\{k_1\}, k_2\rangle^{C_2^\prime} |\{k_1,k_2\}, k_3\rangle^{C_3}, \\
+|\tilde{V}_3\rangle &= \sum_{k_1,k_2,k_3} \mathbb{I}_{A_3^o} \otimes \mathcal{V}_3^\prime  |\mathbb{I}\rangle_{A_3^o A_3^o} |\sigma_{(k_1,k_2)}\rangle^{\alpha'} |\{k_1\}, k_2\rangle^{C_2^\prime} |\{k_1,k_2\}, k_3\rangle^{C_3}, \\
 \mathrm{tr}_{\alpha_2A_3^I C_3} | \widetilde{V}_3 \rangle\langle \widetilde{V}_3|  &= \sum_{\{k,k_2\} \atop =\{q_1,q_2\}} \mathrm{tr}_{\alpha_3 A_3^I} \left( \mathbb{I}_{A_3^o} \otimes \mathcal{V}_3^\prime  \right) |\mathbb{I}\rangle_{\alpha_3^o A_3^o} \otimes |\sigma_{(k,k_2)}\rangle_{\alpha'} \langle \mathbb{I} |_{\alpha_3^o A_3^o} \langle \sigma_{(q_1,q_2)} | \left( \mathbb{I}_{A_3^o} \otimes \mathcal{V}_3^{\prime\dagger} \right) \otimes |\{k_1\}, k_2\rangle\langle\{q_1\}, q_2| \\
 &= \sum_{\{k_1,k_2\} \atop =\{q_1,q_1\}} |i\rangle\langle j| \otimes \mathrm{tr}\left(\mathcal{V}_3^\prime  |i\rangle\langle j|  \otimes   \left| \sigma_{(k_1,k_2)} \right\rangle   \langle \sigma_{(q_1,q_2)} | \mathcal{V}_3^{\prime\dagger}\right) \otimes |\{k_1\}, k_2\rangle\langle\{q_1\}, q_2| \\
 &= \mathbb{I}_{A_2^o} \sum_{\{k_1,k_2\} \atop =\{q_1,q_2\}} \langle \sigma_{(q_1,q_2)} | \sigma_{(k_1,k_2)} \rangle |\{k_1\}, k_2\rangle\langle\{q_1\}, q_2| \\
 &= \mathbb{I}_{A_2^o} \otimes \mathbb{I}_{C_2'}.
 \end{aligned}
 $$
-> -
 $$
 \begin{aligned}
 |\widetilde{V}_4\rangle &= \sum_{k_3} |V\rangle^{P_t} \otimes |\{k_1,k_2\}, k_3\rangle^{C_3'}, \\
@@ -485,15 +416,18 @@ $$
 \mathrm{tr}_{\alpha_F F_c} |V^4\rangle\langle V^4| &= \mathbb{I}_{A_3^o} \otimes \mathbb{I}_{\alpha_3} \otimes \mathbb{I}_{C_3'}.
 \end{aligned}
 $$
->
->
->   式\eqref{eq:generalizedthreeswitch}组合成一个动态开关(dynamical switch)，如果取初态控制系统为均匀叠加态$|\psi\rangle _{P_c} = \frac{1}{\sqrt{3}}(|0\rangle +|1\rangle +|2\rangle)$，两个等距算符分别为COPY和CNOT，则蔡氏向量为
->
+
+还有一种检验方法参见：[[QC-QC在精密测量中没有渐近优势#等距条件对概率性执行的等距的要求\|QC-QC在精密测量中没有渐近优势#等距条件对概率性执行的等距的要求]]
+
+---
+
+下面分析一下这个动态开关的通信性能。式\eqref{eq:generalizedthreeswitch}组合成一个动态开关(dynamical switch)，如果取初态控制系统为均匀叠加态$|\psi\rangle _{P_c} = \frac{1}{\sqrt{3}}(|0\rangle +|1\rangle +|2\rangle)$，两个等距算符分别为COPY和CNOT，则蔡氏向量为
+
 $$
 |w_{\mathsf{DS}}\rangle =  \sum_{(k_1,k_2,k_3)} |V_{\emptyset, \emptyset}^{\rightarrow k_1} \rangle   * |V_{\emptyset, k_1}^{\rightarrow k_2} \rangle   * |V_{ \{k_1 \}, k_2}^{\rightarrow k_3} \rangle      * |V_{ \{k_1,  k_{2} \}, k_3}^{\rightarrow F} \rangle
 $$
->   求和项数为6，显式给出求和结果的表达式参见QC-QC计算.nb-无输入，保留输出α2F1。插入三个完全退极化信道(QC-QC计算.nb-插入完全退极化信道，解析方法求偏迹)
->
+  求和项数为6，显式给出求和结果的表达式参见QC-QC计算.nb-无输入，保留输出α2F1。插入三个完全退极化信道(QC-QC计算.nb-插入完全退极化信道，解析方法求偏迹)
+
 $$
 \begin{aligned}
 &    |w_{\mathsf{DS}}\rangle \langle w_{\mathsf{DS}}| \star  \rho^\mathsf{Dp} \star  \rho^\mathsf{Dp} \star  \rho^\mathsf{Dp} \\
@@ -503,25 +437,25 @@ $$
 &|\psi^2\rangle = |02\rangle+|10\rangle+|12\rangle
 \end{aligned}
 $$
->
->   插入三个完全退极化信道后，得到等效信道(QC-QC计算.nb-给定控制系统初态)
->
+
+  插入三个完全退极化信道后，得到等效信道(QC-QC计算.nb-给定控制系统初态)
+
 $$
 \begin{aligned}
 & \rho^{\mathsf{DS}_{\mathrm{eff}}}=|\psi\rangle _{P_c}\langle \psi| \star |w_{\mathsf{DS}}\rangle \langle w_{\mathsf{DS}}| \star  \rho^\mathsf{Dp} \star  \rho^\mathsf{Dp} \star  \rho^\mathsf{Dp} \\  = & \frac{1}{8}\left( (|0 0\rangle\langle 0 0|+|1 1\rangle\langle 1 1|)_{P_t F_t}\otimes|\psi\rangle\langle\psi|_{F_c}+(\mathbb{I}_{P_t F_t}+\frac{1}{3}|0 1\rangle\langle 0 1|+|1 0\rangle\langle 1 0|)\otimes\mathbb{I}_{F_c} \right)
 \end{aligned}
 $$
->   上面的解析表达式只对均匀叠加态$|\psi\rangle =\frac{1}{\sqrt{3}}(|0\rangle +|1\rangle +|2\rangle)$成立。
->
->   将未来的控制比特系统trace掉将得到完全退极化信道
->
+  上面的解析表达式只对均匀叠加态$|\psi\rangle =\frac{1}{\sqrt{3}}(|0\rangle +|1\rangle +|2\rangle)$成立。
+
+  将未来的控制比特系统trace掉将得到完全退极化信道
+
 $$
 \mathrm{tr}_{F_c}(\rho^{\mathsf{DS}_{\mathrm{eff}}}) = \frac{\mathbb{I}_{P_t  F_t}}{2}
 $$
->   是否存在一些过程，它被插入一些完全退极化信道且将辅助系统求迹之后得到的等效信道不是完全退极化的？当然是存在的，这完全取决于辅助系统的定义，信息可以在辅助系统中传递，而不经过完全退极化信道。
->
->   这个等效信道看上去性能不太好，尝试其他的选择，最理想的情形是确定最优化的目标，给出最优化算法，对特定的问题找到最优通信策略。将CNOT改为恒等信道，则式\eqref{eq:generalizedthreeswitch}的中间两式成为
->
+  是否存在一些过程，它被插入一些完全退极化信道且将辅助系统求迹之后得到的等效信道不是完全退极化的？当然是存在的，这完全取决于辅助系统的定义，信息可以在辅助系统中传递，而不经过完全退极化信道。
+
+  这个等效信道看上去性能不太好，尝试其他的选择，最理想的情形是确定最优化的目标，给出最优化算法，对特定的问题找到最优通信策略。将CNOT改为恒等信道，则式\eqref{eq:generalizedthreeswitch}的中间两式成为
+
 $$
 \begin{aligned}
 & V_{\emptyset, k_1}^{ \rightarrow k_2}= \left\{\begin{array}{lll}
@@ -534,8 +468,10 @@ $$
 \end{array},  \right. \\
 \end{aligned}
 $$
->
->   eq-eq-truethreeswitch
+
+  eq-eq-truethreeswitch
+
+- [[整理前的动态控制的三路量子开关\|整理前的动态控制的三路量子开关]] 
 
 
 ### 例：动态相干控制的四体和N体开关
@@ -606,6 +542,7 @@ V_{\{k_1, k_2\}, k_3} ^{\to k_4} &= \left( \mathcal{V}_{k_4}^{(4)} \left( \mathb
 V_{\{k_1, k_2, k_3\}, k_4} ^{\to F} &= \mathbb{I}^{A_{k_4}^O \to F} \otimes \mathbb{I}^{\alpha_4^{(1) } \alpha_4^{(2)} \to \alpha_F} \otimes\left| k_4 \right\rangle^{F_c}
 \end{aligned}
 $$
+
 > [!example] 动态相干控制的$N$体开关
 > -
 $$
