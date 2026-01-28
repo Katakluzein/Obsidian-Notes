@@ -320,7 +320,6 @@ $$ S = S_P + S^\perp $$
 1.  **高斯过程矩阵的结构：** 一个仅由高斯维格纳函数描述的过程矩阵（Gaussian Process Matrix, GPM），是否可能具有因果不可分性？首先需要给出一些可分的例子（类似于量子纠缠中的问题：高斯态是否可能是纠缠的？答案是肯定的，但在因果语境下尚未完全分类）。==这不是本项目的目标== 
 2.  **高斯见证的有效性：** 如果过程本身是非高斯的（例如CV量子开关，通常涉及非高斯的三阶哈密顿量耦合），我们能否仅通过 **高斯测量（Gaussian Measurements）**（如零差探测、外差探测）来见证这种不可分性？这将大大降低实验难度。
 
-
 ## 相空间中的过程矩阵
 详见：[[连续变量系统的不定因果序\|连续变量系统的不定因果序]] 
 假设有两个实验室 Alice ($A$) 和 Bob ($B$)，每个实验室有输入 ($I$) 和输出 ($O$) 模式。定义相空间中的**对偶变量（Dual Phase-Space Variables）** $\boldsymbol{\eta}$，对应于正交分量 $\mathbf{r}$ 的傅里叶变换变量：
@@ -334,7 +333,6 @@ $ \tilde{W}(\boldsymbol{\eta}) := \text{Tr}\left[\hat{W} \hat{D}(\boldsymbol{\et
 
 **广义玻恩规则（特征函数形式）：**
 在特征函数表象下，希尔伯特-施密特内积 $\text{Tr}[\hat{A}\hat{B}]$ 转化为相空间积分。此时，观测到结果 $a, b$ 的联合概率 $p(a, b|x, y)$ 为：
-
 $
 p(a, b|x, y) = \frac{1}{(2\pi)^{4m}} \int d\boldsymbol{\eta} \, \tilde{W}(\boldsymbol{\eta}) \, \tilde{M}_{a|x}^A(-\boldsymbol{\eta}_A) \, \tilde{M}_{b|y}^B(-\boldsymbol{\eta}_B)
 $
@@ -344,20 +342,18 @@ $
 2.  **负号 $(-\boldsymbol{\eta})$：** 这一项来源于两个算符乘积的迹在傅里叶变换下的性质（$\text{Tr}[\hat{A}\hat{B}] \propto \int \tilde{A}(\xi)\tilde{B}(-\xi)d\xi$）。在部分文献（如 Giacomini et al. Eq. 7）中，可能通过定义 $\tilde{M}$ 的方式（例如包含**转置或共轭**）吸收了这个负号，但标准的迹内积形式通常保留它以确保数学严谨性。
 
 ## 定义 CV 因果不可分性
-参考[[Witnessing causal nonseparability\|Witnessing causal nonseparability]] （补充参考文献）
-一个过程矩阵 $W(\mathbf{r})$ 是**因果可分Causally Separable**的，如果它可以分解为与明确因果序兼容的过程的凸混合：
+参考[[Witnessing causal nonseparability\|Witnessing causal nonseparability]] （补充参考文献），以及[[Indefinite causal structures for continuous-variable systems\|Indefinite causal structures for continuous-variable systems]] ，不需要任何的推广。一个过程矩阵 $W(\mathbf{r})$ 是**因果可分Causally Separable**的，如果它可以分解为与明确因果序兼容的过程的凸混合：
 $
 W(\mathbf{r}) = q W^{A \prec B}(\mathbf{r}) + (1-q) W^{B \prec A}(\mathbf{r})
 $
 其中：
 *   $W^{A \prec B}$ 允许信号从 $A$ 到 $B$，但不允许 $B$ 到 $A$（即对 $B$ 的输入求偏迹后，$A$ 的边际分布不依赖于 $B$ 的操作）。在相空间中，这对应于特定的非信号条件（No-Signaling conditions）对协方差矩阵和位移向量的约束。
 *   $W^{B \prec A}$ 同理。
-如果 $W(\mathbf{r})$ 不能写成这种形式，则称其为**因果不可分**。
+如果 $W(\mathbf{r})$ 不能写成这种形式，则称其为**因果不可分**。离散变量中的两体（包括三体和第三体输出平方的情形）因果见证参见 [[Witnessing causal nonseparability#两体（Bipartite）因果见证\|Witnessing causal nonseparability#两体（Bipartite）因果见证]] 
 
-离散变量中的两体（包括三体和第三体输出平方的情形）因果见证参见 [[Witnessing causal nonseparability#两体（Bipartite）因果见证\|Witnessing causal nonseparability#两体（Bipartite）因果见证]] 
+多体因果不可分性的定义参见：[[On the definition and characterisation of multipartite causal (non) separability\|On the definition and characterisation of multipartite causal (non) separability]] 
 
-
-##  CV 两体过程因果见证的等价刻画
+##  CV 两体和三体（C输出平凡）过程因果见证的等价刻画
 定义记号：$\mathcal{P}_{CP}$ 是满足正定性条件的量子态的Wigner函数的集合。
 
 仿照[[Witnessing causal nonseparability#Theorem 1\|Witnessing causal nonseparability#Theorem 1]]，我们得到以下 CV 版本的定理：
@@ -391,7 +387,7 @@ $
 $
 \tilde{S} = \mathcal{P}_\mathsf{Gen}  [\tilde{S}_P]
 $
-且 $\tilde{S}_P$ 满足与定理1中上述的正定性对偶条件：
+且 $\tilde{S}_P$ 满足与定理1中上述的正定性条件：
 $
 \text{Op}\left( \mathcal{D}_{B_O} [\tilde{S}_P] \right) \ge 0 \quad \text{且} \quad \text{Op}\left( \mathcal{D}_{A_O} [\tilde{S}_P] \right) \ge 0
 $
@@ -432,9 +428,7 @@ $ \mathcal{S} = \left\{ P_1 + Z_1 \mid P_1 \ge 0, Z_1 \perp \mathcal{L}_{A \prec
 
 **证毕。**
 
-最后，我们验证 $S=S_++Z$（$Z$同时满足两个正交线性约束条件） 确实是一个因果见证。
-对于任意 $W \in \mathcal{W}^{sep}$，它可以分解为 $W = p W^{A \prec B} + (1-p) W^{B \prec A}$。
-计算内积：
+最后，我们验证 $S=S_++Z$（$Z$同时满足两个正交线性约束条件） 确实是一个因果见证。对于任意 $W \in \mathcal{W}^{sep}$，它可以分解为 $W = p W^{A \prec B} + (1-p) W^{B \prec A}$。计算内积：
 $
 \begin{aligned}
 \text{Tr}[S W] &= \text{Tr}[(S_+ + S_0)(p W^{A \prec B} + (1-p) W^{B \prec A})] \\
@@ -446,19 +440,111 @@ $
     *   $\text{Tr}[S_+ W] \ge 0$ 是因为 $S_+$ 和 $W$ 都是半正定的。
     *   $\text{Tr}[S_0 W^{A \prec B}] = 0$ 是因为 $W^{A \prec B} \in \mathcal{L}_{A \prec B}$ 而 $S_0 \perp \mathcal{L}_{A \prec B}$。
     *   同理 $\text{Tr}[S_0 W^{B \prec A}] = 0$。
-并非所有的因果见证都可以写成这种形式，所以这是充分非必要条件（需要找到一个反例）。
+    *   并非所有的因果见证都可以写成这种形式，所以这是充分非必要条件（需要找到一个反例）。
 
-## 基于Glauber-Sudarshan P-表示的算符展开与系数推导
+上述的三个定理本质上都是直接在对算符的性质做刻画，从DV到CV的推广是平凡的，不需要做任何改动。
+
+
+
+### 三体（Charlie 输出平凡）因果见证
+
+本节讨论三体情形（Alice, Bob, Charlie），特别是针对 **量子开关 (Quantum Switch)** 的架构。在此架构中，Charlie 通常扮演控制者或最终测量者的角色，其输出系统是平凡的（即 $d_{C_O} = 1$），这意味着 Charlie 无法向 Alice 或 Bob 发送信号。
+
+在这种限制下（$C_O$ 平凡），三体系统中仅存在两种相关的确定性因果序：
+1.  **$A \prec B \prec C$**：信号流向为 $A \to B \to C$。
+2.  **$B \prec A \prec C$**：信号流向为 $B \to A \to C$。
+
+因此，一个过程如果是**因果可分**的，它必须能写成这两类因果序过程的凸混合。
+
+#### Th3 三体连续变量因果见证定理
+
+定义总相空间变量 $\boldsymbol{\eta} \in \mathbb{R}^{2(N_{A}+N_{B}+N_{C})}$，其中包含 $A_I, A_O, B_I, B_O, C_I$ 的模式（注意 $C_O$ 不存在或视为标量）。一个定义在相空间上的特征函数 $\tilde{S}(\boldsymbol{\eta})$ 是一个**三体连续变量因果见证**（当且仅当 $C_O$ 平凡时），如果 $\tilde{S}$ 满足以下两个分解条件：
+1.  **兼容 $A \prec B \prec C$ 序：**
+    存在分解 $\tilde{S}(\boldsymbol{\eta}) = \tilde{S}_P^{ABC}(\boldsymbol{\eta}) + \tilde{S}^\perp_{ABC}(\boldsymbol{\eta})$，使得：
+    *   **正定性**：$\tilde{S}_P^{ABC} \in \mathcal{P}_{CP}$（即 $\text{Op}(\tilde{S}_P^{ABC}) \ge 0$）。
+    *   **正交性**：$\tilde{S}^\perp_{ABC}$ 位于 $A \prec B \prec C$ 有效过程子空间的正交补中，即：
+        $ \mathcal{P}_{A \prec B \prec C} [\tilde{S}^\perp_{ABC}] = 0 $
+
+2.  **兼容 $B \prec A \prec C$ 序：**
+    存在分解 $\tilde{S}(\boldsymbol{\eta}) = \tilde{S}_P^{BAC}(\boldsymbol{\eta}) + \tilde{S}^\perp_{BAC}(\boldsymbol{\eta})$，使得：
+    *   **正定性**：$\tilde{S}_P^{BAC} \in \mathcal{P}_{CP}$（即 $\text{Op}(\tilde{S}_P^{BAC}) \ge 0$）。
+    *   **正交性**：$\tilde{S}^\perp_{BAC}$ 位于 $B \prec A \prec C$ 有效过程子空间的正交补中，即：
+        $ \mathcal{P}_{B \prec A \prec C} [\tilde{S}^\perp_{BAC}] = 0  $
+
+**物理意义：**
+这表明一个见证 $\tilde{S}$ 必须同时“看起来”像是一个 $A \to B \to C$ 的过程（除去一个在该子空间无信号的项）**并且**同时“看起来”像是一个 $B \to A \to C$ 的过程。如果是因果可分的，$\text{Tr}[SW]$ 必须非负；只有当过程 $W$ 混合了这两种序（如量子开关的叠加态）时，才可能使 $\text{Tr}[SW] < 0$。
+
+
+#### 子空间投影算符的构造
+
+为了具体计算上述定理中的正交性条件，我们需要写出 $\mathcal{P}_{A \prec B \prec C}$ 和 $\mathcal{P}_{B \prec A \prec C}$ 在特征函数表象下的线性超算符形式。
+
+利用 $C_O$ 平凡这一事实，我们可以利用递归关系直接写出投影算符的显式展开。这里我们沿用你的图片中的逻辑，记 $\mathcal{D}_X$ 为对系统 $X$ 求偏迹的操作（在 Wigner 特征函数中，对应将相空间变量 $\boldsymbol{\eta}_X$ 置零并乘上归一化系数）。
+
+**1. 对于 $A \prec B \prec C$ 序：**
+
+该序意味着过程兼容于信号流向 $A \to B \to C$。根据多体过程矩阵的定义，这意味着如果我们对未来（$C$ 的输入 $C_I$）求偏迹，剩下的关于 $A, B$ 的边际过程必须满足 $A \prec B$ 的因果序。
+
+根据你提供的公式，投影算符展开为：
+$
+\mathcal{P}_{A \prec B \prec C} = \mathcal{I} - \mathcal{D}_{C_I} + \mathcal{D}_{C_I B_O} - \mathcal{D}_{C_I B_I B_O} + \mathcal{D}_{C_I B_I B_O A_O}
+$
+我们可以将其整理为更具物理直觉的递归形式：
+$
+\mathcal{P}_{A \prec B \prec C} = \mathcal{I} - \mathcal{D}_{C_I} \circ \left( \mathcal{I} - \mathcal{P}_{A \prec B}^{\text{bipartite}} \right)
+$
+其中 $\mathcal{I}$ 是恒等超算符，$\mathcal{P}_{A \prec B}^{\text{bipartite}}$ 是前文定义的二体因果投影算符：
+$ \mathcal{P}_{A \prec B}^{\text{bipartite}} = \mathcal{D}_{B_O} - \mathcal{D}_{B_I B_O} + \mathcal{D}_{B_I B_O A_O} $
+
+*   **物理诠释**：
+    条件 $\mathcal{P}_{A \prec B \prec C}[W] = W$ 等价于 $\mathcal{D}_{C_I} [ (\mathcal{I} - \mathcal{P}_{A \prec B}^{\text{bipartite}}) W ] = 0$。
+    这物理上意味着：**当我们“遗忘”掉最后一方 $C$ 的输入信息（$\mathcal{D}_{C_I}$）后，剩下的 reduced process 必须严格处于 $A \prec B$ 的因果子空间内。** 这一项 $\mathcal{I} - \mathcal{D}_{C_I}$ 保留了包含 $C_I$ 关联的信息（即允许信号传给 $C$），而后续的项 $\mathcal{D}_{C_I} \circ \mathcal{P}_{A \prec B}$ 确保了被 trace 掉 $C$ 之后的部分符合 $A \prec B$。
+
+**2. 对于 $B \prec A \prec C$ 序：**
+
+同理，交换 $A$ 和 $B$ 的角色，投影算符展开为：
+$
+\mathcal{P}_{B \prec A \prec C} = \mathcal{I} - \mathcal{D}_{C_I} + \mathcal{D}_{C_I A_O} - \mathcal{D}_{C_I A_I A_O} + \mathcal{D}_{C_I A_I A_O B_O}
+$
+整理为递归形式即：
+$
+\mathcal{P}_{B \prec A \prec C} = \mathcal{I} - \mathcal{D}_{C_I} \circ \left( \mathcal{I} - \mathcal{P}_{B \prec A}^{\text{bipartite}} \right)
+$
+其中二体算符为 $\mathcal{P}_{B \prec A}^{\text{bipartite}} = \mathcal{D}_{A_O} - \mathcal{D}_{A_I A_O} + \mathcal{D}_{A_I A_O B_O}$。
+
+---
+
+**验证：**
+这组公式正确地捕捉了 $C$ 处于未来（作为接受者，不向过去发信号）且 $A, B$ 之间存在确定因果序的约束。对于量子开关（Quantum Switch）而言，其 Wigner 函数 $\tilde{W}_{\text{switch}}$ 将无法同时满足被这两个投影算符投影后不变（或者说，它在这两个子空间正交补上的投影非零），从而可以用 Th3 中的正交分解来见证。
+#### 针对 CV 量子开关的推论
+
+**推论 (Corollary 3)：**
+对于连续变量量子开关（CV Quantum Switch），其特征函数 $\tilde{W}_{\text{switch}}$ 是因果不可分的。我们可以构造一个高斯形式（或高斯算符多项式形式）的见证 $\tilde{S}$，使得：
+1.  $\tilde{S}$ 满足 Th3 中的两个分解条件。
+2.  $\int d\boldsymbol{\eta} \tilde{S}(\boldsymbol{\eta}) \tilde{W}_{\text{switch}}(-\boldsymbol{\eta}) < 0$。
+
+在 CV 实验中，典型的见证 $\tilde{S}$ 通常涉及对控制位（Charlie）的相干性测量（如 $X$ 算符测量），以及对 $A$ 和 $B$ 的特定位移或挤压操作的关联测量。
+
+---
+
+### 下一步建议更新到文档的操作：
+
+1.  **插入定理：** 将上述 `Th3` 和 `推论` 插入到文档 `## CV 两体过程因果见证的等价刻画` 章节之后，或者新建一个 `## 三体与量子开关的因果见证` 章节。
+2.  **符号统一：** 请检查 $\mathcal{P}_{A \prec B}$ 的定义是否与你前文的 `显式展开` 一致。在 CV 中，求偏迹通常对应于特征函数在 $\xi=0$ 处的取值（涉及到相空间积分的性质），确保 $\mathcal{D}$ 算符的定义在你的笔记中是自洽的。
+3.  **连接实验提案：** 你提到的“后续要做的”中关于量子开关的部分，可以引用此处的 Th3，指出实验目标就是找到一个高斯测量组合（对应 $\tilde{S}$），它在满足 Th3 约束的同时，对 Switch 态给出负值。
+## CV多体过程的因果见证的刻画
+
+## 基于 Glauber-Sudarshan P-表示的算符展开
 - [[繁杂的推导：用相干态测量的CP映射展开任何厄米算符\|繁杂的推导：用相干态测量的CP映射展开任何厄米算符]]  
-==这个小节中的归一化系数可能存在错误== 
+==这个小节中的归一化系数已经过检查== 
 根据在 [[量子光学中的基本测量#高斯测量作为CP映射对应的蔡氏矩阵对应的特征函数\|量子光学中的基本测量#高斯测量作为CP映射对应的蔡氏矩阵对应的特征函数]] 小节做的推导，我们可以愉快地用高斯测量来展开因果见证。利用 **Glauber-Sudarshan P-表示定理**，直接通过坐标变换给出任意算符在测量CP映射蔡氏矩阵基底下展开的简洁而完备的推导。
 ### 1. 引用定理与基底定义
 
-对于定义在输入输出联合空间 $\mathcal{H}_{tot} = \mathcal{H}_{A_I} \otimes \mathcal{H}_{A_O} \otimes \mathcal{H}_{B_I} \otimes \mathcal{H}_{B_O}$ 上的任意有界算符 $\hat{S}_{AB}$，根据 **Glauber-Sudarshan P-表示定理**，存在一个广义函数 $P_S$，使得：
+对于定义在输入输出联合空间 $\mathcal{H}_{tot} = \mathcal{H}_{A_I} \otimes \mathcal{H}_{A_O} \otimes \mathcal{H}_{B_I} \otimes \mathcal{H}_{B_O}$ （每个Fock空间都是$m$个模式）上的任意有界算符 $\hat{S}_{AB}$，根据 **Glauber-Sudarshan P-表示定理**，存在一个广义函数 $P_S$，使得：
 $
 \hat{S}_{AB} = \frac{1}{\pi^{4m}}\int_{\mathbb{R}^{8m}} d\boldsymbol{\xi}_{tot} \,\, P_S(\boldsymbol{\xi}_{A_I}, \boldsymbol{\xi}_{A_O}, \boldsymbol{\xi}_{B_I}, \boldsymbol{\xi}_{B_O}) \,\, \left( \bigotimes_{k \in \{A_I, A_O, B_I, B_O\}} |\boldsymbol{\xi}_k\rangle\langle\boldsymbol{\xi}_k| \right)
 $
-我们始终使用实数变量，目标是将 $\hat{S}_{AB}$ 展开为蔡氏矩阵基底 $\mathbb{C}_{\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{u}, \boldsymbol{v}} = C_{\boldsymbol{a}, \boldsymbol{b}}^A \otimes C_{\boldsymbol{u}, \boldsymbol{v}}^B$ 的形式：
+我们始终使用实数变量，目标是将 $\hat{S}_{AB}$ 展开为蔡氏矩阵基底 $C_{\boldsymbol{a}, \boldsymbol{b}}^A \otimes C_{\boldsymbol{u}, \boldsymbol{v}}^B$ 的形式：
 $
 \hat{S}_{AB} = \int d\boldsymbol{a} d\boldsymbol{b} d\boldsymbol{u} d\boldsymbol{v} \,\, \gamma(\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{u}, \boldsymbol{v}) \,\, \left( C_{\boldsymbol{a}, \boldsymbol{b}}^A \otimes C_{\boldsymbol{u}, \boldsymbol{v}}^B \right)
 $
@@ -514,21 +600,11 @@ $
 
 $ \mathcal{D}_X[\hat{O}] = \mathbb{I}_X \otimes \text{Tr}_X[\hat{O}] $
 
-在连续变量系统中，由于 $\mathbb{I}_X$ 不是迹类算符，这会导致 P-表示函数发生特定的变化。我们需要推导这个操作在 Glauber-Sudarshan P-表示下的具体形式，并据此修正定理中的约束条件。
-
----
-### 1. 完全退极化 $\mathcal{D}_X$ 在 P-表示下的作用
-
-#### 1.1 单位算符 $\mathbb{I}$ 的 P-表示
-首先，我们需要知道单位算符 $\mathbb{I}$ 在 P-表示下对应什么函数。
-根据相干态的完备性关系（Resolution of Identity）：
-$ \mathbb{I} = \int \frac{d^{2m}\boldsymbol{\alpha}}{\pi^m} |\boldsymbol{\alpha}\rangle\langle\boldsymbol{\alpha}| $
-(注：这里假设 $m$ 是模数，积分测度归一化系数取决于定义，此处沿用常见的 $\pi^{-m}$)。
-
+在连续变量系统中，由于 $\mathbb{I}_X$ 不是迹类算符，这会导致 P-表示函数发生特定的变化（不再能够归一化）。根据相干态的完备性关系（Resolution of Identity）：
+$ \mathbb{I} = \int \frac{d^{2m}\boldsymbol{\alpha}}{(2\pi)^m} |\boldsymbol{\alpha}\rangle\langle\boldsymbol{\alpha}| $
 这意味着，单位算符 $\mathbb{I}$ 的 P-函数是一个**常数函数**：
-$ P_{\mathbb{I}}(\boldsymbol{\alpha}) = \frac{1}{\pi^m} $
+$ P_{\mathbb{I}}(\boldsymbol{\alpha}) = \frac{1}{(2\pi)^m} $
 
-#### 1.2 推导 $\mathcal{D}_X$ 的作用规则
 假设两体算符 $\hat{S}_{XY}$ 的 P-表示为 $P(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y)$：
 $ \hat{S}_{XY} = \int d\boldsymbol{\alpha}_X d\boldsymbol{\alpha}_Y \, P(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y) \, |\boldsymbol{\alpha}_X\rangle\langle\boldsymbol{\alpha}_X| \otimes |\boldsymbol{\alpha}_Y\rangle\langle\boldsymbol{\alpha}_Y| $
 
@@ -536,19 +612,12 @@ $ \hat{S}_{XY} = \int d\boldsymbol{\alpha}_X d\boldsymbol{\alpha}_Y \, P(\boldsy
 $
 \begin{aligned}
 \mathcal{D}_X[\hat{S}_{XY}] &= \mathbb{I}_X \otimes \text{Tr}_X[\hat{S}_{XY}] \\
-&= \left( \int d\boldsymbol{\beta}_X \frac{1}{\pi^m} |\boldsymbol{\beta}_X\rangle\langle\boldsymbol{\beta}_X| \right) \otimes \left( \int d\boldsymbol{\alpha}_Y \left[ \int d\boldsymbol{\alpha}_X P(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y) \right] |\boldsymbol{\alpha}_Y\rangle\langle\boldsymbol{\alpha}_Y| \right)
+&= \left( \int d\boldsymbol{\beta}_X \frac{1}{(2\pi)^m} |\boldsymbol{\beta}_X\rangle\langle\boldsymbol{\beta}_X| \right) \otimes \left( \int d\boldsymbol{\alpha}_Y \left[ \int d\boldsymbol{\alpha}_X P(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y) \right] |\boldsymbol{\alpha}_Y\rangle\langle\boldsymbol{\alpha}_Y| \right)\\
+&= \int d\boldsymbol{\alpha}_X d\boldsymbol{\alpha}_Y \underbrace{\left[ \frac{1}{(2\pi)^m} \int d\boldsymbol{\alpha}'_X P(\boldsymbol{\alpha}'_X, \boldsymbol{\alpha}_Y) \right]}_{P_{new}(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y)} \, |\boldsymbol{\alpha}_X\rangle\langle\boldsymbol{\alpha}_X| \otimes |\boldsymbol{\alpha}_Y\rangle\langle\boldsymbol{\alpha}_Y| 
 \end{aligned}
 $
-(注意：在求迹 $\text{Tr}_X$ 时，利用了 $\text{Tr}[|\boldsymbol{\alpha}_X\rangle\langle\boldsymbol{\alpha}_X|]=1$，这相当于对变量 $\boldsymbol{\alpha}_X$ 进行积分)。
-
-将上式重组为标准的 P-表示形式（变量重命名 $\boldsymbol{\beta}_X \to \boldsymbol{\alpha}_X$）：
-$ \mathcal{D}_X[\hat{S}_{XY}] = \int d\boldsymbol{\alpha}_X d\boldsymbol{\alpha}_Y \underbrace{\left[ \frac{1}{\pi^m} \int d\boldsymbol{\alpha}'_X P(\boldsymbol{\alpha}'_X, \boldsymbol{\alpha}_Y) \right]}_{P_{new}(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y)} \, |\boldsymbol{\alpha}_X\rangle\langle\boldsymbol{\alpha}_X| \otimes |\boldsymbol{\alpha}_Y\rangle\langle\boldsymbol{\alpha}_Y| $
-
-**结论：**
-完全退极化算符 $\mathcal{D}_X$ 作用在 P-函数上的效果是：**对该子系统的变量进行积分（求边际分布），然后乘以常数因子 $\frac{1}{\pi^m}$，使其在 $X$ 空间变成均匀分布。**
-
-用算符 $\mathcal{K}_X$ 表示这种在函数空间上的操作：
-$ (\mathcal{K}_X \gamma)(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y) = \frac{1}{\pi^m} \int d\boldsymbol{\alpha}'_X \gamma(\boldsymbol{\alpha}'_X, \boldsymbol{\alpha}_Y) $
+完全退极化算符 $\mathcal{D}_X$ 作用在 P-函数上的效果是：对该子系统的变量进行积分（求边际分布），然后乘以常数因子 $\frac{1}{(2\pi)^m}$，使其在 $X$ 空间变成均匀分布。用算符 $\mathcal{K}_X$ 表示这种在**函数空间**上的操作：
+$ (\mathcal{K}_X \gamma)(\boldsymbol{\alpha}_X, \boldsymbol{\alpha}_Y) = \frac{1}{(2\pi)^m} \int d\boldsymbol{\alpha}'_X \gamma(\boldsymbol{\alpha}'_X, \boldsymbol{\alpha}_Y)  $
 注意：结果虽然仍写成 $\boldsymbol{\alpha}_X$ 的函数，但实际上它**不依赖于** $\boldsymbol{\alpha}_X$ 的取值（即对 $\boldsymbol{\alpha}_X$ 是常数）。
 
 ---
@@ -618,7 +687,7 @@ $
 **构建见证 (The Witness):**
 因果见证通常是一个厄米算符 $S$，使得对于所有可分过程 $\text{Tr}[S W_{sep}] \geq 0$，而对于某个不可分过程 $\text{Tr}[S W_{ns}] < 0$。
 
-首先需要搞清楚哪些高斯测量能够成为因果见证，将因果见证需要满足的条件作用在直积高斯测量上？因果见证集合的一个简单的刻画。
+首先需要搞清楚哪些高斯测量能够成为因果见证（实际上我是在用制定的基底来做测量，我的目标是证明在相干态基底下的测量就能够作为因果见证），将因果见证需要满足的条件作用在直积高斯测量上？因果见证集合的一个简单的刻画。
 
 至此我们的问题变成了：对于任意给定的一个$W$，如何遍历所有可能的因果见证（记为集合$\mathcal{S}_\mathrm{witness}$）使得我们能够判断它是否是因果可分的？鉴于我们能做的测量不多（暂且限制在高斯和光子数测量，所以我们应该做什么呢？在 CV 场景下，算符是无界的。我们必须构造基于**矩Moments**的见证？至少对于一大类$W$，行为像高斯的W来建立因果见证？
 
@@ -626,7 +695,8 @@ $
 - 考虑因果见证对S的P表象有什么约束？我们现在的约束是写在Wigner表象下的？也可以视为直接写在了算符上。偏迹如何作用在P表象上？
 - 给出因果见证说明量子开关是因果不可分的
 - 给出一个非平凡的两体过程，然后找到相应因果见证，从这个例子出发，探索是否任何两体过程我们都能够找到足够好的高斯测量来做因果见证
-- 将理论推广到$n$体。
+- 将理论推广到 $n$ 体。
+- 利用[[Energy-limited quantum dynamics\|Energy-limited quantum dynamics]]中的结论来考虑如何在能量首先的集合中做数值最优化。
 
 ## 参考文献
 灵感来自：[[INDEFINITE CAUSAL ORDER TOWARDS CONTINUOUS-VARIABLE QUANTUM SYSTEMS\|INDEFINITE CAUSAL ORDER TOWARDS CONTINUOUS-VARIABLE QUANTUM SYSTEMS]] Sec.4.2，

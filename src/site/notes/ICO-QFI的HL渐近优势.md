@@ -244,7 +244,7 @@ $$
     - Zhou, S., & Jiang, L. (2021). *Asymptotic Theory of Quantum Channel Estimation*. PRX Quantum. (确立了并联策略的 HL/SQL 判据 $\beta \neq 0$)
     - Kurdziałek et al. (2023). *Using adaptiveness...*. PRL. (证明了定因果序策略无渐近优势)
 - **项目相关笔记**：
-	- [[2 项目笔记/不定因果/项目：ICO metrology 的渐近行为\|项目：ICO metrology 的渐近行为]] 
+	- [[2 项目笔记/不定因果/项目：ICO metrology 单参数估计的渐近行为\|项目：ICO metrology 单参数估计的渐近行为]] 
     - [[通过迭代法找ICO-QFI上界\|通过迭代法找ICO-QFI上界]]
     - [[噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界\|噪声优先垂直退相干：Para-QFI、利用对偶性求ICO-QFI的上界]] 
     - [[用近似互补松弛证明逻辑GHZ态在ICO中的最优性\|用近似互补松弛证明逻辑GHZ态在ICO中的最优性]]

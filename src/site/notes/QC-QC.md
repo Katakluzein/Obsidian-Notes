@@ -297,7 +297,7 @@ $$\begin{aligned}
 \end{array},  \right. \\
 & V_{ \{k_1, k_2 \}, k_3}^F=\mathbb{I}^{A_{k_3}^O \alpha_3  \rightarrow F^t \alpha_F } \otimes |k_3 \rangle^{F^c},
 \end{aligned}$$
-   其中，输出空间的辅助系统为$\alpha_F$，是比特系统，输出空间$F$由两部分组成，$F=F^cF^t$，$F^c$是三维系统，$F^t$是比特系统。如果我们在三个槽处插入三个一样的信道，利用公式 [[QC-QC在精密测量中没有渐近优势#QC-QC 的 Kraus 算符表达式\|QC-QC在精密测量中没有渐近优势#QC-QC 的 Kraus 算符表达式]] 可以得到等效的从P到F的Kraus算符
+   其中，输出空间的辅助系统为$\alpha_F$，是比特系统，输出空间$F$由两部分组成，$F=F^cF^t$，$F^c$是三维系统，$F^t$是比特系统。如果我们在三个槽处插入三个一样的信道，利用公式 [[QC-QC在单参数估计精密测量中没有渐近优势#QC-QC 的 Kraus 算符表达式\|QC-QC在单参数估计精密测量中没有渐近优势#QC-QC 的 Kraus 算符表达式]] 可以得到等效的从P到F的Kraus算符
    $$
 \begin{aligned}
 \mathbf{K}_{\vec{\nu}} = \frac{1}{\sqrt{3}} \Bigg\{ & |3\rangle^{F^c} \otimes \left( K_{\nu_3} \otimes \mathbb{I}_\alpha \right) \Big[ U_{\text{copy}} K_{\nu_2} |0\rangle\langle 0| K_{\nu_1} + U_{\text{flip}} K_{\nu_1} |1\rangle\langle 1| K_{\nu_2} \Big] \\
@@ -417,7 +417,7 @@ $$
 \end{aligned}
 $$
 
-还有一种检验方法参见：[[QC-QC在精密测量中没有渐近优势#等距条件对概率性执行的等距的要求\|QC-QC在精密测量中没有渐近优势#等距条件对概率性执行的等距的要求]]
+还有一种检验方法参见：[[QC-QC在单参数估计精密测量中没有渐近优势#等距条件对概率性执行的等距的要求\|QC-QC在单参数估计精密测量中没有渐近优势#等距条件对概率性执行的等距的要求]]
 
 ---
 
