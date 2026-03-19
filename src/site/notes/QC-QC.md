@@ -93,7 +93,7 @@ eq-eq-qcqcprocesm
 > [!theorem] QC-QC的等价刻画 
 > （[[mothe2024ReassessingAdvantageIndefinite\|mothe2024ReassessingAdvantageIndefinite]] (24)）
 >  正定矩阵$W$是QC-QC中的元素当且仅当对于任意的$n$，$\mathcal{N}=\{1,\ldots ,N\}$的势为$n-1$任意真子集$\mathcal{K}_{n-1}$，以及任意$k_n\in \mathcal{N} \backslash \mathcal{K}_{n-1}$，存在正定矩阵$W_{\left(\mathcal{K}_{n-1}, k_n\right)} \in B\left(\mathsf{H}^{A_{\mathcal{K}_{n-1}}^{I O} A_{k_n}^I}\right)$，使得特定的保迹条件得到满足$$\begin{aligned}
-& \operatorname{Tr}_F W=\sum_{k_N \in \mathcal{N}} W_{\left(\mathcal{N} \backslash\left\{k_N\right\}, k_N\right)} \otimes \mathbb{I}^{A_{k_N}^O}, \\ & \forall n=1, \ldots, N-1, \forall \emptyset \subsetneq {\mathcal { K } _ { n } \subsetneq \mathcal { N } ,}   \sum_{k_{n+1} \in \mathcal{N} \backslash \mathcal{K}_n} \operatorname{Tr}_{A_{k_{n+1}}^I} W_{\left(\mathcal{K}_n, k_{n+1}\right)}  =\sum_{k_n \in \mathcal{K}_n} W_{\left(\mathcal{K}_n \backslash\left\{k_n\right\}, k_n\right)} \otimes \mathbb{I}_{k_n}, \\
+& \operatorname{Tr}_F W=\sum_{k_N \in \mathcal{N}} W_{\left(\mathcal{N} \backslash\left\{k_N\right\}, k_N\right)} \otimes \mathbb{I}^{A_{k_N}^O}, \\ & \forall n=1, \ldots, N-1, \forall \emptyset \subsetneq {\mathcal { K } _ { n } \subsetneq \mathcal { N } ,}   \sum_{k_{n+1} \in \mathcal{N} \backslash \mathcal{K}_n} \operatorname{Tr}_{A_{k_{n+1}}^I} W_{\left(\mathcal{K}_n, k_{n+1}\right)}  =\sum_{k_n \in \mathcal{K}_n} W_{\left(\mathcal{K}_n \backslash\left\{k_n\right\}, k_n\right)} \otimes \mathbb{I}_{A_{k_{n}}^O}, \\
 & \sum_{k_1 \in \mathcal{N}} \operatorname{Tr} W_{\left(\emptyset, k_1\right)}=1,  \forall n=1, \ldots, N,\\
 & \forall \mathcal{K}_{n-1} \subsetneq \mathcal{N},   \forall k_n \in \mathcal{N} \backslash \mathcal{K}_{n-1}, W_{\left(\mathcal{K}_{n-1}, k_n\right)} \geq 0
 \end{aligned}$$
@@ -108,6 +108,9 @@ W_{\left(\mathcal{K}_{n-1}, k_n\right)}:= & \operatorname{Tr}_{\alpha_n}\left|w_
 & \in \mathcal{L}\left(\mathcal{H}^{P A_{\mathcal{K}_{n-1}}^{I O} A_{k_n}^I}\right) .
 \end{aligned}$$
 ### 关于QC-QC的问题
+
+- [[QC-QC将输出空间trace掉等价于平凡的输出空间\|QC-QC将输出空间trace掉等价于平凡的输出空间]] 
+- [[QC-QC可以将迹约束放置在顶层而不是底层\|QC-QC可以将迹约束放置在顶层而不是底层]] 
 嵌套的QC-QC，这是否能够提供更广的不定因果过程？如何对不同类型的QC-QC进行分类，找到其中的标准型，从而为各种任务提供参考？
 ## 例子
 ### 例：串联与并联

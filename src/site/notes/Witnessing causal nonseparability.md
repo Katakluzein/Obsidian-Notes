@@ -314,11 +314,12 @@ $$ S = S_P + S^\perp $$
 ## 问题背景与现状
 
 **已解决部分：**
-[[Indefinite causal structures for continuous-variable systems\|Giacomini, Castro-Ruiz 和 Brukner 在 2016 年]]（[arXiv:1510.06345]）已经将过程矩阵（Process Matrix）形式推广到了无限维希尔伯特空间 。为了避免奇异性，他们引入了基于**维格纳函数Wigner Functions** 的相空间表示。这为定义CV系统中的因果不可分性奠定了基础。
+[[Indefinite causal structures for continuous-variable systems\|Giacomini, Castro-Ruiz 和 Brukner 在 2016 年]]（[arXiv:1510.06345]）已经将过程矩阵（Process Matrix）形式推广到了无限维希尔伯特空间 。为了避免奇异性，他们引入了基于**维格纳函数Wigner Functions** 的相空间表示。这为定义CV系统中的因果不可分性奠定了基础。可能与causal box 理论存在关联？
 
 **潜在的（未经确认）开放问题（Open Questions）：**
 1.  **高斯过程矩阵的结构：** 一个仅由高斯维格纳函数描述的过程矩阵（Gaussian Process Matrix, GPM），是否可能具有因果不可分性？首先需要给出一些可分的例子（类似于量子纠缠中的问题：高斯态是否可能是纠缠的？答案是肯定的，但在因果语境下尚未完全分类）。==这不是本项目的目标== 
 2.  **高斯见证的有效性：** 如果过程本身是非高斯的（例如CV量子开关，通常涉及非高斯的三阶哈密顿量耦合），我们能否仅通过 **高斯测量（Gaussian Measurements）**（如零差探测、外差探测）来见证这种不可分性？这将大大降低实验难度。
+3. 实际上对于光学实验来说，获得精细的测量结果是比较困难的，更好的见证和探测方式是只通过一些简单的算符的期望。
 
 ## 相空间中的过程矩阵
 详见：[[连续变量系统的不定因果序\|连续变量系统的不定因果序]] 
@@ -405,6 +406,9 @@ $ S =  P_1 + Z_1=  P_2 + Z_2$
 也记为 $\mathcal{P}_{A \prec B}(Z_1) = 0$ 和 $\mathcal{P}_{B \prec A}(Z_2) = 0$。
 $\mathcal{P}_{A \prec B} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{A_O}$，显式展开为： $\mathcal{P}_{A \prec B} = \mathcal{D}_{B_O} - \mathcal{D}_{B_I B_O} + \mathcal{D}_{B_I B_O A_O}$
 $\mathcal{P}_{B \prec A} = \mathcal{P}_{\mathsf{Gen}} \circ \mathcal{D}_{B_O}$，显式展开为： $\mathcal{P}_{B \prec A} = \mathcal{D}_{A_O} - \mathcal{D}_{A_I A_O} + \mathcal{D}_{A_I A_O B_O}$ 
+
+等价地（这个等价非常显然，就不证了），$S$是因果见证当且仅当存在$Z_{1,2}\in \mathrm{ker}P_{A\prec B,B\prec A}$ ，使得
+$S-Z_1\geq 0$ 且 $S-Z_2\geq 0$ 。
 #### 证明 (Proof)
 **1. 因果可分集的定义** 
 因果可分过程 $W^{sep}$ 定义为 $A \prec B$ 过程和 $B \prec A$ 过程的凸包：
@@ -557,7 +561,6 @@ $
 |\Gamma \boldsymbol{a}\rangle\langle\Gamma \boldsymbol{a}| \otimes |\boldsymbol{b}\rangle\langle\boldsymbol{b}| \otimes |\Gamma \boldsymbol{u}\rangle\langle\Gamma \boldsymbol{u}| \otimes |\boldsymbol{v}\rangle\langle\boldsymbol{v}| = (2\pi)^{2m} \left( C_{\boldsymbol{a}, \boldsymbol{b}}^A \otimes C_{\boldsymbol{u}, \boldsymbol{v}}^B \right)
 $
 
-### 2. 坐标变换与系数公式
 
 为建立 $P_S$ 与展开系数 $\gamma$ 的联系，我们对 P-表示积分进行坐标变换：令输入端变量 $\boldsymbol{\alpha}_{A_I} = \Gamma \boldsymbol{a}, \boldsymbol{\alpha}_{B_I} = \Gamma \boldsymbol{u}$，输出端变量保持不变 $\boldsymbol{\alpha}_{A_O} = \boldsymbol{b}, \boldsymbol{\alpha}_{B_O} = \boldsymbol{v}$。由于时间反演矩阵 $\Gamma$ 是正交阵（$|\det \Gamma| = 1$），积分测度不变。代入 P-表示公式并利用基底关系：
 $
@@ -659,16 +662,6 @@ $
 \frac{1}{\pi^m} \int d\boldsymbol{b}' \gamma_{Z_2} - \frac{1}{\pi^{2m}} \iint d\boldsymbol{a}' d\boldsymbol{b}' \gamma_{Z_2} + \frac{1}{\pi^{3m}} \iiint d\boldsymbol{a}' d\boldsymbol{b}' d\boldsymbol{v}' \gamma_{Z_2} = 0
 $
 
----
-
-### 3. 讨论：这与之前的推导有何本质不同？
-
-1.  **常数背景（Constant Background）**：
-    之前的推导只关注了“求积分”，忽略了 $\mathbb{I}_X$ 带来的 $\frac{1}{\pi^m}$ 因子。在有限维中，这对应于 $\mathbb{I}/d$。在连续变量中，这个因子不仅是归一化常数，更代表了算符在相空间中的“弥散”特性。如果不加这个因子，方程的量纲是不对的。
-
-2.  **函数的依赖性**：
-    $\mathcal{D}_X$ 操作后的函数在变量 $\alpha_X$ 上变成了**平坦**的（常数）。
-    例如，第一项 $\mathcal{K}_{B_O} \gamma$ 是一个关于 $\boldsymbol{v}$ 的常数函数。这意味着，无论 $\boldsymbol{v}$ 取何值，该项的值都由 $\gamma$ 在 $\boldsymbol{v}$ 上的积分决定。这体现了完全退极化通道“抹去了该端口所有信息”的物理本质。
 
 ### 4. 总结
 
@@ -681,7 +674,6 @@ $
 其中 $\mathcal{K}_X$ 是算子：**“对 $X$ 积分，除以 $\pi^m$，并视结果为常数函数”**。
 
 这个形式化的约束可以直接用于高斯混合模型（Gaussian Mixture Models）或厄米多项式展开中，将寻找因果见证的问题转化为求解这些积分方程的线性代数问题。
-
 
 
 **构建见证 (The Witness):**
