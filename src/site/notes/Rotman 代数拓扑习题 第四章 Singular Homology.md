@@ -62,7 +62,8 @@
 2. **分析边缘算子**：
     - 对于 $n=0$，边缘算子 $\partial_0: S_0(X) \to 0$ 必然是零映射，故 **$\ker \partial_0 = S_0(X) \cong \mathbb{Z}$**。
     - 对于 $n=1$，根据维度公理的证明，$\partial_1 \sigma_1 = \sigma_0 - \sigma_0 = 0$。因此 $B_0(X) = \text{im } \partial_1 = 0$。
-3. **计算同调群**： $$H_0(X) = Z_0(X) / B_0(X) \cong \mathbb{Z} / {0} \cong \mathbb{Z}$$ 由此得证，单点空间的第零同调群与整数加法群同构。
+3. **计算同调群**： 
+4. $$H_0(X) = Z_0(X) / B_0(X) \cong \mathbb{Z} / {0} \cong \mathbb{Z}$$ 由此得证，单点空间的第零同调群与整数加法群同构。
 
 ---
 
@@ -74,7 +75,8 @@
 2. **态射映射**：对于连续映射 $f: X \to Y$，$S_n$ 诱导一个同态 $f_\#: S_n(X) \to S_n(Y)$。其定义为对基底元素 $\sigma$ 满足 $f_\#(\sigma) = f \circ \sigma$，并线性扩张至整个群。
 3. **验证函子公理**：
     - **恒等映射**：对于恒等映射 $1_X$，$(1_X)_\#(\sigma) = 1_X \circ \sigma = \sigma$，因此 $(1_X)_\# = 1_{S_n(X)}$，保持恒等态射不变。
-    - **复合映射**：若有连续映射 $f: X \to Y$ 和 $g: Y \to Z$，则对于任意 $\sigma \in S_n(X)$： $$(g \circ f)_\#(\sigma) = (g \circ f) \circ \sigma = g \circ (f \circ \sigma) = g_\#(f_\#(\sigma))$$ 这说明 $(g \circ f)_\# = g_\# \circ f_\#$，满足复合保持性。
+    - **复合映射**：若有连续映射 $f: X \to Y$ 和 $g: Y \to Z$，则对于任意 $\sigma \in S_n(X)$： 
+    - $$(g \circ f)_\#(\sigma) = (g \circ f) \circ \sigma = g \circ (f \circ \sigma) = g_\#(f_\#(\sigma))$$ 这说明 $(g \circ f)_\# = g_\# \circ f_\#$，满足复合保持性。
 4. **结论**：$S_n$ 满足函子的所有定义条件。
 
 ### 习题 4.7：计算 $S^0$ 的同调群 $H_n(S^0)$ 对所有 $n \ge 0$
@@ -83,7 +85,8 @@
 
 1. **确定空间的结构**： $S^0$ 是 0 维球面，由两个离散的点 ${1, -1}$ 组成。这两个点构成了 $S^0$ 的两个不同的路分支。
     
-2. **应用路分支分解定理**： 根据定理 4.13，一个空间的奇异同调群等于其所有路分支同调群的直和。因此有： $$H_n(S^0) \cong H_n({1}) \oplus H_n({-1}) \text{}$$
+2. **应用路分支分解定理**： 根据定理 4.13，一个空间的奇异同调群等于其所有路分支同调群的直和。因此有： 
+3. $$H_n(S^0) \cong H_n({1}) \oplus H_n({-1}) \text{}$$
     
 3. **应用维度公理**： 维度公理指出，对于单点空间 ${pt}$，当 $n=0$ 时 $H_0({pt}) \cong \mathbb{Z}$，而当 $n > 0$ 时 $H_n({pt}) = 0$。
     
@@ -102,7 +105,8 @@
 
 1. **确定 Cantor 集的路分支**： Cantor 集是一个完全不连通的空间，其每一个路分支都仅包含一个点。这意味着 Cantor 集可以被视为大量单点路分支的并集。
     
-2. **计算第零同调群 $H_0(X)$**： 根据定理 4.14(ii)，$H_0(X)$ 是秩等于路分支数量的自由阿贝尔群。由于 Cantor 集包含不可数个点（在代数拓扑背景下有时简化讨论其由点集生成的自由群结构），其第零同调群为所有单点分支对应的整数群的直和： $$H_0(X) \cong \bigoplus_{x \in X} \mathbb{Z} \text{}$$
+2. **计算第零同调群 $H_0(X)$**： 根据定理 4.14(ii)，$H_0(X)$ 是秩等于路分支数量的自由阿贝尔群。由于 Cantor 集包含不可数个点（在代数拓扑背景下有时简化讨论其由点集生成的自由群结构），其第零同调群为所有单点分支对应的整数群的直和：
+ $$H_0(X) \cong \bigoplus_{x \in X} \mathbb{Z}$$
     
 3. **计算高阶同调群 $H_n(X)$ ($n > 0$)**： 由于每个路分支 $X_\lambda$ 都是单点空间，根据维度公理，当 $n > 0$ 时 $H_n(X_\lambda) = 0$。应用路分支分解定理，所有这些平凡群的直和仍然是平凡的。
     
@@ -136,7 +140,8 @@
 
 **证明过程：**
 
-我们需要验证公式： $$\partial_{n+1} \beta_{n+1} = (\lambda^1_{\#n} - \lambda^0_{\#n} - P_{n-1} \partial_n)(\delta)$$
+我们需要验证公式：
+$$\partial_{n+1} \beta_{n+1} = (\lambda^1_{\#n} - \lambda^0_{\#n} - P_{n-1} \partial_n)(\delta)$$
 
 #### 1. 当 $n=0$ 时：
 
@@ -162,7 +167,8 @@
     - 计算边缘：
         - $\partial_2 [a_0, b_0, b_1] = [b_0, b_1] - [a_0, b_1] + [a_0, b_0]$。
         - $\partial_2 [a_0, a_1, b_1] = [a_1, b_1] - [a_0, b_1] + [a_0, a_1]$。
-    - **相减合并**： $$\partial_2 \beta_2 = ([b_0, b_1] - [a_0, b_1] + [a_0, b_0]) - ([a_1, b_1] - [a_0, b_1] + [a_0, a_1])$$ $$\partial_2 \beta_2 = [b_0, b_1] - [a_0, b_1] + [a_0, b_0] - [a_1, b_1] + [a_0, b_1] - [a_0, a_1]$$ $$LHS = [b_0, b_1] + [a_0, b_0] - [a_1, b_1] - [a_0, a_1]$$
+    - **相减合并**： 
+    - $$\partial_2 \beta_2 = ([b_0, b_1] - [a_0, b_1] + [a_0, b_0]) - ([a_1, b_1] - [a_0, b_1] + [a_0, a_1])$$ $$\partial_2 \beta_2 = [b_0, b_1] - [a_0, b_1] + [a_0, b_0] - [a_1, b_1] + [a_0, b_1] - [a_0, a_1]$$ $$LHS = [b_0, b_1] + [a_0, b_0] - [a_1, b_1] - [a_0, a_1]$$
 - **（2）计算右边 (RHS)**：
     
     - 公式为 $(\lambda^1_{\#1} - \lambda^0_{\#1} - P_0 \partial_1)(\delta)$。
@@ -171,7 +177,9 @@
         - $\partial_1 \delta = e_1 - e_0$。
         - 由棱柱算子定义，$P_0(e_i) = [a_i, b_i]$。
         - 因此 $P_0 \partial_1 \delta = [a_1, b_1] - [a_0, b_0]$。
-    - **合并（关键的负号分配）**： $$RHS = ([b_0, b_1] - [a_0, a_1]) - ([a_1, b_1] - [a_0, b_0])$$ 注意：减去括号里的项时，$-[a_0, b_0]$ 会变成 **正的** $+ [a_0, b_0]$： $$RHS = [b_0, b_1] - [a_0, a_1] - [a_1, b_1] + [a_0, b_0]$$
+    - **合并（关键的负号分配）**： 
+    - $$RHS = ([b_0, b_1] - [a_0, a_1]) - ([a_1, b_1] - [a_0, b_0])$$ 注意：减去括号里的项时，$-[a_0, b_0]$ 会变成 **正的** $+ [a_0, b_0]$： 
+    - $$RHS = [b_0, b_1] - [a_0, a_1] - [a_1, b_1] + [a_0, b_0]$$
 - **结论**： 对比 LHS 和 RHS，每一项的符号现在完全一致： $$[b_0, b_1] + [a_0, b_0] - [a_1, b_1] - [a_0, a_1]$$ 公式在 $n=1$ 时成立。
     
 这个单形作用在$\Delta^1$的两个顶点上得到相同的结果，这意味着它是闭链（因为用边缘算子作用上去就意味着计算它在两个顶点处的差）。显然是闭链，因为它是边缘链。
@@ -199,7 +207,9 @@
 
 设 $j: X \to Y$ 为连续映射，$\sigma: \Delta^n \to X$ 为 $X$ 中的一个奇异 $n$-单形。根据棱柱算子 $P_n$ 的定义 $P_n^X(\sigma) = (\sigma \times 1)_\#(\beta_{n+1})$，我们验证交换图的两个路径：
 
-1. **先作用 $P_n^X$ 再作用 $(j \times 1)_\#$**： $$(j \times 1)_\# (P_n^X(\sigma)) = (j \times 1)_\# ((\sigma \times 1)_\#(\beta_{n+1}))$$ 根据诱导链映射的复合性质 $(g \circ f)_\# = g_\# \circ f_\#$： $$= ((j \times 1) \circ (\sigma \times 1))_\# (\beta_{n+1}) = ((j \circ \sigma) \times 1)_\# (\beta_{n+1})$$
+1. **先作用 $P_n^X$ 再作用 $(j \times 1)_\#$**： 
+2. $$(j \times 1)_\# (P_n^X(\sigma)) = (j \times 1)_\# ((\sigma \times 1)_\#(\beta_{n+1}))$$ 根据诱导链映射的复合性质 $(g \circ f)_\# = g_\# \circ f_\#$： 
+3. $$= ((j \times 1) \circ (\sigma \times 1))_\# (\beta_{n+1}) = ((j \circ \sigma) \times 1)_\# (\beta_{n+1})$$
     
 2. **先作用 $j_\#$ 再作用 $P_n^Y$**： $$P_n^Y (j_\#(\sigma)) = P_n^Y (j \circ \sigma)$$ 代入 $P_n^Y$ 在 $Y$ 上的定义： $$= ((j \circ \sigma) \times 1)_\# (\beta_{n+1})$$
     
@@ -265,11 +275,13 @@
     
 2. **利用同伦性质**： 根据基本群性质，任何形如 $f * f^{-1}$ 的路径都同伦于常数路径 $c$（即 $[f * f^{-1}] = 1 \in \pi_1(X, x_0)$）。 由于 $g$ 是闭路径，我们可以对其应用 Hurewicz 映射。
     
-3. **严谨的 Hurewicz 映射应用**： 考虑闭路径的组合：$g * g^{-1} = (f * f^{-1}) * (f * f^{-1})^{-1}$。 根据路径逆的定义 $(f * f^{-1})^{-1} = (f^{-1})^{-1} * f^{-1} = f * f^{-1}$，因此 $g = g^{-1}$。 由于 $g * g^{-1} \simeq c$ 是零伦的，应用 Hurewicz 同态 $\varphi$： $$\varphi([g * g]) = \varphi([c]) = 0$$ 由于 $\varphi$ 是群同态，这对应于 1-同调类中的加法： $$\text{cls}(g) + \text{cls}(g) = 2 \text{cls}(g) = 0 \in H_1(X)$$
+3. **严谨的 Hurewicz 映射应用**： 考虑闭路径的组合：$g * g^{-1} = (f * f^{-1}) * (f * f^{-1})^{-1}$。 根据路径逆的定义 $(f * f^{-1})^{-1} = (f^{-1})^{-1} * f^{-1} = f * f^{-1}$，因此 $g = g^{-1}$。 由于 $g * g^{-1} \simeq c$ 是零伦的，应用 Hurewicz 同态 $\varphi$： 
+4. $$\varphi([g * g]) = \varphi([c]) = 0$$ 由于 $\varphi$ 是群同态，这对应于 1-同调类中的加法： $$\text{cls}(g) + \text{cls}(g) = 2 \text{cls}(g) = 0 \in H_1(X)$$
     
 4. **回到 1-链层面**： 在奇异链群 $S_1(X)$ 中，复合路径 $g = f * f^{-1}$ 所代表的 1-链与 $f + f^{-1}$ 是同调的（模仿定理Th.4.27的构造可知）。 由于 $g \simeq c$ 是零伦的，因此它所代表的 1-链必然是一个**边缘链（Boundary）**，即 $f + f^{-1} \in B_1(X)$。
     
-5. **结论**： 在 $H_1(X)$ 中，这意味着： $$\text{cls}(f) + \text{cls}(f^{-1}) = 0 \implies \text{cls}(f) = -\text{cls}(f^{-1})$$ 因此，1-链 $f$ 与 $-f^{-1}$ 同调。
+5. **结论**： 在 $H_1(X)$ 中，这意味着： 
+6. $$\text{cls}(f) + \text{cls}(f^{-1}) = 0 \implies \text{cls}(f) = -\text{cls}(f^{-1})$$ 因此，1-链 $f$ 与 $-f^{-1}$ 同调。
     
 
 **总结**：通过构造 $f * f^{-1}$ 这个闭路径，我们绕过了 $f$ 非封闭的限制，从而能够严谨地利用 Hurewicz 映射和回路的零伦性质来完成证明。
@@ -278,15 +290,20 @@
 
 
 
-### 证明过程
+#### 证明过程
 
-1. **构造第一个 2-单形 $\sigma_1$**： 根据定理 4.27 的证明构造方法，对于可复合路径 $\alpha$ 和 $\beta$（即 $\alpha(1) = \beta(0)$），可以定义一个奇异 2-单形 $\sigma_1$，使其边缘满足： $$\partial \sigma_1 = \beta - (\alpha * \beta) + \alpha$$ 这意味着在 $S_1(X)$ 中，$\alpha * \beta \sim \alpha + \beta$。
+1. **构造第一个 2-单形 $\sigma_1$**： 根据定理 4.27 的证明构造方法，对于可复合路径 $\alpha$ 和 $\beta$（即 $\alpha(1) = \beta(0)$），可以定义一个奇异 2-单形 $\sigma_1$，使其边缘满足： 
+2. $$\partial \sigma_1 = \beta - (\alpha * \beta) + \alpha$$ 这意味着在 $S_1(X)$ 中，$\alpha * \beta \sim \alpha + \beta$。
     
-2. **构造第二个 2-单形 $\sigma_2$**： 同理，考虑路径 $(\alpha * \beta)$ 与 $\gamma$ 的复合。由于 $(\alpha * \beta)(1) = \beta(1) = \gamma(0)$，我们可以构造另一个 2-单形 $\sigma_2$，其边缘为： $$\partial \sigma_2 = \gamma - (\alpha * \beta * \gamma) + (\alpha * \beta)$$
+3. **构造第二个 2-单形 $\sigma_2$**： 同理，考虑路径 $(\alpha * \beta)$ 与 $\gamma$ 的复合。由于 $(\alpha * \beta)(1) = \beta(1) = \gamma(0)$，我们可以构造另一个 2-单形 $\sigma_2$，其边缘为： 
+4. $$\partial \sigma_2 = \gamma - (\alpha * \beta * \gamma) + (\alpha * \beta)$$
     
-3. **合并边缘算子**： 将上述两个 2-单形相加，考虑 2-链 $\sigma_1 + \sigma_2$ 的边缘： $$\partial(\sigma_1 + \sigma_2) = (\beta - \alpha * \beta + \alpha) + (\gamma - \alpha * \beta * \gamma + \alpha * \beta)$$ 中间项 $-\alpha * \beta$ 与 $+\alpha * \beta$ 抵消，得到： $$\partial(\sigma_1 + \sigma_2) = \alpha + \beta + \gamma - (\alpha * \beta * \gamma)$$
+5. **合并边缘算子**： 将上述两个 2-单形相加，考虑 2-链 $\sigma_1 + \sigma_2$ 的边缘： 
+6. $$\partial(\sigma_1 + \sigma_2) = (\beta - \alpha * \beta + \alpha) + (\gamma - \alpha * \beta * \gamma + \alpha * \beta)$$ 中间项 $-\alpha * \beta$ 与 $+\alpha * \beta$ 抵消，得到： 
+7. $$\partial(\sigma_1 + \sigma_2) = \alpha + \beta + \gamma - (\alpha * \beta * \gamma)$$
     
-4. **验证同调类**： 由于 $\alpha * \beta * \gamma$ 是闭路径，其代表一个 1-闭链。同时，因为 $\alpha(0) = \gamma(1)$ 且中间节点首尾相接，1-链 $\alpha + \beta + \gamma$ 的边缘为 0： $$\partial_1(\alpha + \beta + \gamma) = (\alpha(1) - \alpha(0)) + (\beta(1) - \beta(0)) + (\gamma(1) - \gamma(0)) = 0$$ 因此 $\alpha + \beta + \gamma - (\alpha * \beta * \gamma)$ 是一个边缘链（Boundary），即： $$\text{cls}(\alpha * \beta * \gamma) = \text{cls}(\alpha + \beta + \gamma) \in H_1(X)$$
+8. **验证同调类**： 由于 $\alpha * \beta * \gamma$ 是闭路径，其代表一个 1-闭链。同时，因为 $\alpha(0) = \gamma(1)$ 且中间节点首尾相接，1-链 $\alpha + \beta + \gamma$ 的边缘为 0： $$\partial_1(\alpha + \beta + \gamma) = (\alpha(1) - \alpha(0)) + (\beta(1) - \beta(0)) + (\gamma(1) - \gamma(0)) = 0$$ 因此 $\alpha + \beta + \gamma - (\alpha * \beta * \gamma)$ 是一个边缘链（Boundary），即： 
+9. $$\text{cls}(\alpha * \beta * \gamma) = \text{cls}(\alpha + \beta + \gamma) \in H_1(X)$$
 
 
 ### 4.16 基于同伦和同调的degree的定义的一致性
@@ -294,7 +311,8 @@
 
 #### 1. 建立交换图表
 
-根据 Hurewicz 映射的**自然性**（Exercise 4.13），对于任何尖空间映射(保持基点的映射) $f: (S^1, 1) \to (S^1, 1)$，以下图表是交换的： $$\begin{array}{ccc} \pi_1(S^1, 1) & \xrightarrow{f_*} & \pi_1(S^1, 1) \\ \downarrow \varphi & & \downarrow \varphi \\ H_1(S^1) & \xrightarrow{f_*} & H_1(S^1) \end{array}$$
+根据 Hurewicz 映射的**自然性**（Exercise 4.13），对于任何尖空间映射(保持基点的映射) $f: (S^1, 1) \to (S^1, 1)$，以下图表是交换的：
+$$\begin{array}{ccc} \pi_1(S^1, 1) & \xrightarrow{f_*} & \pi_1(S^1, 1) \\ \downarrow \varphi & & \downarrow \varphi \\ H_1(S^1) & \xrightarrow{f_*} & H_1(S^1) \end{array}$$
 
 #### 2. 利用群结构的性质
 
@@ -314,7 +332,9 @@
 
 #### 4. 得出结论
 
-由于图表交换，上述两条路径的结果必须相等： $$d(f)[z] = \text{deg}(f)[z]$$ 由于 $H_1(S^1) \cong \mathbb{Z}$ 且 $[z]$ 是其生成元，我们可以消去 $[z]$，得到： $$d(f) = \text{deg}(f)$$
+由于图表交换，上述两条路径的结果必须相等： 
+$$d(f)[z] = \text{deg}(f)[z]$$ 由于 $H_1(S^1) \cong \mathbb{Z}$ 且 $[z]$ 是其生成元，我们可以消去 $[z]$，得到： 
+$$d(f) = \text{deg}(f)$$
 
 **结论**：在圆周 $S^1$ 上，通过基本群（路径旋转次数）定义的度与通过同调（代数倍数）定义的度是完全等价的。
 
