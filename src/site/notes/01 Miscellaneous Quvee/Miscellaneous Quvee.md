@@ -50,8 +50,9 @@ pdf版：
 ## 项目
 - [[0 fleeting/未解问题与新项目/寻找新项目\|寻找新项目]] 
 - [[拓扑量子纠错项目\|拓扑量子纠错项目]] 
-- [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]
-- [[projectContinuousNoiseDiscreteCorrection\|连续噪声、离散纠错模型]]
+- [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]  
+- [[项目：多参数量子精密测量中的不定因果序——从有限资源优势到渐近标度极限\|项目：多参数量子精密测量中的不定因果序——从有限资源优势到渐近标度极限]] 
+- [[projectContinuousNoiseDiscreteCorrection\|连续噪声、离散纠错模型]] 
 - [[projectIndefiniteCausalOrderQuantumMetrology\|不定因果与精密测量]]
 - [[projectTimeLeapMachine\|时间跳跃机器]]
 - [[2 项目笔记/量子模拟项目/量子模拟项目\|量子模拟项目]]

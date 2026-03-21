@@ -995,7 +995,8 @@ $$F(x, t) = \frac{(x_1, \dots, x_n, (1-t)x_{n+1})}{\sqrt{\sum_{i=1}^n x_i^2 + (1
 
 - **目标**：证明若 $f_0, f_1: X \to Z$ 同伦，则它们的扩张 $\tilde{f}_0, \tilde{f}_1: Y \to Z$ 在 $Y$ 上也同伦。
 - **已知条件**：由于 $f_0 \simeq f_1$，存在连续同伦 $H: X \times I \to Z$，满足 $H(x, 0) = f_0(x)$ 且 $H(x, 1) = f_1(x)$。
-- **构造扩张同伦**：定义映射 $H': Y \times I \to Z$ 为： $$H'(y, t) = H(r(y), t)$$ 即 $H' = H \circ (r \times \text{id}_I)$，其中 $\text{id}_I$ 是单位区间的恒等映射。
+- **构造扩张同伦**：定义映射 $H': Y \times I \to Z$ 为： 
+- $$H'(y, t) = H(r(y), t)$$ 即 $H' = H \circ (r \times \text{id}_I)$，其中 $\text{id}_I$ 是单位区间的恒等映射。
 - **验证合法性**：
     1. **连续性**：$r$ 和 $H$ 均为连续映射，根据复合函数的性质，$H'$ 在 $Y \times I$ 上连续。
     2. **端点值**：
