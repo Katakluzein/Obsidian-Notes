@@ -52,6 +52,7 @@ pdf版：
 - [[拓扑量子纠错项目\|拓扑量子纠错项目]] 
 - [[projectMagnetometryCombination\|动力学解耦合中的量子计量]]  
 - [[项目：多参数量子精密测量中的不定因果序——从有限资源优势到渐近标度极限\|项目：多参数量子精密测量中的不定因果序——从有限资源优势到渐近标度极限]] 
+	- [[项目大纲：多参数量子精密测量中的不定因果序——从有限资源优势到渐近标度极限\|大纲]]  
 - [[projectContinuousNoiseDiscreteCorrection\|连续噪声、离散纠错模型]] 
 - [[projectIndefiniteCausalOrderQuantumMetrology\|不定因果与精密测量]]
 - [[projectTimeLeapMachine\|时间跳跃机器]]
