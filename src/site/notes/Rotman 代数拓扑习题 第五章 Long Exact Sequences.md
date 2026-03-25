@@ -146,7 +146,8 @@ $$\psi_n(s'_n) = s'_n + S''_n \quad (\forall s'_n \in S'_n)$$
 - **满射性**：在阿贝尔群范畴 `Ab` 中，根据群同构第二定理的证明逻辑，任取 $(S'_n + S''_n) / S''_n$ 中的元素 $y = (s'_n + s''_n) + S''_n$，由于 $s''_n \in S''_n$，该元素可简化为 $s'_n + S''_n$。显然存在 $s'_n \in S'_n$ 使得 $\psi_n(s'_n) = y$。因此每个分量 $\psi_n$ 都是满射。
 - 在 `Comp` 中，若链映射的每个分量都是满射，则该链映射是满射。
 
-**3. 确定核复形 $\text{ker } \psi$** $\text{ker } \psi$ 是 $S'_*$ 的一个子复形，其第 $n$ 项由下式给定： $$\text{ker } \psi_n = {s'_n \in S'_n : \psi_n(s'_n) = 0} = {s'_n \in S'_n : s'_n \in S''_n} = S'_n \cap S''_n$$ 因此，作为链复形，$\text{ker } \psi = S'_* \cap S''_*$。
+**3. 确定核复形 $\text{ker } \psi$** $\text{ker } \psi$ 是 $S'_*$ 的一个子复形，其第 $n$ 项由下式给定： 
+$$\text{ker } \psi_n = {s'_n \in S'_n : \psi_n(s'_n) = 0} = {s'_n \in S'_n : s'_n \in S''_n} = S'_n \cap S''_n$$ 因此，作为链复形，$\text{ker } \psi = S'_* \cap S''_*$。
 
 **4. 应用链复形的第一同构定理** 根据习题 5.9(ii) 已证的结论：若 $f: \mathcal{S}_* \to \mathcal{T}_*$ 是链映射，则存在链同构 $\theta: \mathcal{S}_* / \text{ker } f \cong \text{im } f$。 将 $\psi$ 代入该定理：
 
@@ -263,26 +264,30 @@ $$\varphi(\sigma) = \begin{cases} \sigma, & \text{若 } \sigma \in B_{X \setminu
 1. 存在链复形的短正合序列：$0 \to S'_* \xrightarrow{i} S_* \xrightarrow{p} S''_* \to 0$。
 2. 复形“零调（Acyclic）”意味着其所有同调群均为零，即对于所有 $n$，有 $H_n = 0$。
 
-**证明过程：** 根据定理 5.6（Exact Triangle），该短正合序列诱导如下同调群的长正合序列： $$\dots \to H_n(S'_*) \xrightarrow{i_*} H_n(S_*) \xrightarrow{p_*} H_n(S''_*) \xrightarrow{d_n} H_{n-1}(S'_*) \to \dots$$
+**证明过程：** 根据定理 5.6（Exact Triangle），该短正合序列诱导如下同调群的长正合序列： 
+$$\dots \to H_n(S'_*) \xrightarrow{i_*} H_n(S_*) \xrightarrow{p_*} H_n(S''_*) \xrightarrow{d_n} H_{n-1}(S'_*) \to \dots$$
 我们分三种情况讨论（任选两个复形为零调）：
 
 1. 情况一：若 $S'_*$ 和 $S_*$ 是零调的
     
     - 对于所有的 $n$，有 $H_n(S'_*) = 0$ 且 $H_n(S_*) = 0$。
-    - 观察长正合序列中的一段： $$H_n(S_*) \to H_n(S''_*) \to H_{n-1}(S'_*)$$
+    - 观察长正合序列中的一段
+    - $$H_n(S_*) \to H_n(S''_*) \to H_{n-1}(S'_*)$$
     - 代入已知值得到：$0 \to H_n(S''_*) \to 0$。
     - 根据正合性的定义（$\text{im } f = \text{ker } g$），映射 $0 \to H_n(S''_*)$ 是单射且 $H_n(S''_*) \to 0$ 是满射，故 $H_n(S''_*) = 0$。
     - 因此，$S''_*$ 也是零调的。
 2. 情况二：若 $S_*$ 和 $S''_*$ 是零调的
     
     - 对于所有的 $n$，有 $H_n(S_*) = 0$ 且 $H_n(S''_*) = 0$。
-    - 观察长正合序列中的一段： $$H_{n+1}(S''_*) \xrightarrow{d_{n+1}} H_n(S'_*) \to H_n(S_*)$$
+    - 观察长正合序列中的一段： 
+    - $$H_{n+1}(S''_*) \xrightarrow{d_{n+1}} H_n(S'_*) \to H_n(S_*)$$
     - 代入已知值得到：$0 \to H_n(S'_*) \to 0$。
     - 同理，这迫使 $H_n(S'_*) = 0$。因此 $S'_*$ 是零调的。
 3. 情况三：若 $S'_*$ 和 $S''_*$ 是零调的
     
     - 对于所有的 $n$，有 $H_n(S'_*) = 0$ 且 $H_n(S''_*) = 0$。
-    - 观察长正合序列中的一段： $$H_n(S'_*) \to H_n(S_*) \to H_n(S''_*)$$
+    - 观察长正合序列中的一段： 
+$$H_n(S'_*) \to H_n(S_*) \to H_n(S''_*)$$
     - 代入已知值得到：$0 \to H_n(S_*) \to 0$。
     - 这迫使 $H_n(S_*) = 0$。因此 $S_*$ 是零调的。
 
@@ -298,7 +303,8 @@ $$\varphi(\sigma) = \begin{cases} \sigma, & \text{若 } \sigma \in B_{X \setminu
 
 1. **取基底元素**：设 $\sigma$ 是 $S_n(A)$ 中的一个生成元，即一个奇异 $n$-单形 $\sigma: \Delta^n \to A$。
 2. **复合映射**：由诱导链映射的定义，$f_\#(\sigma) = f \circ \sigma$。
-3. **像的包含关系**：由于 $\sigma$ 的值域在 $A$ 内，即 $\sigma(\Delta^n) \subseteq A$，那么复合映射的像满足： $$(f \circ \sigma)(\Delta^n) = f(\sigma(\Delta^n)) \subseteq f(A)$$
+3. **像的包含关系**：由于 $\sigma$ 的值域在 $A$ 内，即 $\sigma(\Delta^n) \subseteq A$，那么复合映射的像满足： 
+$$(f \circ \sigma)(\Delta^n) = f(\sigma(\Delta^n)) \subseteq f(A)$$
 4. **利用空间对定义**：因为 $f(A) \subseteq A'$，所以 $(f \circ \sigma)(\Delta^n) \subseteq A'$。
 5. **结论**：这说明 $f \circ \sigma$ 是一个从 $\Delta^n$ 到 $A'$ 的连续映射，即 $f_\#(\sigma) \in S_n(A')$。由于 $S_n(A)$ 是由这些单形生成的自由阿贝尔群，通过线性扩张可知： **$f_\#(S_n(A)) \subseteq S_n(A')$**。
 
@@ -311,9 +317,11 @@ $$\varphi(\sigma) = \begin{cases} \sigma, & \text{若 } \sigma \in B_{X \setminu
 **证明过程**：
 
 1. 设 $\gamma \in Z_n(X, A)$。我们需要证明 $f_\# \gamma$ 满足相对 $n$-闭链的条件。
-2. **边缘运算**：考虑 $f_\# \gamma$ 的边缘。根据链映射的性质，边缘算子 $\partial$ 与 $f_\#$ 交换： $$\partial'_n (f_\# \gamma) = f_\# (\partial_n \gamma)$$
+2. **边缘运算**：考虑 $f_\# \gamma$ 的边缘。根据链映射的性质，边缘算子 $\partial$ 与 $f_\#$ 交换：
+$$\partial'_n (f_\# \gamma) = f_\# (\partial_n \gamma)$$
 3. **包含判定**：由已知条件 $\partial_n \gamma \in S_{n-1}(A)$。
-4. **应用关键引理**：根据第1部分证得的结论，$f_\#(S_{n-1}(A)) \subseteq S_{n-1}(A')$。因此： $$f_\# (\partial_n \gamma) \in S_{n-1}(A')$$
+4. **应用关键引理**：根据第1部分证得的结论，$f_\#(S_{n-1}(A)) \subseteq S_{n-1}(A')$。因此： 
+$$f_\# (\partial_n \gamma) \in S_{n-1}(A')$$
 5. **结论**：既然 $\partial'_n (f_\# \gamma) \in S_{n-1}(A')$，则根据定义 **$f_\# \gamma \in Z_n(X', A')$**。
 
 ---
@@ -332,7 +340,8 @@ $$\varphi(\sigma) = \begin{cases} \sigma, & \text{若 } \sigma \in B_{X \setminu
     - 因为 $f_\# \zeta \in S_{n+1}(X')$，所以 $f_\# \beta \in B_n(X')$。
 4. **处理第二项 ($S_n$ 部分)**：
     - 由第1部分结论，$f_\# \alpha \in S_n(A')$。
-5. **合并结论**： $$f_\# \gamma \in B_n(X') + S_n(A') = B_n(X', A')$$ 证得 **$f_\#(B_n(X, A)) \subseteq B_n(X', A')$**。
+5. **合并结论**：
+$$f_\# \gamma \in B_n(X') + S_n(A') = B_n(X', A')$$ 证得 **$f_\#(B_n(X, A)) \subseteq B_n(X', A')$**。
 
 **总结**：这一结论保证了空间对映射 $f$ 能够诱导商复形之间的链映射，进而诱导相对同调群之间的同态 $f_*: H_n(X, A) \to H_n(X', A')$。
 
@@ -341,7 +350,8 @@ $$\varphi(\sigma) = \begin{cases} \sigma, & \text{若 } \sigma \in B_{X \setminu
 
 习题 5.17 要求证明 $f_*(\text{cls } \gamma) = \text{cls } f_\# \gamma$，这里的 $\gamma \in Z_n(X, A)$。利用 5.16 的结论，我们可以证明他是良定义的（我们并没有证明两种定义是等价的），证明步骤如下：
 
-1. **利用同构关系**：根据定理 5.11，通过第三同构定理，相对同调群可以表示为相对闭链群对相对边缘链群的商： $$H_n(X, A) \cong Z_n(X, A) / B_n(X, A)$$
+1. **利用同构关系**：根据定理 5.11，通过第三同构定理，相对同调群可以表示为相对闭链群对相对边缘链群的商：
+$$H_n(X, A) \cong Z_n(X, A) / B_n(X, A)$$
 2. **验证算子良定性（利用 5.16）**：
     - **相对闭链的保持**：由 5.16 已知 $f_\#(Z_n(X, A)) \subseteq Z_n(X', A')$。这保证了如果 $\gamma$ 是一个相对闭链，那么 $f_\# \gamma$ 也是 $X'$ 中相对于 $A'$ 的闭链，因此 $\text{cls } f_\# \gamma$ 有意义。
     - **相对边缘链的保持**：由 5.16 已知 $f_\#(B_n(X, A)) \subseteq B_n(X', A')$。这保证了如果两个相对闭链在 $H_n(X, A)$ 中同调（即它们的差是相对边缘链），那么它们的像在 $H_n(X', A')$ 中也同调。这说明该映射在同调类上是**良定义**的。
@@ -353,12 +363,14 @@ $$\varphi(\sigma) = \begin{cases} \sigma, & \text{若 } \sigma \in B_{X \setminu
 具体整理如下：
 
 1. 相对同调群的原始定义
-根据教材定义，相对同调群 $H_n(X, A)$ 被定义为**商复形 $S_*(X)/S_*(A)$ 的第 $n$ 个同调群**： $$H_n(X, A) := H_n(S_*(X)/S_*(A))$$
+根据教材定义，相对同调群 $H_n(X, A)$ 被定义为**商复形 $S_*(X)/S_*(A)$ 的第 $n$ 个同调群**： 
+$$H_n(X, A) := H_n(S_*(X)/S_*(A))$$
  2. 诱导映射 $f_*$ 的原始构造
 对于空间对的映射 $f: (X, A) \to (X', A')$，其诱导映射 $f_*$ 是通过以下步骤定义的：
 - **链映射的限制**：连续映射 $f$ 诱导了奇异链复形之间的链映射 $f_\#: S_*(X) \to S_*(X')$。由于 $f(A) \subset A'$，该链映射满足 $f_\#(S_*(A)) \subset S_*(A')$。
 - **商链映射的导出**：基于上述包含关系，$f_\#$ 诱导了一个**商复形之间的链映射**（通常也记作 $f_\#$ 或 $S_*(f)$）： $$f_\#: S_*(X)/S_*(A) \to S_*(X')/S_*(A')$$ 其具体作用于商空间的元素（即余集）上：$\gamma_n + S_n(A) \mapsto f_\#(\gamma_n) + S_n(A')$。
-- **同调诱导**：由于 $H_n$ 是从链复形范畴 $\mathsf{Comp}$ 到阿贝尔群范畴 $\mathsf{Ab}$ 的函子，这个商复形之间的链映射自然地诱导了同调群之间的同态： $$f_* : H_n(S_*(X)/S_*(A)) \to H_n(S_*(X')/S_*(A'))$$
+- **同调诱导**：由于 $H_n$ 是从链复形范畴 $\mathsf{Comp}$ 到阿贝尔群范畴 $\mathsf{Ab}$ 的函子，这个商复形之间的链映射自然地诱导了同调群之间的同态： 
+$$f_* : H_n(S_*(X)/S_*(A)) \to H_n(S_*(X')/S_*(A'))$$
 
 ### 5.18 相对闭链群的等价刻画
 
@@ -399,11 +411,13 @@ $$0 \to \tilde{S}_*(A) \xrightarrow{i} \tilde{S}_*(X) \xrightarrow{p} \tilde{S}_
 2. $H_n(\tilde{S}_*(X))$ 即为约化同调群 $\tilde{H}_n(X)$。
 3. $H_n(\tilde{S}_*(X)/\tilde{S}_*(A))$ 根据提示等价于 $H_n(S_*(X, A))$，即相对同调群 $H_n(X, A)$。
 
-将上述项代入 Theorem 5.6 的长正合列公式中，立即得到： $$\dots \to \tilde{H}_n(A) \to \tilde{H}_n(X) \to H_n(X, A) \xrightarrow{d} \tilde{H}_{n-1}(A) \to \dots$$
+将上述项代入 Theorem 5.6 的长正合列公式中，立即得到： 
+$$\dots \to \tilde{H}_n(A) \to \tilde{H}_n(X) \to H_n(X, A) \xrightarrow{d} \tilde{H}_{n-1}(A) \to \dots$$
 
 #### 3. 序列的末尾分析
 
-序列在低维处的表现如下： $$\dots \to \tilde{H}_0(A) \to \tilde{H}_0(X) \to H_0(X, A) \to \tilde{H}_{-1}(A)$$ 对于任何非空空间 $A$，其增广映射 $\tilde{\partial}_0$ 是满射，因此其 $-1$ 阶约化同调群 $\tilde{H}_{-1}(A) = 0$。这保证了序列在 $H_0(X, A)$ 处以 $\to 0$ 结束，从而证明了正合性在末尾也得到保持。
+序列在低维处的表现如下： 
+$$\dots \to \tilde{H}_0(A) \to \tilde{H}_0(X) \to H_0(X, A) \to \tilde{H}_{-1}(A)$$ 对于任何非空空间 $A$，其增广映射 $\tilde{\partial}_0$ 是满射，因此其 $-1$ 阶约化同调群 $\tilde{H}_{-1}(A) = 0$。这保证了序列在 $H_0(X, A)$ 处以 $\to 0$ 结束，从而证明了正合性在末尾也得到保持。
 
 约化同调序列在计算悬挂空间（Suspension）时非常高效。你想了解它是如何简化球面同调群 $H_n(S^k)$ 的归纳证明的吗？
 
@@ -414,14 +428,14 @@ $$0 \to \tilde{S}_*(A) \xrightarrow{i} \tilde{S}_*(X) \xrightarrow{p} \tilde{S}_
 如果你已经证明了**定理 5.9**（三元组长正合序列）以及**定理 5.17**（约化同调与相对同调的关系），那么可以通过以下步骤快速证明：
 
 1. **构造三元组序列**：选取基点 $x_0 \in A \subset X$。根据三元组 $(X, A, {x_0})$ 的长正合序列： 
-2. $$\dots \to H_n(A, {x_0}) \to H_n(X, {x_0}) \to H_n(X, A) \xrightarrow{\partial} H_{n-1}(A, {x_0}) \to \dots$$
-3. **应用约化同调的识别定理**：根据定理 5.17，对于任何基点 $x_0$ 和所有 $n \ge 0$，存在同构 $H_n(X, {x_0}) \cong \tilde{H}_n(X)$。
-4. **代换同构项**：将上述同构代入三元组序列：
+$$\dots \to H_n(A, {x_0}) \to H_n(X, {x_0}) \to H_n(X, A) \xrightarrow{\partial} H_{n-1}(A, {x_0}) \to \dots$$
+2. **应用约化同调的识别定理**：根据定理 5.17，对于任何基点 $x_0$ 和所有 $n \ge 0$，存在同构 $H_n(X, {x_0}) \cong \tilde{H}_n(X)$。
+3. **代换同构项**：将上述同构代入三元组序列：
     - 将 $H_n(A, {x_0})$ 替换为 $\tilde{H}_n(A)$。
     - 将 $H_n(X, {x_0})$ 替换为 $\tilde{H}_n(X)$。
     - 将 $H_{n-1}(A, {x_0})$ 替换为 $\tilde{H}_{n-1}(A)$。
-5. **得出结论**：代换后直接得到： 
-6. $$\dots \to \tilde{H}_n(A) \to \tilde{H}_n(X) \to H_n(X, A) \to \tilde{H}_{n-1}(A) \to \dots$$
+4. **得出结论**：代换后直接得到： 
+$$\dots \to \tilde{H}_n(A) \to \tilde{H}_n(X) \to H_n(X, A) \to \tilde{H}_{n-1}(A) \to \dots$$
  这种解法的好处：
 
 - **避开了增广算子的代数细节**：它直接利用了“相对一点的同调就是约化同调”这一几何直观。
@@ -433,7 +447,7 @@ $$0 \to \tilde{S}_*(A) \xrightarrow{i} \tilde{S}_*(X) \xrightarrow{p} \tilde{S}_
 **证明过程：**
 
 1. **写出空间对的长正合序列**： 根据定理 5.8，对于空间对 $(D^2, S^1)$，存在以下同调群的长正合序列： 
-2. $$\dots \to H_1(D^2) \xrightarrow{j_*} H_1(D^2, S^1) \xrightarrow{d} H_0(S^1) \xrightarrow{i_*} H_0(D^2) \to \dots$$
+$$\dots \to H_1(D^2) \xrightarrow{j_*} H_1(D^2, S^1) \xrightarrow{d} H_0(S^1) \xrightarrow{i_*} H_0(D^2) \to \dots$$
     
 2. **确定已知的绝对同调群**：
     
@@ -441,7 +455,8 @@ $$0 \to \tilde{S}_*(A) \xrightarrow{i} \tilde{S}_*(X) \xrightarrow{p} \tilde{S}_
     - **$H_0(S^1) \cong \mathbb{Z}$ 且 $H_0(D^2) \cong \mathbb{Z}$**：因为 $S^1$ 和 $D^2$ 都是路径连通的，所以它们的 $0$ 阶同调群都同构于整数群 $\mathbb{Z}$。
 3. 分析包含映射诱导的 $i_*$： 包含映射 $i: S^1 \hookrightarrow D^2$ 诱导的 $i_*: H_0(S^1) \to H_0(D^2)$ 是一个同构。这是因为在路径连通空间中，任意一点生成的同调类都是 $H_0$ 的生成元，$i$ 将 $S^1$ 的生成元映为了 $D^2$ 的生成元。
     
-4. **利用正合性推导**： 将上述结果代入正合序列的末端： $$0 \to H_1(D^2, S^1) \xrightarrow{d} \mathbb{Z} \xrightarrow{\cong} \mathbb{Z}$$
+4. **利用正合性推导**： 将上述结果代入正合序列的末端： 
+5. $$0 \to H_1(D^2, S^1) \xrightarrow{d} \mathbb{Z} \xrightarrow{\cong} \mathbb{Z}$$
     
     - 根据 $H_0(S^1)$ 处的正合性，$\text{im } d = \ker i_*$。
     - 由于 $i_*$ 是同构，其核 $\ker i_* = 0$，因此 $\text{im } d = 0$。
@@ -451,11 +466,12 @@ $$0 \to \tilde{S}_*(A) \xrightarrow{i} \tilde{S}_*(X) \xrightarrow{p} \tilde{S}_
 #### 另一个证明：约化同调长正合列
 使用习题 5.19 中的**约化同调长正合序列**，证明 $H_1(D^2, S^1) = 0$ 的过程会更加简洁，因为它能直接消掉 $n=0$ 处的平凡项。
 **证明过程：**
-1. **写出约化同调长正合序列**： 根据习题 5.19，对于空间对 $(D^2, S^1)$，存在以下正合序列： $$\dots \to \tilde{H}_1(D^2) \to H_1(D^2, S^1) \to \tilde{H}_0(S^1) \to \tilde{H}_0(D^2) \to \dots$$
-2. **利用可缩性与连通性简化各项**：
+1. **写出约化同调长正合序列**： 根据习题 5.19，对于空间对 $(D^2, S^1)$，存在以下正合序列： 
+2. $$\dots \to \tilde{H}_1(D^2) \to H_1(D^2, S^1) \to \tilde{H}_0(S^1) \to \tilde{H}_0(D^2) \to \dots$$
+3. **利用可缩性与连通性简化各项**：
     - **$\tilde{H}_n(D^2) = 0$**：由于圆盘 $D^2$ 是凸集，它是可缩的。对于任何可缩空间，所有维度的约化同调群均为 $0$。因此 $\tilde{H}_1(D^2) = 0$ 且 $\tilde{H}_0(D^2) = 0$。
     - **$\tilde{H}_0(S^1) = 0$**：球面 $S^1$ 是**道路连通**的。根据约化同调的性质，非空道路连通空间的 $0$ 阶约化同调群为 $0$。
-3. **代入序列得出结论**： 将上述零项代入正合序列中，我们得到： $$0 \to H_1(D^2, S^1) \to 0$$ 根据正合性，夹在两个零群中间的群必然为零。 因此，**$H_1(D^2, S^1) = 0$**。
+4. **代入序列得出结论**： 将上述零项代入正合序列中，我们得到： $$0 \to H_1(D^2, S^1) \to 0$$ 根据正合性，夹在两个零群中间的群必然为零。 因此，**$H_1(D^2, S^1) = 0$**。
     
 #### 直观解释
 直觉“将任何一条边界在 $S^1$ 上的 $D^2$ 内部线段表示成一个完整的圈减去这段圆弧”在代数上对应于：
@@ -470,13 +486,15 @@ $$0 \to \tilde{S}_*(A) \xrightarrow{i} \tilde{S}_*(X) \xrightarrow{p} \tilde{S}_
 
 ### 5.21 锥相对于底的1阶同调群
 
-1. **建立长正合序列**： 对于空间对 $(CX, X)$，考虑其约化同调序列： $$\dots \to \tilde{H}_1(CX) \to H_1(CX, X) \xrightarrow{d} \tilde{H}_0(X) \to \tilde{H}_0(CX) \to \dots$$
+1. **建立长正合序列**： 对于空间对 $(CX, X)$，考虑其约化同调序列： 
+2. $$\dots \to \tilde{H}_1(CX) \to H_1(CX, X) \xrightarrow{d} \tilde{H}_0(X) \to \tilde{H}_0(CX) \to \dots$$
     
 2. **确定各项群结构**：
     
     - **$\tilde{H}_n(CX) = 0$**：由于锥空间 $CX$ 总是可缩的，其所有阶数的约化同调群均为 0。
     - **$\tilde{H}_0(X) \cong \mathbb{Z}^4$**：已知 $X$ 有 5 个路径连通分支，其第零维同调群 $H_0(X) \cong \mathbb{Z}^5$。根据约化同调与绝对同调的关系，$\tilde{H}_0(X)$ 的秩比 $H_0(X)$ 少 1，故 $\tilde{H}_0(X) \cong \mathbb{Z}^4$。
-3. **利用正合性推导**： 将上述结果代入序列： $$0 \to H_1(CX, X) \xrightarrow{d} \mathbb{Z}^4 \to 0$$ 由于序列在 $H_1(CX, X)$ 处是正合的，连接同态 $d$ 必须是一个**同构**。
+3. **利用正合性推导**： 将上述结果代入序列： 
+4. $$0 \to H_1(CX, X) \xrightarrow{d} \mathbb{Z}^4 \to 0$$ 由于序列在 $H_1(CX, X)$ 处是正合的，连接同态 $d$ 必须是一个**同构**。
     
 
 **$H_1(CX, X) \cong \mathbb{Z}^4$**。
