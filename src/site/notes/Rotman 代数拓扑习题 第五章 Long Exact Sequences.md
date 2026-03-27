@@ -504,7 +504,8 @@ $$\dots \to H_1(D^2) \xrightarrow{j_*} H_1(D^2, S^1) \xrightarrow{d} H_0(S^1) \x
 
 我们可以利用空间对 $(S^1, S^0)$ 的**约化同调长正合序列**（参见习题 5.19 的结论）来进行证明：
 
-1. **写出长正合序列片段**： $$\tilde{H}_1(S^0) \to \tilde{H}_1(S^1) \xrightarrow{j_*} H_1(S^1, S^0) \xrightarrow{\partial} \tilde{H}_0(S^0) \to \tilde{H}_0(S^1)$$
+1. **写出长正合序列片段**： 
+$$\tilde{H}_1(S^0) \to \tilde{H}_1(S^1) \xrightarrow{j_*} H_1(S^1, S^0) \xrightarrow{\partial} \tilde{H}_0(S^0) \to \tilde{H}_0(S^1)$$
     
 2. **确定各项的具体群结构**：
     
@@ -512,7 +513,9 @@ $$\dots \to H_1(D^2) \xrightarrow{j_*} H_1(D^2, S^1) \xrightarrow{d} H_0(S^1) \x
     - **$\tilde{H}_1(S^1) \cong \mathbb{Z}$**：一维球面的约化同调群为 $\mathbb{Z}$。
     - **$\tilde{H}_0(S^0) \cong \mathbb{Z}$**：$S^0$ 由 2 个路径连通分支组成，根据 $\text{rank}(\tilde{H}_0) = \text{card}(\Lambda) - 1$，其秩为 $2 - 1 = 1$。
     - **$\tilde{H}_0(S^1) = 0$**：由于 $S^1$ 是路径连通空间，其零阶约化同调群为 0。
-3. **代入序列得出结论**： 将上述结果代入正合序列，得到一个短正合列： $$0 \to \mathbb{Z} \xrightarrow{j_*} H_1(S^1, S^0) \xrightarrow{\partial} \mathbb{Z} \to 0$$ 由于右侧的 $\mathbb{Z}$ 是**自由阿贝尔群**，该短正合列必定分裂（Split）[[Davis, Kirk Lemma 1.24 模的正合列的可裂性\|Davis, Kirk Lemma 1.24 模的正合列的可裂性]]。 因此： $$H_1(S^1, S^0) \cong \mathbb{Z} \oplus \mathbb{Z}$$
+3. **代入序列得出结论**： 将上述结果代入正合序列，得到一个短正合列：
+$$0 \to \mathbb{Z} \xrightarrow{j_*} H_1(S^1, S^0) \xrightarrow{\partial} \mathbb{Z} \to 0$$ 由于右侧的 $\mathbb{Z}$ 是**自由阿贝尔群**，该短正合列必定分裂（Split）[[Davis, Kirk Lemma 1.24 模的正合列的可裂性\|Davis, Kirk Lemma 1.24 模的正合列的可裂性]]。 因此： 
+$$H_1(S^1, S^0) \cong \mathbb{Z} \oplus \mathbb{Z}$$
     
 
 **几何直观**： $H_1(S^1, S^0)$ 衡量的是在圆周 $S^1$ 中，相对于两个端点 $S^0$ 而言的“回路”。这包含了一个完整的圆周回路（对应 $\tilde{H}_1(S^1)$）以及一条连接 $S^0$ 中两个不同点的路径（在相对意义下它也是一个“循环”）。将圆周捏成一个8字，所以存在两个非平凡的群，两个1维洞。
@@ -542,7 +545,8 @@ $$\dots \to H_1(D^2) \xrightarrow{j_*} H_1(D^2, S^1) \xrightarrow{d} H_0(S^1) \x
 
 根据习题 5.19，对于任何空间对 $(X, A)$，存在约化同调的长正合序列。令 $A = X$，证明如下：
 
-**1. 写出约化同调长正合序列** 对于空间对 $(X, X)$，考虑其约化同调序列片段： $$\dots \to \tilde{H}_n(X) \xrightarrow{i_*} \tilde{H}_n(X) \xrightarrow{j_*} H_n(X, X) \xrightarrow{d} \tilde{H}_{n-1}(X) \xrightarrow{i_*} \tilde{H}_{n-1}(X) \to \dots$$
+**1. 写出约化同调长正合序列** 对于空间对 $(X, X)$，考虑其约化同调序列片段： 
+$$\dots \to \tilde{H}_n(X) \xrightarrow{i_*} \tilde{H}_n(X) \xrightarrow{j_*} H_n(X, X) \xrightarrow{d} \tilde{H}_{n-1}(X) \xrightarrow{i_*} \tilde{H}_{n-1}(X) \to \dots$$
 
 _*2. 分析诱导同态 $i_*$_* 在此序列中，$i: X \hookrightarrow X$ 是包含映射，即恒等映射 $1_X$。 根据同调函子的性质，$i_* = H_n(1_X)$ 是 $\tilde{H}_n(X)$ 上的**恒等同构**。
 

@@ -52,7 +52,7 @@
     - $X \simeq Y$：意味着存在连续映射 $f: X \to Y$ 和 $g: Y \to X$，以及同伦 $H: f \circ g \simeq id_Y$。
     - $X$ 可缩：意味着存在同伦 $F: id_X \simeq c_{x_0}$（其中 $c_{x_0}$ 是 $X$ 上的常数映射）。
 - **你的构造**： 你构造了一个映射 $G(t, y): I \times Y \to Y$，将其分为两段： 
-- $$G(t, y) = \begin{cases} H(1-2t, y), & 0 \le t \le \frac{1}{2} \\ f(F(2t-1, g(y))), & \frac{1}{2} \le t \le 1 \end{cases}$$
+$$G(t, y) = \begin{cases} H(1-2t, y), & 0 \le t \le \frac{1}{2} \\ f(F(2t-1, g(y))), & \frac{1}{2} \le t \le 1 \end{cases}$$
 - **验证正确性**：
     - **端点 $t=0$**：$G(0, y) = H(1, y) = id_Y(y) = y$。符合要求。
     - **交界处 $t=1/2$**：
@@ -588,7 +588,7 @@ $\sin(1/x)$ 空间定义为 $X = A \cup G \subset \mathbb{R}^2$，其中：
 #### **1. 构造集合 $A$**
 
 固定 $U$ 中的一点 $x_0$。定义子集 $A \subseteq U$ 如下： 
-$$A = \{x \in U \mid \text{存在从 } x_0 \text{ 到 } x \text{ 的连续道路 } f: I \to U\}$$ 显然 $x_0 \in A$（常数道路），因此 **$A$ 是非空的** [1.15]。
+$$A = \{x \in U \mid \text{exist a path from $x$ to $x_0$ } f: I \to U\}$$ 显然 $x_0 \in A$（常数道路），因此 **$A$ 是非空的** [1.15]。
 
 #### **2. 证明 $A$ 在 $U$ 中是开集**
 
