@@ -10,7 +10,7 @@
 
 1. **验证前提条件**：Mayer-Vietoris 序列适用于满足 $X = X_1^\circ \cup X_2^\circ$ 的空间。由于 $A$ 和 $B$ 是 $X$ 中的开集，则 $A = A^\circ$ 且 $B = B^\circ$，因此 $X = A \cup B$ 满足序列的使用条件。
 2. **构造长正合序列**：对于每一阶 $n$，存在如下长正合序列： 
-$$\dots \to H_n(A \cap B) \to H_n(A) \oplus H_n(B) \to H_n(X) \to H_{n-1}(A \cap B) \to \dots$$。
+$$\dots \to H_n(A \cap B) \to H_n(A) \oplus H_n(B) \to H_n(X) \to H_{n-1}(A \cap B) \to \dots$$
 3. **利用不相交性质**：已知 $A \cap B = \emptyset$。根据同调群的定义，空集的同调群在所有维度上均为零，即 $H_n(\emptyset) = 0$。
 4. **得出结论**：将 $H_n(A \cap B) = 0$ 代入序列中，我们得到：
 $$0 \to H_n(A) \oplus H_n(B) \xrightarrow{g_* - j_*} H_n(X) \to 0$$ 这说明中间的映射 $g_* - j_*$ 是一个同构，因此 $H_n(X) \cong H_n(A) \oplus H_n(B)$。
@@ -34,6 +34,7 @@ $$0 \to H_n(A) \oplus H_n(B) \xrightarrow{g_* - j_*} H_n(X) \to 0$$ 这说明中
 ### 6.2 If X = A ∪ B is a disconnection, then Hn(X, A) ≅ Hn(B)
 
 1. **建立对空间的长正合列**： 对于拓扑空间对 $(X, A)$，存在以下长正合序列： 
+
 $$\dots \to H_n(A) \xrightarrow{i_*} H_n(X) \xrightarrow{j_*} H_n(X, A) \xrightarrow{\partial} H_{n-1}(A) \to \dots$$
     
 2. **代入练习 6.1 的分解结论**： 根据练习 6.1，由于 $X = A \cup B$ 且 $A, B$ 为不相交开集，全空间的同调群可以分解为： 
@@ -67,7 +68,9 @@ $$H_n(X - U, A - U) \cong H_n(X, A)$$ 代入 $U = A$： $$H_n(X - A, A - A) \con
 
 #### **1. 构造链复形层面的短正合列**
 
-设 $S_*^{\Sigma}(X) = S_*(X_1) + S_*(X_2)$ 为由包含在 $X_1$ 或 $X_2$ 内的单形生成的链子复形。根据 Mayer-Vietoris 序列的构造，存在如下链复形短正合列： $$0 \to S_*(X_1 \cap X_2) \xrightarrow{i} S_*(X_1) \oplus S_*(X_2) \xrightarrow{j} S_*(X_1) + S_*(X_2) \to 0$$ 其中 $i(c) = (c, c)$，$j(c_1, c_2) = c_1 - c_2$。对于空间 $Y$，同理有： $$0 \to S_*(Y_1 \cap Y_2) \xrightarrow{i'} S_*(Y_1) \oplus S_*(Y_2) \xrightarrow{j'} S_*(Y_1) + S_*(Y_2) \to 0$$
+设 $S_*^{\Sigma}(X) = S_*(X_1) + S_*(X_2)$ 为由包含在 $X_1$ 或 $X_2$ 内的单形生成的链子复形。根据 Mayer-Vietoris 序列的构造，存在如下链复形短正合列： 
+$$0 \to S_*(X_1 \cap X_2) \xrightarrow{i} S_*(X_1) \oplus S_*(X_2) \xrightarrow{j} S_*(X_1) + S_*(X_2) \to 0$$ 其中 $i(c) = (c, c)$，$j(c_1, c_2) = c_1 - c_2$。对于空间 $Y$，同理有：
+$$0 \to S_*(Y_1 \cap Y_2) \xrightarrow{i'} S_*(Y_1) \oplus S_*(Y_2) \xrightarrow{j'} S_*(Y_1) + S_*(Y_2) \to 0$$
 
 #### **2. 建立链映射**
 
@@ -79,14 +82,16 @@ $$H_n(X - U, A - U) \cong H_n(X, A)$$ 代入 $U = A$： $$H_n(X - A, A - A) \con
 
 #### **3. 证明链复形图表交换**
 
-我们需要验证以下图表在链层面上是交换的： $$\begin{CD} 0 @>>> S_*(X_1 \cap X_2) @>i>> S_*(X_1) \oplus S_*(X_2) @>j>> S_*(X_1) + S_*(X_2) @>>> 0 \\ @. @VV{\phi}V @VV{\psi}V @VV{\tau}V @. \\ 0 @>>> S_*(Y_1 \cap Y_2) @>i'>> S_*(Y_1) \oplus S_*(Y_2) @>j'>> S_*(Y_1) + S_*(Y_2) @>>> 0 \end{CD}$$
+我们需要验证以下图表在链层面上是交换的： 
+$$\begin{CD} 0 @>>> S_*(X_1 \cap X_2) @>i>> S_*(X_1) \oplus S_*(X_2) @>j>> S_*(X_1) + S_*(X_2) @>>> 0 \\ @. @VV{\phi}V @VV{\psi}V @VV{\tau}V @. \\ 0 @>>> S_*(Y_1 \cap Y_2) @>i'>> S_*(Y_1) \oplus S_*(Y_2) @>j'>> S_*(Y_1) + S_*(Y_2) @>>> 0 \end{CD}$$
 
 - **左侧方框**：对于 $c \in S_*(X_1 \cap X_2)$，$i' \phi(c) = i'(g_\# c) = (g_\# c, g_\# c)$。由于 $g$ 是限制映射，这等同于 $(f_\# c, f_\# c) = \psi(c, c) = \psi i(c)$。
 - **右侧方框**：对于 $(c_1, c_2) \in S_*(X_1) \oplus S_*(X_2)$，$j' \psi(c_1, c_2) = j'(f_\# c_1, f_\# c_2) = f_\# c_1 - f_\# c_2$。而 $\tau j(c_1, c_2) = f_\#(c_1 - c_2) = f_\# c_1 - f_\# c_2$。 因此，链层面的图表是交换的。
 
 #### **4. 应用连接同态的自然性 (Theorem 5.7)**
 
-根据 **Theorem 5.7**，任何链复形短正合列之间的交换图表都会诱导同调类长正合列之间的交换图表。因此，连接同态 $D$ 和 $D'$ 满足： $$g_* D = D' \tau_*$$ 其中 $\tau_*: H_n(S_*(X_1) + S_*(X_2)) \to H_n(S_*(Y_1) + S_*(Y_2))$ 是由 $f$ 诱导的映射。
+根据 **Theorem 5.7**，任何链复形短正合列之间的交换图表都会诱导同调类长正合列之间的交换图表。因此，连接同态 $D$ 和 $D'$ 满足： 
+$$g_* D = D' \tau_*$$ 其中 $\tau_*: H_n(S_*(X_1) + S_*(X_2)) \to H_n(S_*(Y_1) + S_*(Y_2))$ 是由 $f$ 诱导的映射。
 
 #### **5. 利用切除定理完成证明**
 
@@ -99,9 +104,9 @@ $$\begin{CD} H_n(X) @>D>> H_{n-1}(X_1 \cap X_2) \\ @VV{f_*}V @VV{g_*}V \\ H_n(Y)
 
 1. **构造三元组映射**：考虑三元组 $(X, X_1, X_1 \cap X_2)$ 和 $(Y, Y_1, Y_1 \cap Y_2)$。由于 $f(X_1) \subseteq Y_1$ 且 $f(X_1 \cap X_2) \subseteq f(X_1) \cap f(X_2) \subseteq Y_1 \cap Y_2$，映射 $f$ 诱导了三元组之间的映射 $f: (X, X_1, X_1 \cap X_2) \to (Y, Y_1, Y_1 \cap Y_2)$。
 2. **援引定理 5.9 的自然性**：根据定理 5.9，三元组的长正合序列在连续映射下是自然的。这意味着以下关于连接同态 $d$ 的方框是交换的：
-3. $$\begin{CD} H_n(X, X_1) @>d>> H_{n-1}(X_1, X_1 \cap X_2) \\ @VV{f_*}V @VV{g_*}V \\ H_n(Y, Y_1) @>d'>> H_{n-1}(Y_1, Y_1 \cap Y_2) \end{CD}$$ 其中 $d$ 是三元组的连接同态，$g$ 是 $f$ 在子空间上的限制。
-4. **结合切除定理 (Excision)**：Mayer-Vietoris 序列中的连接同态 $D$ 定义为 $d \circ h_*^{-1} \circ q_*$（其中 $h$ 是切除映射）。根据**切除定理 II**，包含映射 $h: (X_2, X_1 \cap X_2) \hookrightarrow (X, X_1)$ 诱导了同构 $h_*: H_n(X_2, X_1 \cap X_2) \cong H_n(X, X_1)$。
-5. **结论**：由于切除映射 $h$ 也是自然的（即 $f \circ h = h' \circ f$），将其与步骤 2 中的交换图复合，立即得到 $g_* D = D' f_*$。
+$$\begin{CD} H_n(X, X_1) @>d>> H_{n-1}(X_1, X_1 \cap X_2) \\ @VV{f_*}V @VV{g_*}V \\ H_n(Y, Y_1) @>d'>> H_{n-1}(Y_1, Y_1 \cap Y_2) \end{CD}$$ 其中 $d$ 是三元组的连接同态，$g$ 是 $f$ 在子空间上的限制。
+3. **结合切除定理 (Excision)**：Mayer-Vietoris 序列中的连接同态 $D$ 定义为 $d \circ h_*^{-1} \circ q_*$（其中 $h$ 是切除映射）。根据**切除定理 II**，包含映射 $h: (X_2, X_1 \cap X_2) \hookrightarrow (X, X_1)$ 诱导了同构 $h_*: H_n(X_2, X_1 \cap X_2) \cong H_n(X, X_1)$。
+4. **结论**：由于切除映射 $h$ 也是自然的（即 $f \circ h = h' \circ f$），将其与步骤 2 中的交换图复合，立即得到 $g_* D = D' f_*$。
 
 ## Homology of Spheres and Some Applications
 
@@ -213,7 +218,8 @@ $$Sd(f_\# \sigma) = Sd(f \circ \sigma) = (f \circ \sigma)_\# Sd(\delta_n) = f_\#
 
 #### **1. 证明 $b \cdot \sigma$ 是仿射的**
 
-- **定义回顾**：对于标准单形 $\Delta^{n+1}$ 中的点 $(t_0, \dots, t_{n+1})$，当 $t_0 < 1$ 时，定义为： $$(b \cdot \sigma)(t_0, \dots, t_{n+1}) = t_0 b + (1 - t_0) \sigma\left(\frac{t_1}{1-t_0}, \dots, \frac{t_{n+1}}{1-t_0}\right)$$
+- **定义回顾**：对于标准单形 $\Delta^{n+1}$ 中的点 $(t_0, \dots, t_{n+1})$，当 $t_0 < 1$ 时，定义为： 
+- $$(b \cdot \sigma)(t_0, \dots, t_{n+1}) = t_0 b + (1 - t_0) \sigma\left(\frac{t_1}{1-t_0}, \dots, \frac{t_{n+1}}{1-t_0}\right)$$
 - **线性性质**：由于顶点 $b$ 是常数（显然满足仿射性质），且已知 $\sigma$ 是仿射映射（即保持点集的线性组合），其线性插值定义的 $b \cdot \sigma$ 依然保持仿射组合。
 
 #### **2. 顶点集的包含关系**
@@ -297,7 +303,8 @@ $$(1 + a_\#)(1 + a_\#)\beta = 2(1 + a_\#)\beta$$
 **证明过程：**
 
 1. **构造辅助函数**：定义函数 $g: S^1 \to \mathbb{R}$ 为 $g(x) = f(x) - f(-x)$。由于 $f$ 是连续的，根据连续函数的运算性质，$g$ 也是 $S^1$ 上的连续函数。
-2. **观察对跖点性质**：对于任何 $x \in S^1$，观察 $g(-x)$ 的值： $$g(-x) = f(-x) - f(-(-x)) = f(-x) - f(x) = -(f(x) - f(-x)) = -g(x)$$。 这说明 $g$ 在对跖点上的取值总是互为相反数。
+2. **观察对跖点性质**：对于任何 $x \in S^1$，观察 $g(-x)$ 的值：
+$$g(-x) = f(-x) - f(-(-x)) = f(-x) - f(x) = -(f(x) - f(-x)) = -g(x)$$。 这说明 $g$ 在对跖点上的取值总是互为相反数。
 3. **应用介值定理**：任选一点 $x_0 \in S^1$。
     - 如果 $g(x_0) = 0$，那么 $f(x_0) = f(-x_0)$，结论成立。
     - 如果 $g(x_0) \neq 0$，不妨设 $g(x_0) > 0$。根据第 2 步的结论，必然有 $g(-x_0) < 0$。
@@ -332,7 +339,7 @@ $$(1 + a_\#)(1 + a_\#)\beta = 2(1 + a_\#)\beta$$
 
 1. **反证假设**：假设对于所有 $x \in S^2$，都有 $f(x) \neq 0$。
 2. **构造映射**：由于 $f(x)$ 永远不为零，我们可以定义映射 $g: S^2 \to S^1$ 为： 
-3. 
+
 $$g(x) = \frac{f(x)}{|f(x)|}$$ 因为 $f$ 是连续的且分母 $|f(x)|$ 始终大于零，所以映射 $g$ 在 $S^2$ 上是连续的。
 3. **验证对跖性**：根据已知条件 $f(-x) = -f(x)$，计算 $g(-x)$：
 $$g(-x) = \frac{f(-x)}{|f(-x)|} = \frac{-f(x)}{|-f(x)|} = -\frac{f(x)}{|f(x)|} = -g(x)$$ 这说明 $g: S^2 \to S^1$ 是一个**连续对跖映射**。
