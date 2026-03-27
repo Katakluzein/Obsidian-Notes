@@ -9,7 +9,8 @@
 #### **证明一：利用 Mayer-Vietoris 序列**
 
 1. **验证前提条件**：Mayer-Vietoris 序列适用于满足 $X = X_1^\circ \cup X_2^\circ$ 的空间。由于 $A$ 和 $B$ 是 $X$ 中的开集，则 $A = A^\circ$ 且 $B = B^\circ$，因此 $X = A \cup B$ 满足序列的使用条件。
-2. **构造长正合序列**：对于每一阶 $n$，存在如下长正合序列： $$\dots \to H_n(A \cap B) \to H_n(A) \oplus H_n(B) \to H_n(X) \to H_{n-1}(A \cap B) \to \dots$$。
+2. **构造长正合序列**：对于每一阶 $n$，存在如下长正合序列： 
+$$\dots \to H_n(A \cap B) \to H_n(A) \oplus H_n(B) \to H_n(X) \to H_{n-1}(A \cap B) \to \dots$$。
 3. **利用不相交性质**：已知 $A \cap B = \emptyset$。根据同调群的定义，空集的同调群在所有维度上均为零，即 $H_n(\emptyset) = 0$。
 4. **得出结论**：将 $H_n(A \cap B) = 0$ 代入序列中，我们得到：
 $$0 \to H_n(A) \oplus H_n(B) \xrightarrow{g_* - j_*} H_n(X) \to 0$$ 这说明中间的映射 $g_* - j_*$ 是一个同构，因此 $H_n(X) \cong H_n(A) \oplus H_n(B)$。
@@ -90,6 +91,7 @@ $$H_n(X - U, A - U) \cong H_n(X, A)$$ 代入 $U = A$： $$H_n(X - A, A - A) \con
 #### **5. 利用切除定理完成证明**
 
 根据 **Excision II (Theorem 6.17)**，包含映射 $k_X: S_*(X_1) + S_*(X_2) \hookrightarrow S_*(X)$ 诱导了同调群的同构。由于 $f$ 在全空间上的作用与它在子复形上的作用是一致的，我们可以通过该同构将 $H_n(S_*^\Sigma(X))$ 替换为 $H_n(X)$，得到最终的交换图表：
+
 $$\begin{CD} H_n(X) @>D>> H_{n-1}(X_1 \cap X_2) \\ @VV{f_*}V @VV{g_*}V \\ H_n(Y) @>D'>> H_{n-1}(Y_1 \cap Y_2) \end{CD}$$ 证明完成。
 
 #### 习题 6.3：利用定理 5.9 证明 MV 序列的自然性
@@ -330,6 +332,7 @@ $$(1 + a_\#)(1 + a_\#)\beta = 2(1 + a_\#)\beta$$
 
 1. **反证假设**：假设对于所有 $x \in S^2$，都有 $f(x) \neq 0$。
 2. **构造映射**：由于 $f(x)$ 永远不为零，我们可以定义映射 $g: S^2 \to S^1$ 为： 
+3. 
 $$g(x) = \frac{f(x)}{|f(x)|}$$ 因为 $f$ 是连续的且分母 $|f(x)|$ 始终大于零，所以映射 $g$ 在 $S^2$ 上是连续的。
 3. **验证对跖性**：根据已知条件 $f(-x) = -f(x)$，计算 $g(-x)$：
 $$g(-x) = \frac{f(-x)}{|f(-x)|} = \frac{-f(x)}{|-f(x)|} = -\frac{f(x)}{|f(x)|} = -g(x)$$ 这说明 $g: S^2 \to S^1$ 是一个**连续对跖映射**。

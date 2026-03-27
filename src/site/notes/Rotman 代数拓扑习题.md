@@ -14,3 +14,4 @@
 - [[Rotman 代数拓扑习题 第四章 Singular Homology\|Rotman 代数拓扑习题 第四章 Singular Homology]]  
 - [[Rotman 代数拓扑习题 第五章 Long Exact Sequences\|Rotman 代数拓扑习题 第五章 Long Exact Sequences]] 
 - [[Rotman 代数拓扑习题 第六章 Excision and Applications\|Rotman 代数拓扑习题 第六章 Excision and Applications]]  
+- [[Rotman 代数拓扑习题 第七章 Simplicial Complexes\|Rotman 代数拓扑习题 第七章 Simplicial Complexes]]   
