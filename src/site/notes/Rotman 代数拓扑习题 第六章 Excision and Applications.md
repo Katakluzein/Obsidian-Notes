@@ -58,7 +58,9 @@ $$H_n(X, A) \cong \frac{H_n(A) \oplus H_n(B)}{\text{im}(i_*)} \cong H_n(B)$$
     - 因为 $A$ 是开集，所以 $A^{\circ} = A$。
     - 显然 $A \subset A$ 满足条件。
 - **直接得出结论**：根据切除定理，包含映射诱导同构： 
-$$H_n(X - U, A - U) \cong H_n(X, A)$$ 代入 $U = A$： $$H_n(X - A, A - A) \cong H_n(X, A)$$ 由于 $X - A = B$ 且 $A - A = \emptyset$，上式即为： $$H_n(B, \emptyset) \cong H_n(X, A)$$ 由于对空空间的相对同调群 $H_n(B, \emptyset)$ 就等于绝对同调群 $H_n(B)$，证明完成。
+$$H_n(X - U, A - U) \cong H_n(X, A)$$ 代入 $U = A$： 
+$$H_n(X - A, A - A) \cong H_n(X, A)$$ 由于 $X - A = B$ 且 $A - A = \emptyset$，上式即为： 
+$$H_n(B, \emptyset) \cong H_n(X, A)$$ 由于对空空间的相对同调群 $H_n(B, \emptyset)$ 就等于绝对同调群 $H_n(B)$，证明完成。
 
 **用第二种切除更加简单**
 
